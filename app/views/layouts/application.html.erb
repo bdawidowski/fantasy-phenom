@@ -52,8 +52,9 @@
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
           </ul>
-          <ul class="nav nav-pills pull-right">
+          <ul class="nav navbar-nav pull-right">
             <% if user_signed_in? %>
+              <li><%= link_to current_user.email, edit_user_registration_path %></li>
               <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
             <% else %>
               <li><%= link_to "Sign in", new_user_session_path %></li>
