@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170726022108) do
+ActiveRecord::Schema.define(version: 20170729033600) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 20170726022108) do
     t.boolean  "contributor",            default: false
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "stripe_id"
+    t.string   "stripe_subscription_id"
+    t.string   "card_last4"
+    t.string   "card_exp_month"
+    t.string   "card_exp_year"
+    t.string   "card_type"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
