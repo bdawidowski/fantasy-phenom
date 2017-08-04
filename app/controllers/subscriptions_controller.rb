@@ -58,8 +58,9 @@ class SubscriptionsController < ApplicationController
     def destroy
         customer = Stripe::Customer.retrieve(current_user.stripe_id)
         subs = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
+        subs.cancel_at_period_end = true
         subs.delete
-        flash[:danger] = "You have canceled your Pro Account!"
+        flash[:warning] = "You have canceled your Pro Account!"
         redirect_to root_path
     end
     def account

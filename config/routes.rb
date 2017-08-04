@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'services', to: 'pages#services'
   get 'news', to: 'pages#news'
   get 'account', to: 'subscriptions#account'
-  
+  mount StripeEvent::Engine, at: '/stripe/webhook' # provide a custom path
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

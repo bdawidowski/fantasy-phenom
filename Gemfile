@@ -30,6 +30,8 @@ gem 'twitter-bootstrap-rails'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'friendly_id'
 gem 'stripe'
+gem 'stripe_event'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
