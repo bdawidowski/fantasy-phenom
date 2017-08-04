@@ -16,7 +16,7 @@ class RecordCharges
             card_exp_month: charge.source.exp_month,
             card_exp_year: charge.source.exp_year,
             status: charge.status
-            )
+        )
     end
 end
 class SubscriptionActivity
@@ -29,7 +29,7 @@ class SubscriptionActivity
             current_period_end: subscription.current_period_end,
             current_period_start: subscription.current_period_start,
             canceled_at: subscription.canceled_at
-            )
+        )
     end
 end
 
