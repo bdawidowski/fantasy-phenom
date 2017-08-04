@@ -1,0 +1,123 @@
+<%= tag :meta, name: "stripe-public-key", content: Rails.application.secrets.stripe_public_key %>
+<div class="row">
+  <h1 align="center">Update Payment Information!</h1>
+  <div class="col-sm-6 col-sm-offset-3">
+  <div class="panel panel-default">
+    <div class="panel-body panel-padded">
+      <div class="col-xs-10 col-xs-offset-1">
+        
+        <div class="text-center">Your are subscribing to <strong>Fantasy Phenoms Pro</strong>.</div>
+        <p class="text-muted text-center"><small>You will be charged $10 USD each month and you can cancel any time.</small></p>
+        <br/>
+        <div class="row" style="padding-left: 33%">
+          <div>Your current card on file: </div>
+          <div style="padding-top: 2px">
+              <i class="fa fa-cc-<%= current_user.card_type.downcase %> fa-3x pull-left"></i>
+              <div class="pull-left">
+                  <div>ending in <%= current_user.card_last4 %></div>
+                  <div>Expires <%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
+              </div><!-- pull-left -->
+          </div> <!-- Card Information (padding-top) -->
+        </div>
+        <br/>
+        <%= form_tag subscription_path(current_user.id), method: :put, id: "payment-form" do |form| %>
+          <div class="form-row">
+            <input name="cardholder-name" class="form-control" value="<%= current_user.first_name + " " + current_user.last_name %>" disabled %>
+            <br>
+            <div id="card-element" class="form-control">
+              <!-- a Stripe Element will be inserted here. -->
+            </div>
+        
+            <!-- Used to display Element errors -->
+            <div id="card-errors" role="alert"></div>
+          </div>
+          <br>
+          <button class="btn btn-success btn-md btn-subscribe">UPDATE CARD</button>
+        <% end %>
+        <br/>
+        <p class="text-center"><small>By subscribing, you agree to the <a target="blank" href="#">privacy policy</a> and <a target="blank" href="#">terms of service</a>.</small></p>
+        <br/>
+        <%= link_to "BACK TO ACCOUNT SETTINGS", account_path, class: "btn btn-default btn-block" %>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function(){
+        var stripe_public_key = document.querySelector("meta[name='stripe-public-key']").content;
+        var stripe = Stripe(stripe_public_key);
+        var elements = stripe.elements();
+        // Custom styling can be passed to options when creating an Element.
+        var style = {
+          base: {
+            // Add your base input styles here. For example:
+            fontSize: '16px',
+            lineHeight: '24px'
+          }
+        };
+        
+        // Create an instance of the card Element
+        var card = elements.create('card', {style: style});
+        
+        // Add an instance of the card Element into the `card-element` <div>
+        card.mount('#card-element');
+        
+        card.addEventListener('change', function(event) {
+          var displayError = document.getElementById('card-errors');
+          if (event.error) {
+            displayError.textContent = event.error.message;
+          } else {
+            displayError.textContent = '';
+          }
+        });
+        
+        // Create a token or display an error when the form is submitted.
+        var form = document.getElementById('payment-form');
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+          var extraDetails = {
+            name: form.querySelector('input[name=cardholder-name]').value
+          };
+          stripe.createToken(card, extraDetails).then(function(result) {
+            if (result.error) {
+              // Inform the user if there was an error
+              var errorElement = document.getElementById('card-errors');
+              errorElement.textContent = result.error.message;
+            } else {
+              // Send the token to your server
+              stripeTokenHandler(result.token);
+            }
+          });
+        });
+    });
+    function stripeTokenHandler(token) {
+        // Insert the token ID into the form so it gets submitted to the server
+        var form = document.getElementById('payment-form');
+        var hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', 'stripeToken');
+        hiddenInput.setAttribute('value', token.id);
+        form.appendChild(hiddenInput);
+        
+        ["brand", "exp_month", "exp_year", "last4"].forEach(function(field){
+            adFieldToForm(form, token, field);
+        });
+    
+        // Submit the form
+        form.submit();
+    }
+    function adFieldToForm(form, token, field) {
+      // Insert the token ID into the form so it gets submitted to the server
+      var form = document.getElementById('payment-form');
+      var hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'card_' + field);
+      hiddenInput.setAttribute('value', token.card[field]);
+      form.appendChild(hiddenInput);
+    }
+
+</script>

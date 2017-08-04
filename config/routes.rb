@@ -1,9 +1,21 @@
 Rails.application.routes.draw do
   resources :articles
-  devise_for :users
+  resources :subscriptions
+  devise_for :users, :controllers => { 
+    :registrations => "users/registrations",
+    :sessions => "users/sessions",
+    :password => "users/passwords" #, :confirmations => "users/confirmations" 
+    }
+  devise_scope :user do 
+    get 'signup', to: 'users/registrations#new'
+    get 'login', to: 'users/sessions#new'
+    get 'logout', to: 'users/sessions#destroy'
+  end
   root 'pages#home'
-  get 'pages/about', to: 'pages#about'
-  get 'pages/services', to: 'pages#services'
+  get 'about', to: 'pages#about'
+  get 'services', to: 'pages#services'
+  get 'news', to: 'pages#news'
+  get 'account', to: 'subscriptions#account'
   
 
   # The priority is based upon order of creation: first created -> highest priority.

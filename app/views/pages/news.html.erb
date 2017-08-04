@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1 align="center">Listing Articles</h1>
 <div class="row">
   <div class="col-sm-12">
@@ -7,22 +5,20 @@
     <% @articles.each do |article| %>
         <% if counter === 0 %>
           <div class="col-xs-12">
-            <%= render "panel", article: article %>
+            <%= render "pages/news_panel", article: article %>
         <% elsif counter < 4 %>
           <div class="col-sm-4">
-            <%= render "panel", article: article %>
+            <%= render "pages/news_panel", article: article %>
         <% elsif counter == 4 || counter == 5 %>
           <div class="col-sm-6">
-            <%= render "panel", article: article %>
+            <%= render "pages/news_panel", article: article %>
         <% else %>
           <div class="col-sm-4">
-            <%= render "panel", article: article %>
+            <%= render "pages/news_panel", article: article %>
         <% end %>
         </div>
       <% counter += 1 %>
     <% end %>
   </div>
 </div>
-
-
 

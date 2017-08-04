@@ -1,0 +1,10 @@
+<% short_dis = article.content.gsub(/<.*?>/, "") %>
+
+<div class="panel panel-success devise-bs">
+    <div class="panel-heading">
+        <%= article.title %>
+    </div>
+    <div class="panel-body">
+        <%= truncate(short_dis, length: 30) %>
+    </div>
+</div>

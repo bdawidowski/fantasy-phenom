@@ -1,0 +1,22 @@
+* {
+    font-family: 'Lato', Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #F8F8F8;
+}
+
+#btn-nav-signin,
+#btn-nav-signup{
+    padding: 7px; 
+    margin-top: 7px;
+    margin-right: 4px;
+}
+
+#btn-nav-signin:hover{
+    background-color:#ccc;
+}
+
+#btn-nav-signup:hover{
+    background-color: #3b6b94;
+}

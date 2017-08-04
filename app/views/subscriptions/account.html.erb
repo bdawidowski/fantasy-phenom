@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-body panel-padded">
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Edit Profile</h3>
+                    </div> <!-- col-xs-12 -->
+                    <div class="col-xs-8">
+                        <div class="pull-left">
+                            <%= gravatar_for(current_user, size: 55) %>
+                        </div> <!-- gravatar -->
+                        <div class="pull-left">
+                            <div style="padding-left: 10px"><%= current_user.first_name + " " + current_user.last_name %></div>
+                            <div style="padding-left: 10px"><small><%= current_user.email %></small></div>
+                            <div style="padding-left: 10px"><small>Visit <a href="https://en.gravatar.com/">Gravatar</a> to add/update profile image</small></div>
+                        </div><!-- Name - Email -->
+                        
+                    </div><!-- col-xs-6 -->
+                    <div class="col-xs-4 text-right">
+                        <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn btn-default btn-block" %>
+                    </div><!-- Edit Btn (col-xs-6) -->
+                </div><!-- row -->
+                
+                <hr/>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Change Your Password</h3>
+                    </div> <!-- col-xs-12 -->
+                    <div class="col-xs-8">
+                        <div>Update the password you use to login to your Fanstasy Phenoms account.</div>
+                    </div><!-- col-xs-8 -->
+                    <div class="col-xs-4 text-right">
+                        <%= link_to "UPDATE PASSWORD", edit_user_password_path, class: "btn btn-default btn-block" %>
+                    </div><!-- Update Card Btn (col-xs-4) -->
+                </div><!-- row -->
+                
+                <hr/>
+                
+                <div class="row">
+                    <% if current_user_subscribed? %>
+                        <div class="col-xs-12">
+                            <h3>Update Payment Method</h3>
+                        </div> <!-- col-xs-12 -->
+                        <div class="col-xs-8">
+                            <div>Your current card on file: </div>
+                            <div style="padding-top: 2px">
+                                <i class="fa fa-cc-<%= current_user.card_type.downcase %> fa-3x pull-left"></i>
+                                <div class="pull-left">
+                                    <div>ending in <%= current_user.card_last4 %></div>
+                                    <div>Expires <%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
+                                </div><!-- pull-left -->
+                            </div> <!-- Card Information (padding-top) -->
+                        </div><!-- col-xs-8 -->
+                        <div class="col-xs-4 text-right">
+                            <%= link_to "UPDATE CARD", edit_subscription_path(current_user.id), class: "btn btn-default btn-block" %>
+                        </div><!-- Update Card Btn (col-xs-4) -->
+                    <% else %>
+                        <div class="col-sm-8">
+                            <h3>Join Fantasy Phenoms Pro</h3>
+                        </div> <!-- col-sm-8 -->
+                        <div class="col-sm-4">
+                            <a href="#" class="btn btn-success btn-block" style="margin-top: 15px; color: #fff" ><small>SUBSCRIBE NOW!</small></a>
+                        </div><!-- col-sm-4 -->
+                    <% end %>
+                    
+                </div><!-- row -->
+                <% if current_user_subscribed? %>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3>Cancel My Account</h3>
+                        </div> <!-- col-xs-12 -->
+                        <div class="col-xs-8">
+                            <div>If you no longer need access to Fanstasy Phenoms Pro, you can cancel your subscription here. You can resubscribe at anytime if you wish to join again in the future.</div>
+                        </div><!-- col-xs-8 -->
+                        <div class="col-xs-4 text-right">
+                            <%= form_tag subscription_path(current_user.id), method: :delete, data: { confirm: "Are you sure?"} do |form| %>
+                           <button class="btn btn-default btn-block" type="submit">UNSUBSCRIBE</button>
+                           <% end %>
+                        </div><!-- Update Card Btn (col-xs-4) -->
+                    </div><!-- row -->
+                <% end %>
+                
+                
+                
+            </div><!-- panel-body -->
+        </div><!-- panel -->
+    </div><!-- col-sm-6 -->
+</div><!-- row -->

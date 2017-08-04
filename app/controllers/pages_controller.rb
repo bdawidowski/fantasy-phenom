@@ -7,4 +7,8 @@ class PagesController < ApplicationController
 
   def services
   end
+
+  def news
+    @articles = Article.all
+  end
 end
