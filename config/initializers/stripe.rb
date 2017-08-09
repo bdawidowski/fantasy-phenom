@@ -20,21 +20,52 @@ class RecordCharges
     end
 end
 class SubscriptionActivity
+    require 'date'
+
     def call(event)
         subscription = event.data.object
         user = User.find_by(stripe_id: subscription.customer)
-        s = user.standing.where(stripe_id: subscription.id).first_or_create
+        s = user.standings.where(stripe_id: subscription.id).first_or_create
         s.update(
             status: subscription.status,
-            current_period_end: subscription.current_period_end,
-            current_period_start: subscription.current_period_start,
-            canceled_at: subscription.canceled_at
+            current_period_end: Time.at(subscription.current_period_end),
+            current_period_start: Time.at(subscription.current_period_start)
+            # canceled_at: Time.at(subscription.canceled_at)
+            # ended_at: Time.at(subscription.ended_at),
+            # trial_start: Time.at(subscription.trial_start),
+            # trial_end: Time.at(subscription.trial_start)
         )
+        to_save = false
+        if subscription.canceled_at
+            s.canceled_at = Time.at(subscription.canceled_at)
+            to_save = true
+        end
+        
+        if subscription.ended_at
+            s.ended_at = Time.at(subscription.ended_at)
+            to_save = true
+        end 
+        
+        if subscription.status == 'trialing'
+            s.trial_start = Time.at(subscription.trial_start)
+            s.trial_end = Time.at(subscription.trial_end)
+            to_save = true
+        end
+        
+        if to_save
+            s.save
+        end
+        
+        
+        
+        
+        
     end
 end
 
+
 StripeEvent.configure do |events|
-  events.subscribe 'charge.successed', RecordCharges.new
+  events.subscribe 'charge.succeeded', RecordCharges.new
   events.subscribe 'charge.failed', RecordCharges.new
   events.subscribe 'customer.subscription.created', SubscriptionActivity.new
   events.subscribe 'customer.subscription.updated', SubscriptionActivity.new

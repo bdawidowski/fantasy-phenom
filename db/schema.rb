@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170729033600) do
+ActiveRecord::Schema.define(version: 20170809010626) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(version: 20170729033600) do
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true
+
+  create_table "charges", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_id"
+    t.integer  "amount"
+    t.string   "status"
+    t.string   "card_last4"
+    t.string   "card_type"
+    t.string   "card_exp_month"
+    t.string   "card_exp_year"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "charges", ["stripe_id"], name: "index_charges_on_stripe_id", unique: true
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -36,6 +51,23 @@ ActiveRecord::Schema.define(version: 20170729033600) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "standings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_id"
+    t.datetime "current_period_end"
+    t.datetime "current_period_start"
+    t.datetime "canceled_at"
+    t.string   "status"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.datetime "ended_at"
+    t.datetime "trial_start"
+    t.datetime "trial_end"
+    t.string   "discount"
+  end
+
+  add_index "standings", ["stripe_id"], name: "index_standings_on_stripe_id", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -63,6 +95,9 @@ ActiveRecord::Schema.define(version: 20170729033600) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.boolean  "subscribed",             default: false
+    t.boolean  "was_subscribed",         default: false
+    t.boolean  "chatroom",               default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

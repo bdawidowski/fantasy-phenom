@@ -16,8 +16,25 @@ class ApplicationController < ActionController::Base
   def current_user_admin?
     current_user_contributor? && current_user.admin?
   end
-  
-  helper_method :current_user_subscribed?, :current_user_admin?, :current_user_contributor?
+  def is_admin?
+      if !current_user_admin?
+          flash[:danger] = "Admin Only!"
+          redirect_to root_path
+      end
+  end
+  def is_contributor?
+      if !current_user_contributor?
+          flash[:danger] = "Contributors & Admin Only!"
+          redirect_to root_path
+      end
+  end
+  def is_subscribed?
+      if !current_user_subscribed?
+          flash[:warning] = "You must be subscribed to access! Please Subscribe!"
+          redirect_to new_subscription_path
+      end
+  end
+  helper_method :current_user_subscribed?, :current_user_admin?, :current_user_contributor?, :is_admin?
   
   
 

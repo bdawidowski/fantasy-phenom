@@ -22,7 +22,9 @@ class SubscriptionsController < ApplicationController
             card_type: params[:card_brand],
             card_last4: params[:card_last4],
             card_exp_month: params[:card_exp_month],
-            card_exp_year: params[:card_exp_year]
+            card_exp_year: params[:card_exp_year],
+            subscribed: true,
+            was_subscribed: true
         )
         if subs
             flash[:success] = "You have successfull subscribed!"
@@ -58,12 +60,15 @@ class SubscriptionsController < ApplicationController
     def destroy
         customer = Stripe::Customer.retrieve(current_user.stripe_id)
         subs = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
-        subs.cancel_at_period_end = true
         subs.delete
+        current_user.subscribed = false
+        current_user.save
         flash[:warning] = "You have canceled your Pro Account!"
-        redirect_to root_path
+        redirect_to account_path
     end
     def account
+    end
+    def platform
     end
     private
         def redirect_to_signup

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  stripe_id: MyString
+  current_period_end: 2017-08-05 02:39:29
+  current_period_start: 2017-08-05 02:39:29
+  canceled_at: 2017-08-05 02:39:29
+
+two:
+  user_id: 1
+  stripe_id: MyString
+  current_period_end: 2017-08-05 02:39:29
+  current_period_start: 2017-08-05 02:39:29
+  canceled_at: 2017-08-05 02:39:29

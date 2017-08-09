@@ -1,0 +1,74 @@
+<div class="row">
+    <table class="table">
+        <% @users.each do |user| %>
+            <% if !user.admin %>
+                <% if user.standings.last %>
+                    <% user_has_stripe = true %>
+                <% else %> 
+                    <% user_has_stripe = false %>
+                <% end %>
+                <tr>
+                    <td><%= gravatar_for(user, size: 20) %></td>
+                    <td><%= user.first_name + " " + user.last_name %></td>
+                    <td><%= user.email %></td>
+                    <% if user_has_stripe %>
+                        <% if user.standings.last.status === "active" %>
+                            <% status_style = "success" %>
+                        <% elsif user.standings.last.status === "canceled" %>
+                            <% status_style = "danger" %>
+                        <% elsif user.standings.last.status === "trialing" %>
+                            <% status_style = "primary" %>
+                        <% else %>
+                            <% status_style = "warning" %>
+                        <% end %>
+                        <td><span class="label label-<%= status_style %>"><%= user.standings.last.status.upcase %></span></td>
+                    <% else %>
+                        <td><span class="label label-default">FREE</span></td>
+                    <% end %>
+                    <% if user.subscribed %>
+                        <td><span class="label label-success">ACCESS</span></td>
+                    <% else %>
+                        <td><span class="label label-danger">DENIED</span></td>
+                    <% end %>
+                    
+                    <% if user_has_stripe %>
+                        <td><%= user.standings.last.current_period_start.strftime("%m/%d/%y") %></td>
+                        <td><%= user.standings.last.current_period_end.strftime("%m/%d/%y") %></td>
+                    <% else %>
+                        <td></td>
+                        <td></td>
+                    <% end %>
+                    <td><%= link_to "EDIT", edit_admin_path(user), class: "btn btn-default btn-xs" %></td>
+                </tr>
+            <% end %>
+        <% end %>
+    </table>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+        <h3 align="center">List of Charges</h3>
+        <table class="table">
+            <% @charges.each do |charge| %>
+                <% user = @users.find(charge.user_id) %>
+            <tr>
+                <td><%= gravatar_for(user, size: 20) %></td>
+                <td><%= user.first_name + " " + user.last_name %></td>
+                <td><%= user.email %></td>
+                <td><%= "$" + (charge.amount / 100).to_s  %></td>
+                <% if charge.status === 'succeeded' %>
+                    <td><span class="label label-success"><%= charge.status %></span></td>
+                <% else %>
+                    <td><span class="label label-danger"><%= charge.status %></span></td>
+                <% end %>
+                <td>
+                    <%= charge.created_at.strftime("%m/%d/%y") %>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+     </div>
+</div>

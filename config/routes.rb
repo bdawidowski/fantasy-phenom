@@ -11,12 +11,14 @@ Rails.application.routes.draw do
     get 'login', to: 'users/sessions#new'
     get 'logout', to: 'users/sessions#destroy'
   end
+  resources :users
+  resources :admin
   root 'pages#home'
   get 'about', to: 'pages#about'
   get 'services', to: 'pages#services'
   get 'news', to: 'pages#news'
   get 'account', to: 'subscriptions#account'
-  mount StripeEvent::Engine, at: '/stripe/webhook' # provide a custom path
+  mount StripeEvent::Engine, at: '/stripe/webhooks' # provide a custom path
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
