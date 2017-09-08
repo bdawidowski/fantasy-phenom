@@ -1,6 +1,7 @@
 class SubscriptionsController < ApplicationController
     before_action :authenticate_user!, except: [:new]
     before_action :redirect_to_signup, only: [:new]
+    
     def new
     end
     def create
@@ -37,34 +38,33 @@ class SubscriptionsController < ApplicationController
     end
     def update
         customer = Stripe::Customer.retrieve(current_user.stripe_id)
-                   
         subs = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
-        subs.source = params[:stripeToken]
-        subs.save
-        
-        current_user.update(
-            card_type: params[:card_brand],
-            card_last4: params[:card_last4],
-            card_exp_month: params[:card_exp_month],
-            card_exp_year: params[:card_exp_year]
-        )
-        if subs
-            flash[:success] = "You have successfull Updated Card Information!"
+        if params[:to_delete] === "true"
+            current_user.update(
+                subscribed: "false",
+                contributor: "false"
+            )
+            subs.delete
+            flash[:warning] = "You have canceled your Pro Account!"
             redirect_to account_path
         else
-            render :new
+            subs = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
+            subs.source = params[:stripeToken]
+            subs.save
+        
+            current_user.update(
+                card_type: params[:card_brand],
+                card_last4: params[:card_last4],
+                card_exp_month: params[:card_exp_month],
+                card_exp_year: params[:card_exp_year]
+            )
+            if subs
+                flash[:success] = "You have successfull Updated Card Information!"
+                redirect_to account_path
+            else
+                render :edit
+            end
         end
-    end
-    def show
-    end
-    def destroy
-        customer = Stripe::Customer.retrieve(current_user.stripe_id)
-        subs = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
-        subs.delete
-        current_user.subscribed = false
-        current_user.save
-        flash[:warning] = "You have canceled your Pro Account!"
-        redirect_to account_path
     end
     def account
     end

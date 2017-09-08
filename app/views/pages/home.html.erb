@@ -1,24 +1,110 @@
-<div class="jumbotron">
-  <% if user_signed_in? %>
-    <h1>Welcome back, trusted user!</h1>
-    <p class="lead">
-      You have signed in!  If this were a real app some sweet conent
-      would go here.  But it's just a test.  You might want to sign out now.
-    </p>
-    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'btn btn-large btn-danger' %>
-  <% else %>
-    <h1>Welcome, new user!</h1>
-    <p class="lead">
-      You must sign in or sign up before you can access our super sweet,
-      top secret content.
-    </p>
-    <div class="row-fluid">
-      <div class="span6">
-        <%= link_to "Sign In", new_user_session_path, :class => "btn btn-success" %>
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="text-center industry-main wcolor">GET STARTED PLAYING DAILY FANTASY SPORTS</h1>
+  </div>
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-xs-4">
+      <%= image_tag("logos/fan-duel.png", class: "img-home-logos") %>
+    </div>
+    <div class="col-xs-4">
+      <%= image_tag("logos/fpbasic.png", class: "img-home-logos") %>
+    </div>
+    <div class="col-xs-4">
+      <%= image_tag("logos/draft-kings.png", class: "img-home-logos") %>
+    </div>
+  </div>
+  <div class="col-sm-12 text-center">
+    <% if user_signed_in? %>
+      <%= link_to "GOOGLE SHEETS", googlesheets_path, :class => "btn btn-success" %>
+      <a href="#" class="btn btn-primary">COMMUNITY</a>
+    <% else %>
+      <%= link_to "LEARN MORE", new_user_registration_path, :class => "btn btn-dark-line industry-main" %>
+      <%= link_to "JOIN THE TEAM", new_user_registration_path, :class => "btn btn-dark-line industry-main" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="container" style="background-color: #3B3B3C; margin-top: 100px; margin-bottom: 100px">
+    <div class="col-md-8">
+      <div class="join-text-container hidden-xs" style="margin-top: 10px">
+        <p>Fantasy Phenom is a fantsay sports community centered around its members. Each individual "Phenom" is a player on this team offering a unique contributions. We operate this team under a common goal:</p>
       </div>
-      <div class="span6">
-        <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-success" %>
+      <div class="text-center wcolor">
+        <h1 class="industry-main" style="text-transform: uppercase;">Discovering dependable and superior fantasy sports knowledge</h1>
+      </div>
+      <div class="join-text-container" style="margin-bottom: 10px">
+        <p>Fantasy Phenom aims to provide a friendly and trustworthly community for people who enjoy playing fantasy sports. We are focused on progression through the development of user friendly research tools and entertaining discussions as a supplement to your daily fantsay sports process. </p>
       </div>
     </div>
-  <% end %>
+    <div class="col-md-4" id="join-call-to-action">
+      <div>
+      <h2 class="text-center wcolor"><strong>7-DAY<br/>FREE TRAIL<br/><span style="font-size: 20px">$9.99/Mo.</span></strong></h2>
+      <br/><br/>
+      <a href="#">JOIN</a>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<div class="row bg-main">
+  <div class="col-sm-10 col-sm-offset-1 col-xs-12 about-container">
+    <div class="col-sm-4 col-xs-12 col-sm-push-4">
+      <div class="about-img-container">
+        <%= image_tag("logos/aboutuslogo.png", class: "img-home-logos") %>
+      </div>
+        <h4 class="text-center industry-main wcolor">ABOUT US</h4>
+    </div>
+    <div class="col-sm-4 col-xs-6 col-sm-pull-4">
+      <div class="about-img-container">
+        <%= image_tag("logos/communitylogo.png", class: "img-home-logos") %>
+      </div>
+        <h4 class="text-center industry-main wcolor">COMMUNITY</h4>
+    </div>
+    <div class="col-sm-4 col-xs-6">
+      <div class="about-img-container">
+        <%= image_tag("logos/analyticslogo.png", class: "img-home-logos") %>
+      </div>
+        <h4 class="text-center industry-main wcolor">ANALYTICS</h4>
+    </div>
+  </div>
+  <div class="col-sm-6 hidden-xs about-text-container">
+    <h4 class="text-left industry-main gcolor">LEARN HOW TO BE SUCESSFUL</h4>
+    <h4 class="text-left industry-main gcolor">24/7 COLLABORATIVE DISCUSSION</h4>
+    <h4 class="text-left industry-main gcolor">CONNECT WITH OTHER PLAYERS</h4>
+    <h4 class="text-left industry-main gcolor">UNLOCK WINNINGS STRATEGIES</h4>
+  </div>
+  <div class="col-sm-6 hidden-xs about-text-container">
+    <h4 class="text-right industry-main gcolor">DEVELOP CONSISTENCY</h4>
+    <h4 class="text-right industry-main gcolor">INCORPORATED ANALYTICS</h4>
+    <h4 class="text-right industry-main gcolor">ACCESS SIMPLE TO USE DATA</h4>
+    <h4 class="text-right industry-main gcolor">BECOME A FANTASY PLAYER</h4>
+  </div>
+</div>
+<div class="row divider-grey">
+  <h1 class="text-center industry-main wcolor">CHANGE THE WAY YOU PLAY</h1>
+</div>
+<div class="row" style="background-color: #000">
+    <br/>
+    <br/>
+    <form id="contact-form">
+      <div class="col-sm-3">
+        <%= image_tag("logos/fpbasic.png", class: "img-contact-logos") %>
+      </div>
+      <div class="col-sm-9">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <input type="text" class="contact-input" placeholder="Name:"/>
+          </div>
+          <div class="form-group">
+            <input type="email" class="contact-input" placeholder="Email:"/>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <textarea rows="4" class="contact-input" placeholder="Hey Guys, I need to be part of the community! I would love to start colabrating with other daily fantsay palyer! "></textarea>
+        </div>
+        <button type="submit" class="btn contact-btn industry-main">CHAT WITH US!</button>
+      </div>
+    </form>
+</div>
+

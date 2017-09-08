@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :googlesheets
   resources :articles
   resources :subscriptions
   devise_for :users, :controllers => { 

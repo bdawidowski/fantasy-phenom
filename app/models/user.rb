@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :charges
   has_many :standings
   def subscribed?
-    stripe_subscription_id?
+    subscribed
   end
   
   def admin?

@@ -30,21 +30,25 @@
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
     <![endif]-->
+    <script src="https://use.typekit.net/vjk3ocu.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
   </head>
   <body>
-
     <%= render 'layouts/nav' %>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-      <footer>
-        <p>&copy; Fantasy Phenom, LLC 2017</p>
-      </footer>
-    </div> <!-- /container -->
-
+    <div class="nav-gap"></div>
+    <div class="container-fluid">
+      <%= bootstrap_flash %>
+      <%= yield %>
+    </div>
   </body>
+  <footer class="footer">
+    <div class="img-container">
+      <a href="#" target="_blank"><i class="fa fa-facebook-square" id="fb-footer"></i></a>
+      <a href="#" target="_blank"><i class="fa fa-twitter" id ="tw-footer"></i></a>
+      <a href="#" target="_blank"><i class="fa fa-youtube" id="yt-footer"></i></a>
+      <a href="#" target="_blank"><i class="fa fa-instagram" id="ig-footer"></i></a>
+      <%= image_tag("backgrounds/footer-bg.png", class: "hidden-xs") %>
+    </div>
+  </footer>
+  
 </html>

@@ -1,0 +1,1 @@
+json.array! @googlesheets, partial: 'googlesheets/googlesheet', as: :googlesheet

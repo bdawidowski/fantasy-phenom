@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+    <h1 align="center">Googlesheets Data</h1>
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-body panel-padded">
+              <% if current_user_admin? %>
+                <%= link_to 'NEW GOOGLE SHEET', new_googlesheet_path, class: "btn btn-default btn-block" %>
+              <% end %>
+                <div class="col-xs-12">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>SPORT</th>
+                        <th>DATE</th>
+                        <th class="text-center">DATA LINK</th>
+                        <% if current_user_admin? %>
+                          <th>ADMIN CONTROLS</th>
+                        <% end %>
+                      </tr>
+                    </thead>
+                  
+                    <tbody>
+                      <% @googlesheets.each do |googlesheet| %>
+                        <tr>
+                          <td><%= googlesheet.sport %></td>
+                          <td><%= googlesheet.date_for %></td>
+                          <td><a href="<%= googlesheet.link %>" target="_blank" class="btn btn-success btn-xs btn-block" style="color: white; font-weight: 600;">VIEW DATA</a></td>
+                          <% if current_user_admin? %>
+                            <td>
+                              
+                              
+                              <%= link_to 'EDIT', edit_googlesheet_path(googlesheet), class:"btn btn-default btn-xs btn-block" %>
+                              
+                              
+                              <%= link_to 'DELETE', googlesheet, class:"btn btn-danger btn-xs btn-block", style: "color: white",  method: :delete, data: { confirm: 'Are you sure?' } %>
+                              
+                              
+                              </td>
+                          <% end %>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+

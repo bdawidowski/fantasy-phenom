@@ -1,0 +1,1 @@
+json.partial! "googlesheets/googlesheet", googlesheet: @googlesheet
