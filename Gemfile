@@ -31,7 +31,8 @@ gem 'twitter-bootstrap-rails'
 gem 'friendly_id'
 gem 'stripe'
 gem 'stripe_event'
-
+gem 'will_paginate'
+gem 'jquery-datatables-rails', '~> 3.4.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

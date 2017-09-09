@@ -1,5 +1,7 @@
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <div class="row">
-    <table class="table">
+    <table class="table" id="user-management-table">
         <thead>
             <tr>
                 <th>NAME</th>
@@ -92,7 +94,7 @@
 <div class="row">
     <div class="col-sm-4">
         <h3 align="center">List of Charges</h3>
-        <table class="table">
+        <table class="table" id="charges-management-table">
             <thead>
                 <tr>
                     <th>NAME</th>
@@ -122,7 +124,7 @@
      </div>
      <div class="col-sm-8">
         <h3 align="center">List of Canceled Accounts</h3>
-        <table class="table">
+        <table class="table" id="canceled-management-table">
             <thead>
                 <tr>
                     <th>NAME</th>
@@ -150,3 +152,10 @@
         </table>
      </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('#user-management-table').DataTable();
+        $('#charges-management-table').DataTable();
+        $('#canceled-management-table').DataTable();
+    });
+</script>
