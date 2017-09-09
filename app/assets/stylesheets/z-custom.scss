@@ -26,8 +26,8 @@ h1 {
 }
 
 #btn-nav-signup:hover{
-    background-color: #a59556;
-    border-color: #a59556;
+    background-color: #449D44;
+    border-color: #449D44;
 }
 .btn-white {
     color: #fff;
@@ -40,7 +40,7 @@ h1 {
     font-size: 13px;
 }
 .nav-gap{
-    height:100px;
+    height: 60px;
 }
 .industry-main {
     font-weight: 700;
@@ -195,3 +195,6 @@ footer a:hover { color: #999; }
     .about-text-container h4 { font-size: 15px;}
     .navbar-nav li a {font-size: 16px;}
 }
+
+table {color: #ccc;}
+table thead {color: #fff;}

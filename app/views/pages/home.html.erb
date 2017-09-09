@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <h1 class="text-center industry-main wcolor">GET STARTED PLAYING DAILY FANTASY SPORTS</h1>
+    <h1 class="text-center industry-main wcolor" style="margin-top: 50px">GET STARTED PLAYING DAILY FANTASY SPORTS</h1>
   </div>
   <div class="col-sm-6 col-sm-offset-3">
     <div class="col-xs-4">
@@ -15,8 +15,8 @@
   </div>
   <div class="col-sm-12 text-center">
     <% if user_signed_in? %>
-      <%= link_to "GOOGLE SHEETS", googlesheets_path, :class => "btn btn-success" %>
-      <a href="#" class="btn btn-primary">COMMUNITY</a>
+      <%= link_to "GOOGLE SHEETS", googlesheets_path, :class => "btn btn-dark-line industry-main" %>
+      <a href="#" class="btn btn-dark-line industry-main">COMMUNITY</a>
     <% else %>
       <%= link_to "LEARN MORE", new_user_registration_path, :class => "btn btn-dark-line industry-main" %>
       <%= link_to "JOIN THE TEAM", new_user_registration_path, :class => "btn btn-dark-line industry-main" %>
