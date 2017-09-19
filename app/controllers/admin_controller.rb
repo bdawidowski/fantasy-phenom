@@ -4,7 +4,6 @@ class AdminController < ApplicationController
     before_action :user_params, only: [:update]
     def index
         @users = User.all
-        @charges = Charge.all
         @subscriptions = Standing.all
     end
 

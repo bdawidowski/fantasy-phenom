@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand wcolor" href="#" style="color: white; font-size: 30px;">
+        <a class="navbar-brand wcolor" href="<%= root_path %>" style="color: white; font-size: 30px;">
             FANTASY<strong>PHENOM</strong><% if current_user_subscribed? %> <i class="fa fa-check-circle" style="color: #C6B358; font-size: 25px; vertical-align: middle; "></i> <% end %>
         </a>
         </div>
@@ -42,7 +42,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <% if user_signed_in? %>
                     <% if !current_user_subscribed? %>
-                        <li><%= link_to "SUBSCRIBE", new_subscription_path, class: "btn btn-success btn-md", style: "color: #fff; padding: 7px; margin-top: 7px" %></li>
+                        <li><%= link_to "SUBSCRIBE", new_subscription_path, class: "btn btn-nav btn-nav-primary", style: "color: #fff;", id: "btn-nav-signup" %></li>
                     <% end %>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= gravatar_for(current_user, size: 23) %><span class="caret"></span></a>
@@ -54,8 +54,8 @@
                         </ul>
                     </li>
                 <% else %>
-                    <li><%= link_to "BECOME A PRO", new_user_registration_path, class: "btn btn-success", style: "color: #fff;", id: "btn-nav-signup" %></li>
-                    <li><%= link_to "SIGN IN", new_user_session_path, class: "btn btn-default", style: "color: #000;", id: "btn-nav-signin" %></li>
+                    <li><%= link_to "BECOME A PRO", new_user_registration_path, class: "btn btn-nav btn-nav-primary", style: "color: #fff;", id: "btn-nav-signup" %></li>
+                    <li><%= link_to "SIGN IN", new_user_session_path, class: "btn btn-nav btn-nav-default", id: "btn-nav-signin" %></li>
                 <% end %>
             </ul>
         </div>

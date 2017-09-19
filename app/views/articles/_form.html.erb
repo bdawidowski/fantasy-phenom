@@ -1,6 +1,8 @@
 
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
+    <div class="panel panel-default devise-bs">
+      <div class="panel-body">
     <%= form_for(@article) do |f| %>
       <% if @article.errors.any? %>
         <div id="error_explanation">
@@ -15,18 +17,20 @@
       <% end %>
     
       <div class="form-group">
-        <%= f.label :title %><br>
+        <%= f.label :title, "TITLE:" %><br>
         <%= f.text_field :title, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :content %><br>
+        <%= f.label :content, "CONTENT:" %><br>
         <%= f.text_area :content, class: "form-control", id: "editor1" %>
       </div>
       <div class="actions">
-        <%= f.submit class: "btn btn-default" %>
+        <%= f.submit class: "btn btn-default btn-block" %>
       </div>
     <% end %>
-    <%= link_to 'Back', articles_path, class: "btn btn-default" %>
+    <%= link_to 'Back', articles_path, class: "btn btn-default btn-block" %>
+      </div>
+    </div>
   </div>
 </div>
 

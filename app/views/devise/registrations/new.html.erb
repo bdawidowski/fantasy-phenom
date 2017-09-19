@@ -8,27 +8,27 @@
           <div class="row">
               <div class="col-sm-6">
                   <div class="form-group">
-                      <%= f.label :first_name, "First Name:" %>
+                      <%= f.label :first_name, "FIRST NAME:" %>
                       <%= f.text_field :first_name, autofocus: true, class: 'form-control' %>
                   </div>
               </div>
               <div class="col-sm-6">
                   <div class="form-group">
-                      <%= f.label :last_name, "Last Name:" %>
+                      <%= f.label :last_name, "LAST NAME:" %>
                       <%= f.text_field :last_name, class: 'form-control' %>
                   </div>
               </div>
           </div>
           <div class="form-group">
-            <%= f.label :email, "Email:" %>
+            <%= f.label :email, "EMAIL:" %>
             <%= f.email_field :email, autofocus: true, class: 'form-control' %>
           </div>
           <div class="form-group">
-            <%= f.label :password %>
+            <%= f.label :password, "PASSWORD:" %>
             <%= f.password_field :password, class: 'form-control' %>
           </div>
           <div class="form-group">
-            <%= f.label :password_confirmation %>
+            <%= f.label :password_confirmation, "PASSWORD CONFIRMATION:" %>
             <%= f.password_field :password_confirmation, class: 'form-control' %>
           </div>
           <%= f.submit 'REGISTER PHENOM', class: 'btn btn-success btn-block' %>

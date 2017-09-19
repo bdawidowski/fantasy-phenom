@@ -1,4 +1,9 @@
+<div class="container">
+    <h1 align="center" class="wcolor">USER MANAGEMENT</h1>
+    <div class="panel panel-default">
+      <div class="panel-body">
 <div class="row wcolor" >
+    
     <table class="table" id="user-management-table">
         <thead>
             <tr>
@@ -6,7 +11,7 @@
                 <th>EMAIL</th>
                 <th>PAYMENT STATUS</th>
                 <th>PLATFORM ACCESS</th>
-                <th>CHATROOM/DATA ACCESS</th>
+                <th>CHAT/DATA ACCESS</th>
                 <th>USER TYPE</th>
                 <th>START PERIOD</th>
                 <th>END PERIOD</th>
@@ -86,43 +91,17 @@
         </tbody>
     </table>
 </div>
+</div>
+</div>
 
-
-
+ <h3 align="center" class="wcolor">List of Canceled Accounts</h3>
+<div class="panel panel-default">
+  <div class="panel-body">
 
 <div class="row">
-    <div class="col-sm-4 wcolor">
-        <h3 align="center" class="wcolor">List of Charges</h3>
-        <table class="table" id="charges-management-table">
-            <thead>
-                <tr>
-                    <th>NAME</th>
-                    <th>AMOUNT</th>
-                    <th>CHARGE STATUS</th>
-                    <th>CREATED</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @charges.each do |charge| %>
-                    <% user = @users.find(charge.user_id) %>
-                    <tr>
-                        <td><%= user.first_name + " " + user.last_name %></td>
-                        <td><%= "$" + (charge.amount / 100).to_s  %></td>
-                        <% if charge.status === 'succeeded' %>
-                            <td><span class="label label-success"><%= charge.status %></span></td>
-                        <% else %>
-                            <td><span class="label label-danger"><%= charge.status %></span></td>
-                        <% end %>
-                        <td>
-                            <%= charge.created_at.strftime("%m/%d/%y") %>
-                        </td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-     </div>
-     <div class="col-sm-8 wcolor">
-        <h3 align="center" class="wcolor">List of Canceled Accounts</h3>
+    
+     <div class="col-sm-12 wcolor">
+       
         <table class="table" id="canceled-management-table">
             <thead>
                 <tr>
@@ -150,6 +129,10 @@
             </tbody>
         </table>
      </div>
+</div>
+</div>
+</div>
+
 </div>
 <script>
     $(document).ready(function(){

@@ -1,0 +1,30 @@
+<div class="col-sm-4 wcolor">
+        <h3 align="center" class="wcolor">List of Charges</h3>
+        <table class="table" id="charges-management-table">
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>AMOUNT</th>
+                    <th>CHARGE STATUS</th>
+                    <th>CREATED</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @charges.each do |charge| %>
+                    <% user = @users.find(charge.user_id) %>
+                    <tr>
+                        <td><%= user.first_name + " " + user.last_name %></td>
+                        <td><%= "$" + (charge.amount / 100).to_s  %></td>
+                        <% if charge.status === 'succeeded' %>
+                            <td><span class="label label-success"><%= charge.status %></span></td>
+                        <% else %>
+                            <td><span class="label label-danger"><%= charge.status %></span></td>
+                        <% end %>
+                        <td>
+                            <%= charge.created_at.strftime("%m/%d/%y") %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+     </div>

@@ -16,7 +16,7 @@
   <div class="col-sm-12 text-center">
     <% if user_signed_in? %>
       <%= link_to "GOOGLE SHEETS", googlesheets_path, :class => "btn btn-dark-line industry-main" %>
-      <a href="#" class="btn btn-dark-line industry-main">COMMUNITY</a>
+      <a href="https://fantasyphenom.ryver.com/application/login" target="_blank" class="btn btn-dark-line industry-main">COMMUNITY</a>
     <% else %>
       <%= link_to "LEARN MORE", new_user_registration_path, :class => "btn btn-dark-line industry-main" %>
       <%= link_to "JOIN THE TEAM", new_user_registration_path, :class => "btn btn-dark-line industry-main" %>
@@ -27,20 +27,20 @@
   <div class="container" style="background-color: #3B3B3C; margin-top: 100px; margin-bottom: 100px">
     <div class="col-md-8">
       <div class="join-text-container hidden-xs" style="margin-top: 10px">
-        <p>Fantasy Phenom is a fantsay sports community centered around its members. Each individual "Phenom" is a player on this team offering a unique contributions. We operate this team under a common goal:</p>
+        <p>Fantasy Phenom is a fantasy sports community centered around its members. Each individual "Phenom" is a player on this team offering a unique contributions. We operate this team under a common goal:</p>
       </div>
       <div class="text-center wcolor">
         <h1 class="industry-main" style="text-transform: uppercase;">Discovering dependable and superior fantasy sports knowledge</h1>
       </div>
       <div class="join-text-container" style="margin-bottom: 10px">
-        <p>Fantasy Phenom aims to provide a friendly and trustworthly community for people who enjoy playing fantasy sports. We are focused on progression through the development of user friendly research tools and entertaining discussions as a supplement to your daily fantsay sports process. </p>
+        <p>Fantasy Phenom aims to provide a friendly and trustworthly community for people who enjoy playing fantasy sports. We are focused on progression through the development of user friendly research tools and entertaining discussions as a supplement to your daily fantasy sports process. </p>
       </div>
     </div>
     <div class="col-md-4" id="join-call-to-action">
       <div>
       <h2 class="text-center wcolor"><strong>7-DAY<br/>FREE TRAIL<br/><span style="font-size: 20px">$9.99/Mo.</span></strong></h2>
       <br/><br/>
-      <a href="#">JOIN</a>
+      <a href="<%= new_user_registration_path %>">JOIN</a>
       </div>
     </div>
   </div>
@@ -56,15 +56,20 @@
         <h4 class="text-center industry-main wcolor">ABOUT US</h4>
     </div>
     <div class="col-sm-4 col-xs-6 col-sm-pull-4">
+      
+      <a href="<% if user_signed_in? %> https://fantasyphenom.ryver.com/application/login <% else %> <%= new_user_registration_path %> <% end %> " target="_blank">
       <div class="about-img-container">
         <%= image_tag("logos/communitylogo.png", class: "img-home-logos") %>
       </div>
+      </a>
         <h4 class="text-center industry-main wcolor">COMMUNITY</h4>
     </div>
     <div class="col-sm-4 col-xs-6">
+      <a href="<%= googlesheets_path %>">
       <div class="about-img-container">
         <%= image_tag("logos/analyticslogo.png", class: "img-home-logos") %>
       </div>
+      </a>
         <h4 class="text-center industry-main wcolor">ANALYTICS</h4>
     </div>
   </div>
@@ -101,7 +106,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <textarea rows="4" class="contact-input" placeholder="Hey Guys, I need to be part of the community! I would love to start colabrating with other daily fantsay palyer! "></textarea>
+          <textarea rows="4" class="contact-input" placeholder="Hey Guys, I need to be part of the community! I would love to start colabrating with other daily fantasy player! "></textarea>
         </div>
         <button type="submit" class="btn contact-btn industry-main">CHAT WITH US!</button>
       </div>

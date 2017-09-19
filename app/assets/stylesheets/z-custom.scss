@@ -14,21 +14,33 @@ h1 {
 .coming-soon {
     margin: 150px 0px;
 }
-#btn-nav-signin,
-#btn-nav-signup{
-    padding: 7px; 
-    margin-top: 7px;
+
+.btn-nav {
+    border-radius: 0px;
     margin-right: 4px;
 }
-
-#btn-nav-signin:hover{
-    background-color:#ccc;
+#btn-nav-signin {
+    border: 2px solid #999;
+    color: #999;
+}
+#btn-nav-signin:hover {
+    background: #A59556;
+    border-color: #96874f;
+    color: #fff;
+}
+.btn-nav-primary {
+    border: 2px solid #fff;
+}
+#btn-nav-signup:hover {
+    background: #449D44;
+    border-color: #398439;
 }
 
-#btn-nav-signup:hover{
-    background-color: #449D44;
-    border-color: #449D44;
+.navbar-right li a {
+    padding: 5px 20px;
+    margin-top: 7px;
 }
+
 .btn-white {
     color: #fff;
 }
@@ -98,6 +110,10 @@ h1 {
     letter-spacing: 10px;
     color: black;
 }
+
+#join-call-to-action div a:hover {
+     background-color:#a09048;
+}
 .join-text-container {
     background-color: #323233;
     color: #fff;
@@ -152,6 +168,9 @@ h1 {
     text-align:center;
     background-color: black;
 }
+
+
+
 .about-img-container{height: 110px;}
 .about-text-container {margin-top: 20px;}
 .about-text-container h4.text-right {padding-right: 40px;}
@@ -163,6 +182,27 @@ h1 {
 .about-container{
     margin-top: 165px;
 }
+
+.panel-default {
+    background-color: #3B3B3C;
+    border: 4px solid #323233;
+    color: white;
+    letter-spacing: 1px;
+}
+.panel-default .form-control {
+    border-radius: 0px;
+    background: #323233;
+    color: white;
+}
+
+.btn-success, .btn-primary {
+    background-color: #3B3B3C;
+    border-radius: 0px;
+    border: 3px solid;
+    letter-spacing: 5px;
+    font-weight: 700;
+}
+
 footer img {width: 100%;}
 footer a { 
     font-size: 5rem; 
