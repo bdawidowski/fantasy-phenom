@@ -1,24 +1,40 @@
-<h1 align="center">Listing Articles</h1>
-<div class="row">
-  <div class="col-sm-12">
-    <% counter = 0 %>
-    <% @articles.each do |article| %>
-        <% if counter === 0 %>
-          <div class="col-xs-12">
-            <%= render "pages/news_panel", article: article %>
-        <% elsif counter < 4 %>
-          <div class="col-sm-4">
-            <%= render "pages/news_panel", article: article %>
-        <% elsif counter == 4 || counter == 5 %>
-          <div class="col-sm-6">
-            <%= render "pages/news_panel", article: article %>
-        <% else %>
-          <div class="col-sm-4">
-            <%= render "pages/news_panel", article: article %>
-        <% end %>
+<div class="container article-header" style="border-bottom: 2px solid #C6B358; color: #fff">
+ <h4 align="center">SEPTEMBER 20, 2017</h4>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8" style="margin-top: 20px">
+      <% @articles.each_with_index do |article, i| %>
+        <% if i == 0 %>
+        <div class="article-large">
+          <%= image_tag(article.image.url) %>
+          <h2><%= article.title.upcase %></h2>
+          <div class="overlay"></div>
         </div>
-      <% counter += 1 %>
-    <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-sm-4">
+      <div class="article-header">
+        <h6 align="center">MOST RECENT</h6>
+      </div>
+      <% @articles.each_with_index do |article, i| %>
+        <% if i > 2 %>
+          <div class="article-most-recent">
+            <a href="<%= article_path(article) %>">
+              <h4><%= article.title.upcase %></h4>
+              <p><%= article.created_at %></p>
+            </a>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-sm-12 article-trial">
+      <h2 align="center" class="industry-main">START 7-DAY FREE TRIAL TODAY</h2>
+      <h4 align="center">Get full access our content, communtity, and data!</h4>
+      
+    </div>
   </div>
 </div>
+
 

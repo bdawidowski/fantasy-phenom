@@ -31,6 +31,7 @@ gem 'twitter-bootstrap-rails'
 gem 'friendly_id'
 gem 'stripe'
 gem 'stripe_event'
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
 
 gem 'jquery-datatables-rails', '~> 3.4.0'
 # Use Unicorn as the app server
