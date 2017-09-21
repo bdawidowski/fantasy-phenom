@@ -1,14 +1,57 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="article-nav">
+        <div class="col-xs-4">
+          <%= link_to("< Previous", @article.previous) if @article.previous %>
+        </div>
+        <div class="col-xs-4 text-center">
+          <%= link_to("View All", news_path) %>
+        </div>
+        <div class="col-xs-4 text-right">
+          <%= link_to("Next >", @article.following) if @article.following %>
+        </div>
+      </div>
+      <div class="article-single-header col-xs-12">
+        <h1 align="center"><%= @article.title %></h1>
+        <%= image_tag(@article.image.url, style: "width: 100%; border-bottom: 2px solid #C6B358") %>
+        <div class="author">
+          <div class="col-xs-6">
+            <%= gravatar_for(@article.user, size: 20) %>
+            <span><%= @article.user.first_name.upcase + " " + @article.user.last_name.upcase %></span>
+          </div>
+          <div class="col-xs-6 text-right ">
+            <span><%= time_ago_in_words(@article.created_at).upcase + " AGO"%></span>
+          </div>
+        </div>
+      </div>
+      <div class="article-single-body col-xs-12" id="<%= "non-sub" if !current_user_subscribed? %>">
+        <%= simple_format(@article.content) %>
+        <% if !current_user_subscribed? %>
+          <div class="shadow"></div>
+        <% end %>
+      </div>
+      <div class="article-nav">
+        <div class="col-xs-4">
+          <%= link_to("< Previous", @article.previous) if @article.previous %>
+        </div>
+        <div class="col-xs-4 text-center">
+          <%= link_to("View All", news_path) %>
+        </div>
+        <div class="col-xs-4 text-right">
+          <%= link_to("Next >", @article.following) if @article.following %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
+
+
+
+  
+
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>

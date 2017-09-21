@@ -1,7 +1,9 @@
 * {
     font-family: industry, sans-serif;
 }
-
+.cke_contents {
+    color: #000;
+}
 body {
     background-color: #000;
 }
@@ -208,23 +210,26 @@ h1 {
     color: #fff
 }
 .article-most-recent {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px dashed #C6B358;
 }
 .article-most-recent a {
     text-decoration: none;
-    color: white;
+    color: #fff;
 }
 .article-most-recent p {
     font-size: 10px;
+    padding-left: 5px;
+    margin: 0px;
+    color: #767677;
 }
+.article-most-recent h4 { padding: 5px 0px 0px 5px; margin: 0; }
 
 .article-large {
     color: #fff;
     position: relative;
+    border-bottom: 3px solid #C6B358;
 }
-.article-large img {
-    width: 100%;
-}
+.article-large img {width: 100%;}
 .article-large h2{
     z-index: 2;
     color: #fff;
@@ -232,8 +237,43 @@ h1 {
     bottom: 50px;
     left: 15px;
 }
+.article-large .author {
+    z-index: 2;
+    color: #fff;
+    position: absolute;
+    bottom: 40px;
+    left: 15px;
+}
+.article-single-header,
+.article-single-header .author div {
+    margin-top: 10px;
+    color: #fff;
+}
+.article-single-body {
+    margin: 25px 0;
+    color: #e5e5e5;
+    
+}
+.article-single-body p {
+    line-height: 25px;
+    font-size: 1.5rem;
+    font-family: Industry;
+    letter-spacing: 2px;
+}
+
+.article-single-body p:first-child:first-letter,
+span #lg-letter {
+  color: #C6B358;
+  float: left;
+  font-family: Georgia;
+  font-size: 75px;
+  line-height: 60px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+}
 .overlay {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
   width: 100%;
@@ -241,7 +281,38 @@ h1 {
   position: absolute;
   z-index: 1;
 }
+.overlay:hover {background-color: rgba(0, 0, 0, 0.2);}
+#non-sub {
+    position: relative;
+    height: 25em;
+    overflow: hidden;
+}
+.shadow {
+    position:absolute;
+    top:0em;
+    width:100%;
+    height:25em;
+    background: -webkit-linear-gradient(transparent, #000);
+    background: -o-linear-gradient(transparent, #000);
+    background: -moz-linear-gradient(transparent, #000);
+    background: linear-gradient(transparent, #000);
+}
 
+.article-panel {padding: 10px 0;}
+.article-panel h2 {bottom: 25px; font-size: 2rem;}
+.article-panel .author {bottom: 20px;}
+
+.article-view-more {
+    padding-top: 10px;
+    color: #ccc;
+    text-decoration: none;
+}
+
+.article-trial {
+    background-color: #3B3B3C;
+    color: #fff;
+    padding: 20px;
+}
 footer img {width: 100%;}
 footer a { 
     font-size: 5rem; 
@@ -274,6 +345,12 @@ footer a:hover { color: #999; }
     .about-text-container h4 { font-size: 15px;}
     .navbar-nav li a {font-size: 16px;}
 }
-
+@media (min-width: 1500px){
+    footer,
+    .bg-main {
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+}
 table {color: #ccc;}
 table thead {color: #fff;}

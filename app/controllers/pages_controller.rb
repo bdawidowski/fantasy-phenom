@@ -9,6 +9,6 @@ class PagesController < ApplicationController
   end
 
   def news
-    @articles = Article.all
+    @articles = Article.all.order(created_at: :desc).limit(11)
   end
 end
