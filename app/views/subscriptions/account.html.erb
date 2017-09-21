@@ -7,7 +7,7 @@
                     <div class="col-xs-12">
                         <h3>Edit Profile</h3>
                     </div> <!-- col-xs-12 -->
-                    <div class="col-xs-8">
+                    <div class="col-sm-8 col-xs-12">
                         <div class="pull-left">
                             <%= gravatar_for(current_user, size: 55) %>
                         </div> <!-- gravatar -->
@@ -17,10 +17,10 @@
                             <div style="padding-left: 10px"><small>Visit <a href="https://en.gravatar.com/">Gravatar</a> to add/update profile image</small></div>
                         </div><!-- Name - Email -->
                         
-                    </div><!-- col-xs-6 -->
-                    <div class="col-xs-4 text-right">
-                        <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn btn-default btn-block" %>
-                    </div><!-- Edit Btn (col-xs-6) -->
+                    </div><!-- col-sm-6 -->
+                    <div class="col-sm-4 text-right col-xs-12">
+                        <%= link_to "EDIT PROFILE", edit_user_registration_path, class: "btn btn-primary btn-block" %>
+                    </div><!-- Edit Btn (col-sm-6) -->
                 </div><!-- row -->
                 
                 <hr/>
@@ -29,12 +29,12 @@
                     <div class="col-xs-12">
                         <h3>Change Your Password</h3>
                     </div> <!-- col-xs-12 -->
-                    <div class="col-xs-8">
+                    <div class="col-sm-8 col-xs-12">
                         <div>Update the password you use to login to your Fanstasy Phenoms account.</div>
-                    </div><!-- col-xs-8 -->
-                    <div class="col-xs-4 text-right">
-                        <%= link_to "UPDATE PASSWORD", edit_user_password_path, class: "btn btn-default btn-block" %>
-                    </div><!-- Update Card Btn (col-xs-4) -->
+                    </div><!-- col-sm-8 -->
+                    <div class="col-sm-4 text-right col-xs-12">
+                        <%= link_to "UPDATE PASSWORD", edit_user_password_path, class: "btn btn-primary btn-block" %>
+                    </div><!-- Update Card Btn (col-sm-4) -->
                 </div><!-- row -->
                 
                 <hr/>
@@ -44,7 +44,7 @@
                         <div class="col-xs-12">
                             <h3>Update Payment Method</h3>
                         </div> <!-- col-xs-12 -->
-                        <div class="col-xs-8">
+                        <div class="col-sm-8 col-xs-12">
                             <div>Your current card on file: </div>
                             <div style="padding-top: 2px">
                                 <i class="fa fa-cc-<%= current_user.card_type.downcase %> fa-3x pull-left"></i>
@@ -53,19 +53,19 @@
                                     <div>Expires <%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
                                 </div><!-- pull-left -->
                             </div> <!-- Card Information (padding-top) -->
-                        </div><!-- col-xs-8 -->
-                        <div class="col-xs-4 text-right">
-                            <%= link_to "UPDATE CARD", edit_subscription_path(current_user.id), class: "btn btn-default btn-block" %>
-                        </div><!-- Update Card Btn (col-xs-4) -->
+                        </div><!-- col-sm-8 -->
+                        <div class="col-sm-4 text-right col-xs-12">
+                            <%= link_to "UPDATE CARD", edit_subscription_path(current_user.id), class: "btn btn-primary btn-block" %>
+                        </div><!-- Update Card Btn (col-sm-4) -->
                     <% else %>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 col-xs-12">
                             <h3>Join Fantasy Phenoms Pro</h3>
                         </div> <!-- col-sm-8 -->
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 col-xs-12">
                             <div>Your are subscribing to <strong>Fantasy Phenoms Pro</strong>.</div>
                             <p class="text-muted"><small>You will be charged $10 USD each month and you can cancel any time.</small></p>
                         </div>
-                        <div class="col-sm-4  text-right">
+                        <div class="col-sm-4  text-right col-xs-12">
                             <%= link_to "SUBSCRIBE NOW!", new_subscription_path, class: "btn btn-success btn-block" %>
                         </div><!-- col-sm-4 -->
                     <% end %>
@@ -77,15 +77,15 @@
                         <div class="col-xs-12">
                             <h3>Cancel My Account</h3>
                         </div> <!-- col-xs-12 -->
-                        <div class="col-xs-8">
+                        <div class="col-sm-8 col-xs-12">
                             <div>If you no longer need access to Fanstasy Phenoms Pro, you can cancel your subscription here. You can resubscribe at anytime if you wish to join again in the future.</div>
-                        </div><!-- col-xs-8 -->
-                        <div class="col-xs-4 text-right">
+                        </div><!-- col-sm-8 -->
+                        <div class="col-sm-4 text-right col-xs-12">
                             <%= form_tag subscription_path(current_user.id), method: :put, data: { confirm: "Are you sure?"} do |form| %>
                                 <input name="to_delete" value="true" type="hidden"/>
-                           <button class="btn btn-default btn-block" type="submit">UNSUBSCRIBE</button>
+                           <button class="btn btn-primary btn-block" type="submit">UNSUBSCRIBE</button>
                            <% end %>
-                        </div><!-- Update Card Btn (col-xs-4) -->
+                        </div><!-- Update Card Btn (col-sm-4) -->
                     </div><!-- row -->
                 <% end %>
             </div><!-- panel-body -->

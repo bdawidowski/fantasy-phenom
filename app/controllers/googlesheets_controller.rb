@@ -6,7 +6,9 @@ class GooglesheetsController < ApplicationController
   # GET /googlesheets
   # GET /googlesheets.json
   def index
-    @googlesheets = Googlesheet.order('updated_at DESC').all
+    @nba = Googlesheet.find_by_sport('NBA')
+    @nfl = Googlesheet.find_by_sport('NFL')
+    @mlb = Googlesheet.find_by_sport('MLB')
   end
 
   # GET /googlesheets/1
@@ -71,6 +73,6 @@ class GooglesheetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def googlesheet_params
-      params.require(:googlesheet).permit(:sport, :link, :date_for)
+      params.require(:googlesheet).permit(:sport.upcase, :link, :date_for, :status)
     end
 end

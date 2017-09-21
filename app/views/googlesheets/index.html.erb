@@ -3,17 +3,23 @@
 <div class="row">
   <div class="container">
     <h1 align="center">GOOGLESHEETS DATA</h1>
-    <div class="col-sm-6 text-center">
+    <div class="col-sm-4 text-center <%= "disabled-googlesheet" if !@nba.status %>">
       <%= image_tag("logos/nbalogo.png", class: "img-home-logos") %>
-      <h4 class="text-center industry-main wcolor"><%= @googlesheets.first.date_for %></h4>
-      <a href="<%= @googlesheets.first.link %>" target="_blank" class="btn btn-dark-line industry-main">VIEW DATA</a>
-      <%= link_to 'EDIT DATA', edit_googlesheet_path(@googlesheets.first), class:"btn btn-dark-line industry-main" if current_user_admin? %>
+      <h4 class="text-center industry-main wcolor"><%= @nba.date_for %></h4>
+      <a href="<%= @nba.link %>" target="_blank" class="btn btn-dark-line industry-main <%= "disabled" if !@nba.status %>">VIEW DATA</a>
+      <%= link_to 'EDIT DATA', edit_googlesheet_path(@nba), class:"btn btn-dark-line industry-main" if current_user_admin? %>
     </div>
-    <div class="col-sm-6 text-center">
+    <div class="col-sm-4 text-center <%= "disabled-googlesheet" if !@nfl.status %>">
       <%= image_tag("logos/nfllogo.png", class: "img-home-logos") %>
-      <h4 class="text-center industry-main wcolor"><%= @googlesheets.last.date_for %></h4>
-      <a href="<%= @googlesheets.last.link %>" target="_blank" class="btn btn-dark-line industry-main">VIEW DATA</a>
-      <%= link_to 'EDIT DATA', edit_googlesheet_path(@googlesheets.last), class:"btn btn-dark-line industry-main" if current_user_admin?  %>
+      <h4 class="text-center industry-main wcolor"><%= @nfl.date_for %></h4>
+      <a href="<%= @nfl.link %>" target="_blank" class="btn btn-dark-line industry-main <%= "disabled" if !@nfl.status %>">VIEW DATA</a>
+      <%= link_to 'EDIT DATA', edit_googlesheet_path(@nfl), class:"btn btn-dark-line industry-main" if current_user_admin?  %>
+    </div>
+    <div class="col-sm-4 text-center <%= "disabled-googlesheet" if !@mlb.status %>">
+      <%= image_tag("logos/mlblogo.png", class: "img-home-logos") %>
+      <h4 class="text-center industry-main wcolor"><%= @mlb.date_for %></h4>
+      <a href="<%= @mlb.link %>" target="_blank" class="btn btn-dark-line industry-main <%= "disabled" if !@mlb.status %>">VIEW DATA</a>
+      <%= link_to 'EDIT DATA', edit_googlesheet_path(@mlb), class:"btn btn-dark-line industry-main" if current_user_admin?  %>
     </div>
   </div>
 </div>

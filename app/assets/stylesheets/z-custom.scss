@@ -249,6 +249,10 @@ h1 {
     margin-top: 10px;
     color: #fff;
 }
+.article-nav a {
+    text-decoration: none;
+    color: #C6B358;
+}
 .article-single-body {
     margin: 25px 0;
     color: #e5e5e5;
@@ -320,6 +324,12 @@ footer a {
     margin: 25px;
     padding-bottom: 10px;
     display:inline-block;
+}
+.disabled-googlesheet h4 {
+    color: #A5A5A5;
+}
+.disabled-googlesheet img {
+    opacity: 0.5;
 }
 footer a:hover { color: #999; }
 @media (min-width: 768px){ // GREATER THAN SM 

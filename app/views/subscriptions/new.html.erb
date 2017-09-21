@@ -12,16 +12,22 @@
           <div class="form-row">
             <input name="cardholder-name" class="form-control" value="<%= current_user.first_name + " " + current_user.last_name %>" disabled %>
             <br>
-            <div id="card-element" class="form-control">
+            <div id="card-element" class="form-control" style="color: white">
               <!-- a Stripe Element will be inserted here. -->
             </div>
         
-            <!-- Used to display Element errors -->
-            <div id="card-errors" role="alert"></div>
+            <!-- Used to display Element errors
+            <div id="card-errors" role="alert"></div>-->
           </div>
+          
           <br>
           <button class="btn btn-success btn-md btn-subscribe">Join Fantasy Phenoms!</button>
+          
+          
         <% end %>
+        <a href="https://stripe.com/docs/security/stripe" target="_blank">
+          <%= image_tag('logos/stripepayments.png', style: "width: 75%; margin: 10px auto; display:block") %>
+        </a>
         <br/>
         <p class="text-center"><small>By subscribing, you agree to the <a target="blank" href="#">privacy policy</a> and <a target="blank" href="#">terms of service</a>.</small></p>
       </div>
@@ -41,10 +47,19 @@
         var style = {
           base: {
             // Add your base input styles here. For example:
+            color: '#fff',
             fontSize: '16px',
-            lineHeight: '24px'
+            lineHeight: '24px',
+            fontSmoothing: 'antialiased',
+            fontFamily: 'industry, sans-serif',
+            '::placeholder': {
+                color: '#cccccc',
+                textTransform: 'uppercase'
+              },
+              iconColor: '#FFF'
           }
-        };
+      };
+
         
         // Create an instance of the card Element
         var card = elements.create('card', {style: style});
@@ -79,6 +94,8 @@
             }
           });
         });
+        
+        
     });
     function stripeTokenHandler(token) {
         // Insert the token ID into the form so it gets submitted to the server
@@ -107,3 +124,5 @@
     }
 
 </script>
+
+
