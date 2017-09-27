@@ -23,18 +23,26 @@
 
 <div class="row">
   <div class="text-center">
-    <%= gravatar_for(@user, size: 60) %>
+    <% if user_has_stripe %>
+      <i class="fa fa-cc-stripe" style="color: #F0AD4E" aria-hidden="true"></i>
+    <% elsif @user.paypal %>
+      <i class="fa fa-cc-paypal" style="color: #5BC0DE" aria-hidden="true"></i>
+    <% else %>
+      <i class="fa fa-credit-card-alt" aria-hidden="true" style="color: #D9534F"></i>
+    <% end %>
   </div> <!-- gravatar -->
   <h1 align="center"></h1>
-  <div class="col-sm-6 col-sm-offset-3">
+  <div class="col-sm-8 col-sm-offset-2">
     <div class="panel panel-default devise-bs">
       <div class="panel-body">
         <%= form_tag("/admin/#{@user.id}", :method => :put, :id => "update-usr-form") do |f| %>
         <div class="form-group">
                 <% if user_has_stripe %>
                     <button class="btn btn-<%= status_style %> btn-block" disabled><%= @user.standings.last.status.upcase %></button>
+                <% elsif @user.paypal %>
+                    <button class="btn btn-success btn-block" disabled>PAYPAL</button>
                 <% else %>
-                    <button class="btn btn-default btn-block" disabled>FREE</button>
+                  <button class="btn btn-default btn-block" disabled>FREE</button>
                 <% end %>
             </div>
           <div class="row">
@@ -52,27 +60,62 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-2 col-sm-offset-1">
+              <label>Paypal:</label>
               <div class="form-group">
-                <label>Platform Access:</label>
-                  <%= text_field_tag :subscribed, @user.subscribed, class: "form-control" %>
+                <label class="switch">
+                  <%= hidden_field_tag :paypal, '' %>
+                  <%= check_box_tag :paypal, 1, @user.paypal, class: "form-control" %>
+                  <span class="slider round"></span>
+                </label>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
+              <label>Platform Access:</label>
               <div class="form-group">
-                <label>Chatroom/Google Access:</label>
-                  <%= text_field_tag :chatroom, @user.chatroom, class: "form-control" %>
+                <label class="switch">
+                  <%= hidden_field_tag :subscribed, '' %>
+                  <%= check_box_tag :subscribed, 1, @user.subscribed, class: "form-control" %>
+                  <span class="slider round"></span>
+                </label>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-2">
+              <label>Google Access:</label>
               <div class="form-group">
-                <label>Contributor:</label>
-                  <%= text_field_tag :contributor, @user.contributor, class: "form-control" %>
+                <label class="switch">
+                  <%= hidden_field_tag :chatroom, '' %>
+                  <%= check_box_tag :chatroom, 1, @user.chatroom, class: "form-control" %>
+                  <span class="slider round"></span>
+                </label>
               </div>
             </div>
+            <div class="col-sm-2">
+              <label>Contributor:</label>
+              <div class="form-group">
+                <label class="switch">
+                  <%= hidden_field_tag :contributor, '' %>
+                  <%= check_box_tag :contributor, 1, @user.contributor, class: "form-control" %>
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <label>Editor:</label>
+              <div class="form-group">
+                <label class="switch">
+                  <%= hidden_field_tag :editor, '' %>
+                  <%= check_box_tag :editor, 1, @user.editor, class: "form-control" %>
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+            
+            
+            
+            
+            
           </div>
-            
-            
             
           <%= submit_tag "UPDATE INFORMATION", class: 'btn btn-primary btn-block' %>
         <% end %>
@@ -91,3 +134,63 @@
     $(".")
   })
 </script>
+<style>
+  /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #c6b358;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>

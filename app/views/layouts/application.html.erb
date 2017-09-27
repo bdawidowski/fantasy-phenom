@@ -53,3 +53,10 @@
   </footer>
 
 </html>
+
+<script>
+  $('form').submit(function(e){
+    $('input[type="submit"]').val('PROCESSING...');
+    $'#payment-form button').html('PROCESSING...');
+  })
+</script>

@@ -13,9 +13,14 @@ class ApplicationController < ActionController::Base
     current_user_subscribed? && current_user.contributor?
   end
   
-  def current_user_admin?
-    current_user_contributor? && current_user.admin?
+  def current_user_editor?
+    current_user_contributor? && current_user.editor?
   end
+  
+  def current_user_admin?
+    current_user_editor? && current_user.admin?
+  end
+  
   def is_admin?
       if !current_user_admin?
           flash[:danger] = "Admin Only!"
@@ -28,6 +33,7 @@ class ApplicationController < ActionController::Base
           redirect_to root_path
       end
   end
+
   def is_subscribed?
       if !current_user_subscribed?
           flash[:warning] = "You must be subscribed to access! Please Subscribe!"

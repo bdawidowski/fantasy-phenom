@@ -16,6 +16,20 @@ class SubscriptionsController < ApplicationController
             source: params[:stripeToken],
             plan: "101"
         )
+        if current_user.rocket_token.nil?
+            generated_rocket_pw = (0...8).map { (65 + rand(26)).chr }.join
+            rocket_server = RocketChat::Server.new('https://fantasyphenom.rocket.chat')
+            rocket_session = rocket_server.login("admin", Rails.application.secrets.rocket_pw)
+        
+            user = rocket_session.users.create(current_user.email.sub(/@.*?$/, ""), current_user.email, current_user.first_name + " " + current_user.last_name,  generated_rocket_pw,
+                                 active: true, send_welcome_email: true)
+            rocket_token = rocket_session.users.create_token(user_id: user.id)
+            rocket_token = rocket_token.user_id
+        else 
+            generated_rocket_pw = current_user.rocket_pw
+            rocket_token = current_user.rocket_token
+        end
+        
         
         current_user.update(
             stripe_id: customer.id,
@@ -25,7 +39,9 @@ class SubscriptionsController < ApplicationController
             card_exp_month: params[:card_exp_month],
             card_exp_year: params[:card_exp_year],
             subscribed: true,
-            was_subscribed: true
+            was_subscribed: true,
+            rocket_token: rocket_token,
+            rocket_pw: generated_rocket_pw
         )
         if subs
             flash[:success] = "You have successfull subscribed!"
@@ -33,6 +49,7 @@ class SubscriptionsController < ApplicationController
         else
             render :new
         end
+        
     end
     def edit
     end
@@ -45,6 +62,10 @@ class SubscriptionsController < ApplicationController
                 contributor: "false"
             )
             subs.delete
+            rocket_server = RocketChat::Server.new('https://fantasyphenom.rocket.chat')
+            rocket_session = rocket_server.login(admin, Rails.application.secrets.rocket_pw)
+            rocket_session.users.update(current_user.rocket_token, active: false)
+            
             flash[:warning] = "You have canceled your Pro Account!"
             redirect_to account_path
         else

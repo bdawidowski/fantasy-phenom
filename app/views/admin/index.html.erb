@@ -26,7 +26,17 @@
                     <% user_has_stripe = false %>
                 <% end %>
                 <tr>
-                    <td><%= gravatar_for(user, size: 20) %> <%= " " + user.first_name + " " + user.last_name %></td>
+                    <td>
+                    <% if user_has_stripe %>
+                      <i class="fa fa-cc-stripe" style="color: #F0AD4E" aria-hidden="true"></i>
+                    <% elsif user.paypal %>
+                      <i class="fa fa-cc-paypal" style="color: #5BC0DE" aria-hidden="true"></i>
+                    <% else %>
+                      <i class="fa fa-credit-card" aria-hidden="true" style="color: #D9534F"></i>
+                    <% end %>
+                    
+                    
+                    <%= " " + user.first_name + " " + user.last_name %></td>
                     <td><%= user.email %></td>
                     
                     <!-- Payment Status -->
@@ -42,8 +52,8 @@
                         <% end %>
                         <td><span class="label label-<%= status_style %>"><%= user.standings.last.status.upcase %></span></td>
                     <% else %>
-                        <% if user.admin %>
-                            <td><span class="label label-info">ADMIN</span></td>
+                        <% if user.paypal %>
+                            <td><span class="label label-success">ACTIVE</span></td>
                         <% else %>
                             <td><span class="label label-default">FREE</span></td>
                         <% end %>
@@ -69,9 +79,10 @@
                     <!-- Content Access -->
                     <% if user.admin %>
                         <td><span class="label label-info">ADMIN</span></td>
+                    <% elsif user.editor %>
+                        <td><span class="label label-warning">EDITOR</span></td>
                     <% elsif user.contributor %>
                         <td><span class="label label-warning">CONTRIBUTOR</span></td>
-                        
                     <% else %>
                         <td><span class="label label-default">USER</span></td>
                     <% end %>

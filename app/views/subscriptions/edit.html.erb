@@ -56,8 +56,16 @@
         var style = {
           base: {
             // Add your base input styles here. For example:
+            color: '#fff',
             fontSize: '16px',
-            lineHeight: '24px'
+            lineHeight: '24px',
+            fontSmoothing: 'antialiased',
+            fontFamily: 'industry, sans-serif',
+            '::placeholder': {
+                color: '#cccccc',
+                textTransform: 'uppercase'
+              },
+              iconColor: '#FFF'
           }
         };
         

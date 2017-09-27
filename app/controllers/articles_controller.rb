@@ -1,11 +1,16 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :is_contributor?, except: [:index, :show]
+  before_action :is_contributor?, except: [:show]
+  before_action :is_thiers?, only: [:edit, :update]
   before_action :is_admin?, only: [:destroy]
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.order(created_at: :desc)
+    if current_user.admin || current_user.editor
+      @articles = Article.order(created_at: :desc)
+    elsif current_user.contributor
+      @articles = Article.where(:user_id => current_user.id)
+    end
   end
 
   # GET /articles/1
@@ -70,6 +75,14 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :content, :image)
+      params.require(:article).permit(:title, :content, :image, :approved)
+    end
+    def is_thiers?
+      if current_user.contributor && !current_user.admin && !current_user.editor
+        if current_user.id != @article.user_id
+          flash[:danger] = "Editors & Admin Only!"
+          redirect_to root_path
+        end
+      end
     end
 end

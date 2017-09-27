@@ -12,6 +12,7 @@ class AdminController < ApplicationController
     end
     
     def update
+        require 'date'
         @user = User.find(params[:id])
         if @user.update(user_params)
             flash[:success] = "You updated #{@user.email} Successfully"
@@ -22,7 +23,7 @@ class AdminController < ApplicationController
     end
     private
         def user_params
-            params.permit(:subscribed, :contributor, :chatroom)
+            params.permit(:subscribed, :contributor, :chatroom, :editor, :paypal)
         end
     
 end

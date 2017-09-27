@@ -1,6 +1,46 @@
 <p id="notice"><%= notice %></p>
-<div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
-    <h1 align="center" class="coming-soon">COMING SOON!</h1>
+<div class="container">
+  <h3 align="center" class="wcolor">Article Management</h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-12 wcolor">
+          <table class="table" id="canceled-management-table">
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>STATUS</th>
+                    <th>DATE CANCELED</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @articles.each do |article| %>
+                    <tr>
+                        <td><%= article.title %></td>
+                        <td><%= article.user.first_name + " " + article.user.last_name %></td>
+                        <% if article.approved %>
+                        <td><span class="label label-success">APPROVED</span></td>
+                        <% else %>
+                        <td><span class="label label-warning">UNAPPROVED</span></td>
+                        <% end %>
+                        <td>
+                            <%= time_ago_in_words(article.created_at).upcase + " AGO" %>
+                        </td>
+                        <td>
+                          <%= link_to "EDIT", edit_article_path(article),  class: "btn btn-default" %> 
+                          <%= link_to "SHOW", article_path(article),  class: "btn btn-default" %>
+                          <% if current_user_admin? %>
+                            <%= link_to "DELETE", article_path(article),  class: "btn btn-danger" %>
+                          <% end %>
+                        </td>
+                    </tr>
+                
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

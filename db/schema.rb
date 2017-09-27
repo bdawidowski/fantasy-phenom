@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921051519) do
+ActiveRecord::Schema.define(version: 20170927022203) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "slug"
     t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "approved",           default: false
   end
 
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true
@@ -111,6 +112,10 @@ ActiveRecord::Schema.define(version: 20170921051519) do
     t.boolean  "subscribed",             default: false
     t.boolean  "was_subscribed",         default: false
     t.boolean  "chatroom",               default: false
+    t.string   "rocket_token"
+    t.string   "rocket_pw"
+    t.boolean  "editor",                 default: false
+    t.boolean  "paypal",                 default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
