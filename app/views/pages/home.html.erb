@@ -93,25 +93,30 @@
 <div class="row" style="background-color: #000">
     <br/>
     <br/>
-    <form id="contact-form">
+    <%= form_for(@contact, id: "contact-form") do |f| %>
       <div class="col-sm-3">
         <%= image_tag("logos/fpbasic.png", class: "img-contact-logos") %>
       </div>
       <div class="col-sm-9">
         <div class="col-sm-6">
           <div class="form-group">
-            <input type="text" class="contact-input" placeholder="Name:"/>
+            <%= f.text_field :name, class: "contact-input", placeholder: "NAME:" %>
+            <!--<input type="text" class="contact-input" placeholder="Name:"/>-->
           </div>
           <div class="form-group">
-            <input type="email" class="contact-input" placeholder="Email:"/>
+            <%= f.text_field :email, class: "contact-input", placeholder: "EMAIL:" %>
+            <!--<input type="email" class="contact-input" placeholder="Email:"/>-->
           </div>
         </div>
         <div class="col-sm-6">
-          <textarea rows="4" class="contact-input" placeholder="Hey Guys, I need to be part of the community! I would love to start colabrating with other daily fantasy player! "></textarea>
+          <%= f.text_area :message, rows: "4", class: "contact-input", placeholder: "Hey Guys, I need to be part of the community! I would love to start colabrating with other daily fantasy player!" %>
+          <!--<textarea rows="4" class="contact-input" placeholder="Hey Guys, I need to be part of the community! I would love to start colabrating with other daily fantasy player! "></textarea>-->
         </div>
-        <button type="submit" class="btn contact-btn industry-main">CHAT WITH US!</button>
+        <%= f.submit "CHAT WITH US!", class: "btn contact-btn industry-main" %>
+        <!--<button type="submit" class="btn contact-btn industry-main">CHAT WITH US!</button>-->
       </div>
-    </form>
+    <% end %>
 </div>
 </div>
+
 

@@ -15,19 +15,26 @@
           </ul>
         </div>
       <% end %>
-    
-      <div class="form-group">
-        <%= f.label :title, "TITLE:" %><br>
-        <%= f.text_field :title, class: "form-control" %>
+      <div class="col-xs-12">
+        <div class="form-group">
+          <%= f.label :title, "TITLE:" %><br>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
       </div>
-      <div class="form-group">
-        <%= f.label :image, "IMAGE:" %><br>
-        <%= f.file_field :image, class: "form-control" %>
+      <div class="col-xs-12">
+        <%= image_tag(@article.image.url(:medium), style: "border-bottom: 2px solid #C6B358; display: block; margin: 0 auto") %>
       </div>
-      <div class="form-group">
-        <%= f.label :content, "CONTENT:" %><br>
-        <%= f.text_area :content, class: "form-control", id: "editor1", style: "color: #000" %>
-        
+      <div class="col-xs-12">
+        <div class="form-group">
+          <%= f.label :image, "IMAGE:" %><br>
+          <%= f.file_field :image, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="form-group">
+          <%= f.label :content, "CONTENT:" %><br>
+          <%= f.text_area :content, class: "form-control", id: "editor1", style: "color: #000" %>
+        </div>
       </div>
       <% if current_user_admin? || current_user_editor? %>
         <input type="hidden" name="article[approved]" id="article_approved" value="true" />

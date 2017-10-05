@@ -4,7 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Workspace" %></title>
+    
+    <% if current_user_admin? %>
+      <% title_line = "FANTASY PHENOM |ADMIN|" %>
+    <% elsif current_user_subscribed? %>
+      <% title_line = "FANTASY PHENOM |PRO|" %>
+    <% else %>
+      <% title_line = "FANTASY PHENOM" %>
+    <% end %>
+    
+    
+    <title><%= content_for?(:title) ? yield(:title) : title_line %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
@@ -32,13 +42,16 @@
     <![endif]-->
     <script src="https://use.typekit.net/vjk3ocu.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    
   </head>
+
   <body>
     <%= render 'layouts/nav' %>
     <div class="nav-gap"></div>
-    <div class="container-fluid">
+    <div class="container-fluid" id="body-con">
       <%= bootstrap_flash %>
       <%= yield %>
+      
     </div>
   </body>
   <footer class="footer">
@@ -53,10 +66,3 @@
   </footer>
 
 </html>
-
-<script>
-  $('form').submit(function(e){
-    $('input[type="submit"]').val('PROCESSING...');
-    $'#payment-form button').html('PROCESSING...');
-  })
-</script>

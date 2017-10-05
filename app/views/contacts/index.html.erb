@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h3 align="center" class="wcolor">CONTACTS MANAGMENT</h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-12 wcolor">
+          <table class="table" id="data-table-other">
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>DATE</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @contacts.each do |contact| %>
+                    <tr>
+                        <td><%= contact.name %></td>
+                        <td><%= contact.email %></td>
+                        <td>
+                            <%= time_ago_in_words(contact.created_at).upcase + " AGO" %>
+                        </td>
+                        <td>
+                          <%= link_to "SHOW", contact_path(contact),  class: "btn btn-default" %>
+                          <%= link_to "DELETE", contact, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger" %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

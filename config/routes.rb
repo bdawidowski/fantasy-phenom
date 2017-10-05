@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   resources :googlesheets
   resources :articles
   resources :subscriptions
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   get 'services', to: 'pages#services'
   get 'news', to: 'pages#news'
   get 'account', to: 'subscriptions#account'
+  get 'pending', to: 'articles#pending'
   mount StripeEvent::Engine, at: '/stripe/webhooks' # provide a custom path
 
   # The priority is based upon order of creation: first created -> highest priority.

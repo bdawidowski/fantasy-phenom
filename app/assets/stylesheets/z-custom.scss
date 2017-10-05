@@ -265,7 +265,7 @@ h1 {
     letter-spacing: 2px;
 }
 
-.article-single-body p:first-child:first-letter,
+.article-single-body p:nth-child(2):first-letter,
 span #lg-letter {
   color: #C6B358;
   float: left;
@@ -301,7 +301,16 @@ span #lg-letter {
     background: -moz-linear-gradient(transparent, #000);
     background: linear-gradient(transparent, #000);
 }
-
+.article-sub {
+    margin-bottom: 25px;
+    padding: 10px;
+    background: #3B3B3C;
+    color: #fff;
+}
+.article-sub .btn { margin: 25px auto;}
+.article-sub h5 {
+    color: #ccc;
+}
 .article-panel {padding: 10px 0;}
 .article-panel h2 {bottom: 25px; font-size: 2rem;}
 .article-panel .author {bottom: 20px;}
@@ -364,3 +373,7 @@ footer a:hover { color: #999; }
 }
 table {color: #ccc;}
 table thead {color: #fff;}
+.dropdown-menu li a {
+
+   width: 400px;
+}

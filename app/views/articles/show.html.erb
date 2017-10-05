@@ -1,4 +1,10 @@
 
+<% content_for :title, "FP | " + @article.title %>
+<meta property="og:title" content="<%= @article.title %>" />
+<meta property="og:type" content="Website" />
+<meta property="og:url" content="<%= Rails.application.secrets.url_link.to_s + article_path(@article).to_s %>" />
+<meta property="og:description" content="<%= @article.content.gsub(/<.*?>/, "").slice(0..99) %>" />
+<meta property="og:image" content="<%= Rails.application.secrets.url_link.to_s + @article.image.url(:medium).to_s %> "/>
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
@@ -32,6 +38,20 @@
           <div class="shadow"></div>
         <% end %>
       </div>
+      <% if !current_user_subscribed? %>
+        <div class="article-sub col-xs-12 text-center">
+          <h1 class="industry-main">YOU'RE MISSING OUT!</h1>
+          <div class="col-sm-8 col-sm-offset-2">
+          <h5>Subscribe now to get full access to the new sports page. Must read content, player grades, stuff you can't get anywhere else.</h5>
+          </div>
+          <% if user_signed_in? %>
+          <%= link_to "SUBSCRIBE NOW!", new_subscription_path, class: "btn btn-success" %>
+          <% else %>
+          <%= link_to "JOIN NOW!", new_user_registration_path, class: "btn btn-success" %>
+          <% end %>
+          
+        </div>
+      <% end %>
       <div class="article-nav">
         <div class="col-xs-4">
           <%= link_to("< Previous", @article.previous) if @article.previous %>

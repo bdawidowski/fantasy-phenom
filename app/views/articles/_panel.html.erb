@@ -1,19 +1,47 @@
-<% short_dis = article.content.gsub(/<.*?>/, "") %>
-
-
-
-<div class="panel panel-success devise-bs">
-    <div class="panel-heading">
-        <%= article.title %>
-    </div>
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h3 align="center" class="wcolor">ARTICLE MANAGMENT</h3>
+  <div class="panel panel-default">
     <div class="panel-body">
-        <%= truncate(short_dis, length: 30) %>
-    </div>
-    <% if current_user_admin? %>
-        <div class="panel-footer">
-            <%= link_to 'Show', article, class: "btn btn-default btn-xs" %>
-            <%= link_to 'Edit', edit_article_path(article), class: "btn btn-default btn-xs" %>
-            <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs" %></td>
+      <div class="row">
+        <div class="col-sm-12 wcolor">
+          <table class="table" id="data-table-other">
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>STATUS</th>
+                    <th>DATE</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @articles.each do |article| %>
+                    <tr>
+                        <td><%= article.title %></td>
+                        <td><%= article.user.first_name + " " + article.user.last_name %></td>
+                        <% if article.approved %>
+                        <td><span class="label label-success">APPROVED</span></td>
+                        <% else %>
+                        <td><span class="label label-warning">UNAPPROVED</span></td>
+                        <% end %>
+                        <td>
+                            <%= time_ago_in_words(article.created_at).upcase + " AGO" %>
+                        </td>
+                        <td>
+                          <%= link_to "EDIT", edit_article_path(article),  class: "btn btn-default" %> 
+                          <%= link_to "SHOW", article_path(article),  class: "btn btn-default" %>
+                          <% if current_user_admin? %>
+                            <%= link_to "DELETE", article, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger" %>
+                          <% end %>
+                        </td>
+                    </tr>
+                
+                <% end %>
+            </tbody>
+          </table>
         </div>
-    <% end %>
+      </div>
+    </div>
+  </div>
 </div>

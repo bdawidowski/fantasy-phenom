@@ -17,6 +17,10 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
   end
+  
+  def pending
+    @articles = Article.where(:approved => false).order(created_at: :desc)
+  end
 
   # GET /articles/new
   def new

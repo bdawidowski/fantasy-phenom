@@ -63,7 +63,7 @@ class SubscriptionsController < ApplicationController
             )
             subs.delete
             rocket_server = RocketChat::Server.new('https://fantasyphenom.rocket.chat')
-            rocket_session = rocket_server.login(admin, Rails.application.secrets.rocket_pw)
+            rocket_session = rocket_server.login('admin', Rails.application.secrets.rocket_pw)
             rocket_session.users.update(current_user.rocket_token, active: false)
             
             flash[:warning] = "You have canceled your Pro Account!"
