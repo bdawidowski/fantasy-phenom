@@ -34,7 +34,7 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
     <%= javascript_include_tag "application" %>
-    <script src="https://js.stripe.com/v3/"></script>
+
     <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script>
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -42,13 +42,20 @@
     <![endif]-->
     <script src="https://use.typekit.net/vjk3ocu.js"></script>
     <script>try{Typekit.load({ async: true });}catch(e){}</script>
-    
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
   </head>
 
   <body>
     <%= render 'layouts/nav' %>
     <div class="nav-gap"></div>
-    <div class="container-fluid" id="body-con">
+    <div class="container-fluid relative" id="body-con">
+      <div class="float-social hidden-xs">
+        <a href="https://twitter.com/fantasy__phenom?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-show-count="false">Follow @fantasy__phenom</a><br/>
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/fantasyphenom365/&width=63&layout=button&action=like&size=large&show_faces=false&share=false&height=65&appId=902236026597173" width="80.52" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe><br/>
+        <div class="g-ytsubscribe" data-channelid="UCJ98Nb7_Fk_bEDB25Vzzyhw" data-layout="default" data-count="hidden"></div>
+      </div>
+      
       <%= bootstrap_flash %>
       <%= yield %>
       

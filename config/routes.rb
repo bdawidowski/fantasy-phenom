@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     get 'logout', to: 'users/sessions#destroy'
   end
   resources :users
-  resources :admin
+  resources :admin do
+    collection { post :import}
+  end
   root 'pages#home'
   get 'about', to: 'pages#about'
   get 'services', to: 'pages#services'

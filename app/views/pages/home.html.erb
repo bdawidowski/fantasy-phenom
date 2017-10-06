@@ -14,12 +14,12 @@
     </div>
   </div>
   <div class="col-sm-12 text-center">
-    <% if user_signed_in? %>
-      <%= link_to "GOOGLE SHEETS", googlesheets_path, :class => "btn btn-dark-line industry-main" %>
-      <a href="https://fantasyphenom.ryver.com/application/login" target="_blank" class="btn btn-dark-line industry-main">COMMUNITY</a>
+    <% if user_signed_in? %> 
+      <%= link_to "GOOGLE SHEETS", googlesheets_path, :class => "btn btn-primary btn-dark-line industry-main" %>
+      <a href="https://fantasyphenom.ryver.com/application/login" target="_blank" class="btn btn-primary btn-dark-line industry-main">COMMUNITY</a>
     <% else %>
-      <%= link_to "LEARN MORE", new_user_registration_path, :class => "btn btn-dark-line industry-main" %>
-      <%= link_to "JOIN THE TEAM", new_user_registration_path, :class => "btn btn-dark-line industry-main" %>
+      <%= link_to "LEARN MORE", new_user_registration_path, :class => "btn btn-primary btn-dark-line industry-main" %>
+      <%= link_to "JOIN THE TEAM", new_user_registration_path, :class => "btn btn-primary btn-dark-line industry-main" %>
     <% end %>
   </div>
 </div>
@@ -86,10 +86,10 @@
     <h4 class="text-right industry-main gcolor">BECOME A FANTASY PLAYER</h4>
   </div>
 </div>
-<div class="row divider-grey">
+<div class="row divider-grey" id="contact-us">
   <h1 class="text-center industry-main wcolor">CHANGE THE WAY YOU PLAY</h1>
 </div>
-<div class="container">
+<div class="container" >
 <div class="row" style="background-color: #000">
     <br/>
     <br/>

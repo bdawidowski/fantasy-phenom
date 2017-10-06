@@ -33,7 +33,7 @@
                         <div>Update the password you use to login to your Fanstasy Phenoms account.</div>
                     </div><!-- col-sm-8 -->
                     <div class="col-sm-4 text-right col-xs-12">
-                        <%= link_to "UPDATE PASSWORD", edit_user_password_path, class: "btn btn-primary btn-block" %>
+                        <%= link_to "UPDATE PASSWORD", edit_user_registration_path, class: "btn btn-primary btn-block" %>
                     </div><!-- Update Card Btn (col-sm-4) -->
                 </div><!-- row -->
                 
@@ -45,17 +45,28 @@
                             <h3>Update Payment Method</h3>
                         </div> <!-- col-xs-12 -->
                         <div class="col-sm-8 col-xs-12">
-                            <div>Your current card on file: </div>
-                            <div style="padding-top: 2px">
-                                <i class="fa fa-cc-<%= current_user.card_type.downcase %> fa-3x pull-left"></i>
-                                <div class="pull-left">
-                                    <div>ending in <%= current_user.card_last4 %></div>
-                                    <div>Expires <%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
-                                </div><!-- pull-left -->
-                            </div> <!-- Card Information (padding-top) -->
+                            <% if !current_user.paypal %>
+                                <div>Your current card on file: </div>
+                                <div style="padding-top: 2px">
+                                    <i class="fa fa-cc-<%= current_user.card_type.downcase %> fa-3x pull-left"></i>
+                                    <div class="pull-left">
+                                        <div>ending in <%= current_user.card_last4 %></div>
+                                        <div>Expires <%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
+                                    </div><!-- pull-left -->
+                                </div> <!-- Card Information (padding-top) -->
+                            <% else %>
+                                <div>Your current method is: </div>
+                                <div style="padding-top: 2px">
+                                    <i class="fa fa-cc-paypal fa-3x pull-left"></i>
+                                </div> <!-- Card Information (padding-top) -->
+                            <% end %>
                         </div><!-- col-sm-8 -->
                         <div class="col-sm-4 text-right col-xs-12">
-                            <%= link_to "UPDATE CARD", edit_subscription_path(current_user.id), class: "btn btn-primary btn-block" %>
+                            <% if !current_user.paypal %>
+                                <%= link_to "UPDATE CARD", edit_subscription_path(current_user.id), class: "btn btn-primary btn-block" %>
+                            <% else %>
+                                <%= link_to "PAY WITH CARD", new_subscription_path, class: "btn btn-primary btn-block" %>
+                            <% end %>
                         </div><!-- Update Card Btn (col-sm-4) -->
                     <% else %>
                         <div class="col-sm-12 col-xs-12">
@@ -78,13 +89,18 @@
                             <h3>Cancel My Account</h3>
                         </div> <!-- col-xs-12 -->
                         <div class="col-sm-8 col-xs-12">
-                            <div>If you no longer need access to Fantasy Phenom Pro, you can cancel your subscription here. You can resubscribe at anytime if you wish to join again in the future.</div>
+                            <div>If you no longer need access to Fantasy Phenom Pro, you can cancel your subscription here. You can resubscribe at anytime if you wish to join again in the future. EMAIL: <a href="mailto:support@fantasy-phenom.com">support@fantasy-phenom.com</a></div>
                         </div><!-- col-sm-8 -->
                         <div class="col-sm-4 text-right col-xs-12">
-                            <%= form_tag subscription_path(current_user.id), method: :put, data: { confirm: "Are you sure?"} do |form| %>
-                                <input name="to_delete" value="true" type="hidden"/>
-                           <button class="btn btn-primary btn-block" type="submit">UNSUBSCRIBE</button>
-                           <% end %>
+                            <% if !current_user.paypal %>
+                                <%= form_tag subscription_path(current_user.id), method: :put, data: { confirm: "Are you sure?"} do |form| %>
+                                    <input name="to_delete" value="true" type="hidden"/>
+                                    <button class="btn btn-primary btn-block" type="submit">UNSUBSCRIBE</button>
+                                <% end %>
+                            <% else %>
+                                <div></div>
+                                <a href="<%= Rails.application.secrets.url_link + "#contact-us" %>" class="btn btn-primary btn-block">CONTACT US</a>
+                            <% end %>
                         </div><!-- Update Card Btn (col-sm-4) -->
                     </div><!-- row -->
                 <% end %>

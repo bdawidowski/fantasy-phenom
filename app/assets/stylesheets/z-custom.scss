@@ -19,28 +19,32 @@ h1 {
 
 .btn-nav {
     border-radius: 0px;
-    margin-right: 4px;
+    margin-right: 5px;
+    margin-top: 8px;
+    
+}
+#btn-nav-signup {
+    padding: 5px;
+    
 }
 #btn-nav-signin {
     border: 2px solid #999;
     color: #999;
+    padding: 5px;
 }
 #btn-nav-signin:hover {
-    background: #A59556;
+    background-color: #A59556;
     border-color: #96874f;
     color: #fff;
+    color:white;
 }
 .btn-nav-primary {
     border: 2px solid #fff;
 }
 #btn-nav-signup:hover {
-    background: #449D44;
+    background-color: #449D44;
     border-color: #398439;
-}
-
-.navbar-right li a {
-    padding: 5px 20px;
-    margin-top: 7px;
+    color:white;
 }
 
 .btn-white {
@@ -48,6 +52,18 @@ h1 {
 }
 .navbar {
     border-bottom: 3px solid #C6B358;
+}
+.navbar .dropdown-menu {
+    background: #222222;
+    border: 3px solid #C6B358;
+    border-top: none;
+}
+.navbar .dropdown-menu li a {
+    color: #fff;
+}
+
+.navbar .dropdown-menu li a:hover {
+    background-color: #3B3B3C;
 }
 
 .navbar-nav li a {
@@ -71,19 +87,13 @@ h1 {
 }
 
 .btn-dark-line {
-    border: 2px white solid;
     padding-left: 40px;
     padding-right: 40px;
     border-radius: 0px;
-    color: white;
     margin: 10px;
     width: 300px;
 }
 
-.btn-dark-line:hover {
-    border: 2px #ccc solid;
-    color: #ccc;
-}
 .bg-main {
     background-image: image-url("backgrounds/top-background.png");
     height: 530px;
@@ -111,10 +121,12 @@ h1 {
     font-weight: 900;
     letter-spacing: 10px;
     color: black;
+    border: 6px solid #3B3B3C;
 }
 
 #join-call-to-action div a:hover {
-     background-color:#a09048;
+     background-color: #449D44;
+     border-color: #398439;
 }
 .join-text-container {
     background-color: #323233;
@@ -156,8 +168,8 @@ h1 {
     border-radius: 0px;
 }
 .contact-btn:hover {
-    background-color: #c6b358;
-    color: #000;
+    background-color: #3B3B3C;
+    color: white;
 }
 
 .img-home-logos {
@@ -181,6 +193,18 @@ h1 {
     padding-top: 5px;
     font-size: 13px;
 }
+.about-text-container h4,
+.about-text-container h4:hover,
+footer a,
+footer a:hover,
+.navbar a,
+.navbar a:hover {
+     transition: color .55s ease-in-out;
+    -moz-transition: color .55s ease-in-out;
+    -webkit-transition: color .55s ease-in-out;
+}
+
+
 .about-container{
     margin-top: 165px;
 }
@@ -284,8 +308,38 @@ span #lg-letter {
   height: 100%;
   position: absolute;
   z-index: 1;
+  transition: background-color .55s ease-in-out;
+    -moz-transition: background-color .55s ease-in-out;
+    -webkit-transition: background-color .55s ease-in-out;
 }
-.overlay:hover {background-color: rgba(0, 0, 0, 0.2);}
+.overlay:hover, 
+.article-large h2:hover + .overlay, 
+.article-large .author:hover + .overlay{
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: background-color .55s ease-in-out;
+    -moz-transition: background-color .55s ease-in-out;
+    -webkit-transition: background-color .55s ease-in-out;
+}
+.btn:hover,
+.btn,
+#join-call-to-action div a:hover,
+#join-call-to-action div a,
+.navbar .dropdown-menu li a,
+.navbar .dropdown-menu li a:hover,
+#btn-nav-signup,
+#btn-nav-signup:hover,
+#btn-nav-signin,
+#btn-nav-signin:hover {
+    transition: background-color .55s ease-in-out, border 1s ease-in-out;
+    -moz-transition: background-color .55s ease-in-out, border 1s ease-in-out;
+    -webkit-transition: background-color .55s ease-in-out, border 1s ease-in-out;
+}
+.float-social{
+    position: fixed;
+    z-index: 1;
+    top: 60px;
+    right: 10px;
+}
 #non-sub {
     position: relative;
     height: 25em;
@@ -340,7 +394,10 @@ footer a {
 .disabled-googlesheet img {
     opacity: 0.5;
 }
-footer a:hover { color: #999; }
+footer a:hover { 
+    color: #999;
+    
+    }
 @media (min-width: 768px){ // GREATER THAN SM 
     footer a { 
         font-size: 3rem; 

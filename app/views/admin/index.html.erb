@@ -101,6 +101,13 @@
         <% end %>
         </tbody>
     </table>
+    <div class="col-sm-4 col-sm-offset-4">
+        <h3 align="center">Import Users</h3>
+        <%= form_tag import_admin_index_path, multipart: true do %>
+            <%= file_field_tag :file %>
+            <%= submit_tag "Import CSV", class: "btn btn-success btn-block" %>
+        <% end %>
+    </div>
 </div>
 </div>
 </div>

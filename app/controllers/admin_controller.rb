@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
     before_action :authenticate_user!
     before_action :is_admin?
-    before_action :user_params, only: [:update]
+    before_action :user_params, only: [:update, :import]
     def index
         @users = User.all
         @subscriptions = Standing.all
@@ -21,9 +21,14 @@ class AdminController < ApplicationController
             render :edit
         end
     end
+    def import
+        User.import(params[:file])
+        flash[:success] = "Import Successfully"
+        redirect_to admin_index_path
+    end
     private
         def user_params
-            params.permit(:subscribed, :contributor, :chatroom, :editor, :paypal)
+            params.permit(:subscribed, :contributor, :chatroom, :editor, :paypal, :file)
         end
     
 end

@@ -11,11 +11,12 @@
           <div class="article-large">
             <%= image_tag(article.image.url) %>
             <h2><%= article.title.upcase %></h2>
+            <div class="overlay"></div>
             <div class="author">
               <strong><%= article.user.first_name + " " + article.user.last_name %></strong>
               <small><%= time_ago_in_words(article.created_at).upcase + " AGO"%></small>
             </div> <!-- author -->
-            <div class="overlay"></div>
+            
           </div><!-- article-large -->
           </a>
         <% elsif i <= 4 %>
@@ -26,11 +27,11 @@
               <div class="article-large">
                 <%= image_tag(article.image.url) %>
                 <h2><%= article.title.upcase %></h2>
+                <div class="overlay"></div>
                 <div class="author">
                   <strong><%= article.user.first_name + " " + article.user.last_name %></strong>
                   <small><%= time_ago_in_words(article.created_at).upcase + " AGO"%></small>
                 </div> <!-- author -->
-                <div class="overlay"></div>
               </div><!-- article-large -->
             </a>
           <% if i == 2 || i == 4 %>

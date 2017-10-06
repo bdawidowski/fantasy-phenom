@@ -23,11 +23,15 @@
         <h1 align="center"><%= @article.title %></h1>
         <%= image_tag(@article.image.url, style: "width: 100%; border-bottom: 2px solid #C6B358") %>
         <div class="author">
-          <div class="col-xs-6">
+          <div class="col-xs-4">
             <%= gravatar_for(@article.user, size: 20) %>
             <span><%= @article.user.first_name.upcase + " " + @article.user.last_name.upcase %></span>
           </div>
-          <div class="col-xs-6 text-right ">
+        <div class="col-xs-4 text-center">
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="<%= Rails.application.secrets.url_link + article_path(@article) %>" data-show-count="false">Tweet</a>
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=<%= Rails.application.secrets.url_link + article_path(@article) %>&layout=button&size=small&mobile_iframe=true&appId=902236026597173&width=59&height=20" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+         </div>
+          <div class="col-xs-4 text-right ">
             <span><%= time_ago_in_words(@article.created_at).upcase + " AGO"%></span>
           </div>
         </div>

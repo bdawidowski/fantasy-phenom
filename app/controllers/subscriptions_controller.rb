@@ -18,7 +18,7 @@ class SubscriptionsController < ApplicationController
         )
         if current_user.rocket_token.nil?
             generated_rocket_pw = (0...8).map { (65 + rand(26)).chr }.join
-            rocket_server = RocketChat::Server.new('https://fantasyphenom.rocket.chat')
+            rocket_server = RocketChat::Server.new('https://fantasy-phenom.rocket.chat')
             rocket_session = rocket_server.login("admin", Rails.application.secrets.rocket_pw)
         
             user = rocket_session.users.create(current_user.email.sub(/@.*?$/, ""), current_user.email, current_user.first_name + " " + current_user.last_name,  generated_rocket_pw,
@@ -62,7 +62,7 @@ class SubscriptionsController < ApplicationController
                 contributor: "false"
             )
             subs.delete
-            rocket_server = RocketChat::Server.new('https://fantasyphenom.rocket.chat')
+            rocket_server = RocketChat::Server.new('https://fantasy-phenom.rocket.chat')
             rocket_session = rocket_server.login('admin', Rails.application.secrets.rocket_pw)
             rocket_session.users.update(current_user.rocket_token, active: false)
             
