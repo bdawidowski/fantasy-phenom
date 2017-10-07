@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
-
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '~> 4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'pg', '~> 0.18.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,6 +35,7 @@ gem 'stripe_event'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'rocketchat'
 gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'puma'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -54,3 +56,4 @@ group :development do
   #gem 'spring'
 end
 
+gem 'rails_12factor', group: :production
