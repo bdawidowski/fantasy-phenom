@@ -2,7 +2,7 @@ development:
     host: 127.0.0.1
     username: favre421421
     adapter: postgresql
-    database: fp365_dev
+    database: fp365
     encode: unicode
 production:
   url: <%= ENV["DATABASE_URL"] %>
