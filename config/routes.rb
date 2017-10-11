@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'services', to: 'pages#services'
   get 'news', to: 'pages#news'
+  get 'comingsoon', to: 'pages#comingsoon'
   get 'account', to: 'subscriptions#account'
   get 'pending', to: 'articles#pending'
   mount StripeEvent::Engine, at: '/stripe/webhooks' # provide a custom path

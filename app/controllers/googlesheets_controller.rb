@@ -44,15 +44,12 @@ class GooglesheetsController < ApplicationController
   # PATCH/PUT /googlesheets/1
   # PATCH/PUT /googlesheets/1.json
   def update
-    respond_to do |format|
       if @googlesheet.update(googlesheet_params)
-        format.html { redirect_to @googlesheet, notice: 'Googlesheet was successfully updated.' }
-        format.json { render :index, status: :ok, location: @googlesheet }
+        flash[:success] = "Googlesheet was Successfully Updated!"
+        redirect_to googlesheets_path  
       else
-        format.html { render :edit }
-        format.json { render json: @googlesheet.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   # DELETE /googlesheets/1
