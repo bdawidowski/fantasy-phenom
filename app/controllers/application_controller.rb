@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_filter :set_counters
-  
+  before_action :set_counters, if: :current_user_editor?
   def set_counters 
     @num_pending = Article.where(:approved => false).count
     @num_articles = Article.all.count
@@ -42,6 +42,12 @@ class ApplicationController < ActionController::Base
           redirect_to root_path
       end
   end
+  def is_editor?
+      if !current_user_editor?
+          flash[:danger] = "Admin Only!"
+          redirect_to root_path
+      end
+  end
 
   def is_subscribed?
       if !current_user_subscribed?
@@ -49,7 +55,14 @@ class ApplicationController < ActionController::Base
           redirect_to new_subscription_path
       end
   end
-  helper_method :current_user_subscribed?, :current_user_admin?, :current_user_contributor?, :is_admin?
+  helper_method :current_user_subscribed?, 
+    :current_user_admin?, 
+    :current_user_contributor?, 
+    :current_user_editor?, 
+    :is_admin?, 
+    :is_contributor?, 
+    :is_subscribed?,
+    :is_editor?
   
   
 

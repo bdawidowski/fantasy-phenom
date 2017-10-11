@@ -1,12 +1,12 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand wcolor" href="<%= root_path %>" style="color: white; font-size: 30px;">
+            <a class="navbar-brand wcolor" href="<%= root_path %>" style="color: white; font-size: 30px;">
             FANTASY<strong>PHENOM</strong><% if current_user_subscribed? %> <i class="fa fa-check-circle" style="color: #C6B358; font-size: 25px; vertical-align: middle; "></i> <% end %>
         </a>
         </div>
@@ -14,48 +14,86 @@
             <ul class="nav navbar-nav">
                 <% if current_user_subscribed? %>
                     <li><a href="https://fantasy-phenom.rocket.chat/login" target="_blank">COMMUNITY</a></li>
-                <% else %>
-                    <li><%= link_to "COMMUNITY", new_user_registration_path %></li>
-                <% end %>
-                <li><%= link_to "ANALYTICS", googlesheets_path %></li>
-                <li><%= link_to "NEWS", news_path %></li>
-                <% if current_user_contributor? %>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><%= link_to "NEW ARTICLE", new_article_path %></li>
-                        <li><a href="<%= articles_path %>">MANAGE ARTICLES <span class="label label-default pull-right"><%= @num_articles %></span></a></li>
-                        <li><a href="<%= pending_path %>">PENDING ARTICLES <% if @num_pending > 0 %><span class="label label-warning pull-right"><%= @num_pending %></span><% end %></a></li>
-                        <% if current_user_admin? %>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="<%= contacts_path %>">CONTACTS MANAGEMENT <% if @num_contacts > 0 %><span class="label label-success pull-right"><%= @num_contacts %></span><% end %></a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="<%= googlesheets_path %>">MANAGE GOOGLESHEETS </a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="<%= admin_index_path %>">USER MANAGEMENT <span class="label label-primary pull-right"><%= @num_users %></span></a></li>
+                    <% else %>
+                        <li>
+                            <%= link_to "COMMUNITY", googlesheets_path %>
+                        </li>
                         <% end %>
-                    </ul>
-                </li>
-                <% end %>
+                            <li>
+                                <%= link_to "ANALYTICS", googlesheets_path %>
+                            </li>
+                            <li>
+                                <%= link_to "NEWS", news_path %>
+                            </li>
+                            <% if current_user_contributor? %>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADMIN <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <%= link_to "NEW ARTICLE", new_article_path %>
+                                        </li>
+                                        <% if current_user_editor? %>
+                                            <li>
+                                                <a href="<%= articles_path %>">MANAGE ARTICLES <span class="label label-default pull-right"><%= @num_articles %></span></a>
+                                            </li>
+                                            <li>
+                                                <a href="<%= pending_path %>">PENDING ARTICLES <% if @num_pending > 0 %><span class="label label-warning pull-right"><%= @num_pending %></span><% end %></a>
+                                            </li>
+                                        <% else %>
+                                            <li>
+                                                <a href="<%= articles_path %>">MANAGE YOUR ARTICLES</a>
+                                            </li>
+                                        <% end %>
+                                        <% if current_user_admin? %>
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a href="<%= contacts_path %>">CONTACTS MANAGEMENT <% if @num_contacts > 0 %><span class="label label-success pull-right"><%= @num_contacts %></span><% end %></a>
+                                            </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a href="<%= googlesheets_path %>">MANAGE GOOGLESHEETS </a>
+                                            </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li>
+                                                <a href="<%= admin_index_path %>">USER MANAGEMENT <span class="label label-primary pull-right"><%= @num_users %></span></a>
+                                            </li>
+                                            <% end %>
+                                    </ul>
+                                </li>
+                                <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <% if user_signed_in? %>
                     <% if !current_user_subscribed? %>
-                        <li><%= link_to "SUBSCRIBE", new_subscription_path, class: "btn btn-nav btn-nav-primary", style: "color: #fff;", id: "btn-nav-signup" %></li>
-                    <% end %>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= gravatar_for(current_user, size: 20) %><span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><%= link_to "View Profile", root_path %></a></li>
-                            <li><%= link_to "Account Settings", account_path %></li>
-                            <li role="separator" class="divider"></li>
-                            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-                        </ul>
-                    </li>
-                <% else %>
-                    <li><%= link_to "BECOME A PRO", new_user_registration_path, class: "btn btn-nav btn-nav-primary", style: "color: #fff;", id: "btn-nav-signup" %></li>
-                    <li><%= link_to "SIGN IN", new_user_session_path, class: "btn btn-nav btn-nav-default", id: "btn-nav-signin" %></li>
-                <% end %>
+                        <li>
+                            <%= link_to "SUBSCRIBE", new_subscription_path, class: "btn btn-nav btn-nav-primary", style: "color: #fff;", id: "btn-nav-signup" %>
+                        </li>
+                        <% end %>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <%= gravatar_for(current_user, size: 20) %><span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <%= link_to "View Profile", root_path %>
+                                            </a>
+                                    </li>
+                                    <li>
+                                        <%= link_to "Account Settings", account_path %>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+                                    </li>
+                                </ul>
+                            </li>
+                            <% else %>
+                                <li>
+                                    <%= link_to "BECOME A PRO", new_user_registration_path, class: "btn btn-nav btn-nav-primary", style: "color: #fff;", id: "btn-nav-signup" %>
+                                </li>
+                                <li>
+                                    <%= link_to "SIGN IN", new_user_session_path, class: "btn btn-nav btn-nav-default", id: "btn-nav-signin" %>
+                                </li>
+                                <% end %>
             </ul>
         </div>
     </div>

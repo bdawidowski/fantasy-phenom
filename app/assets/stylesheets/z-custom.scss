@@ -23,6 +23,20 @@ h1 {
     margin-top: 8px;
     
 }
+#twitter-follow-btn{
+    background-color: #1DA1F3;
+    color: white;
+    padding: 5px;
+    border-radius: 2px;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 4px;
+    width: 85%;
+}
+#twitter-follow-btn:hover{
+    background-color: #1a94db;
+}
 #btn-nav-signup {
     padding: 5px;
     
@@ -193,6 +207,11 @@ h1 {
     padding-top: 5px;
     font-size: 13px;
 }
+.about-text-container h4:hover {
+    color: white;
+    cursor: pointer;
+}
+
 .about-text-container h4,
 .about-text-container h4:hover,
 footer a,

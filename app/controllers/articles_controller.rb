@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :is_contributor?, except: [:show]
   before_action :is_thiers?, only: [:edit, :update]
+  before_action :is_editor?, only: [:pending]
   before_action :is_admin?, only: [:destroy]
   # GET /articles
   # GET /articles.json
@@ -82,7 +83,7 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :content, :image, :approved)
     end
     def is_thiers?
-      if current_user.contributor && !current_user.admin && !current_user.editor
+      if current_user.contributor? && !current_user.admin? && !current_user.editor?
         if current_user.id != @article.user_id
           flash[:danger] = "Editors & Admin Only!"
           redirect_to root_path
