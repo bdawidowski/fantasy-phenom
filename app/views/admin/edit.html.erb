@@ -38,9 +38,9 @@
         <%= form_tag("/admin/#{@user.id}", :method => :put, :id => "update-usr-form") do |f| %>
         <div class="form-group">
                 <% if user_has_stripe %>
-                    <button class="btn btn-<%= status_style %> btn-block" disabled><%= @user.standings.last.status.upcase %></button>
+                    <button class="btn btn-<%= status_style %> btn-block" disabled><%= @user.standings.last.status.upcase %> <%= number_to_currency(@user.amount.to_f)%>/mo.</button>
                 <% elsif @user.paypal %>
-                    <button class="btn btn-success btn-block" disabled>PAYPAL</button>
+                    <button class="btn btn-success btn-block" disabled>PAYPAL <%= number_to_currency(@user.amount.to_f)%>/mo.</button>
                 <% else %>
                   <button class="btn btn-default btn-block" disabled>FREE</button>
                 <% end %>

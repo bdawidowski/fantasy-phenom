@@ -41,7 +41,8 @@ class SubscriptionsController < ApplicationController
             subscribed: true,
             was_subscribed: true,
             rocket_token: rocket_token,
-            rocket_pw: generated_rocket_pw
+            rocket_pw: generated_rocket_pw,
+            amount: "9.99"
         )
         if subs
             flash[:success] = "You have successfull subscribed!"

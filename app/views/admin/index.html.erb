@@ -1,5 +1,20 @@
+<% 
+total = 0
+@users.each do |a|
+    if a.subscribed
+        total += a.amount.to_f
+    end
+end
+%>
+
+
 <div class="container">
-    <h1 align="center" class="wcolor">USER MANAGEMENT</h1>
+    <h1 align="center" class="wcolor">
+        USER MANAGEMENT
+        <br/>
+        <div class="label label-success"><%= number_to_currency(total) %>/mo.</div>
+    </h1>
+    
     <div class="panel panel-default">
       <div class="panel-body">
 <div class="row wcolor" >
