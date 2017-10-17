@@ -8,18 +8,9 @@ $(document).ready(function(){
         $(this).val('PROCESSING...');
         //$('button').html('PROCESSING...');
     })
-    $('button').click(function(e){
+    $('button[type="submit"]').click(function(e){
         $(this).html('PROCESSING...');
     })
     
 });
 
-//$('form').submit(function(e){
-//    $('input[type="submit"]').val('PROCESSING...');
-//    $('button').html('PROCESSING...');
-//})
-
-//$('input[type="submit"]').click(function(e){
-//    $(this).val('PROCESSING...');
-//    $('button').html('PROCESSING...');
-//})

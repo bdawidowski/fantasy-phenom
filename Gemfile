@@ -36,6 +36,7 @@ gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'rocketchat'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'puma'
+gem 'trix' 
 # Use Unicorn as the app server
 # gem 'unicorn'
 
