@@ -57,17 +57,34 @@ class SubscriptionsController < ApplicationController
     def update
         customer = Stripe::Customer.retrieve(current_user.stripe_id)
         subs = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
+        
+        rocket_server = RocketChat::Server.new('https://fantasy-phenom.rocket.chat')
+        rocket_session = rocket_server.login('admin', Rails.application.secrets.rocket_pw)
+        
         if params[:to_delete] === "true"
             current_user.update(
-                subscribed: "false",
-                contributor: "false"
+                subscribed: false,
+                contributor: false
             )
             subs.delete
-            rocket_server = RocketChat::Server.new('https://fantasy-phenom.rocket.chat')
-            rocket_session = rocket_server.login('admin', Rails.application.secrets.rocket_pw)
             rocket_session.users.update(current_user.rocket_token, active: false)
             
             flash[:warning] = "You have canceled your Pro Account!"
+            redirect_to account_path
+        elsif params[:to_delete] === "paypal"
+            current_user.update(
+                subscribed: false,
+                contributor: false
+            )
+            
+            rocket_session.users.update(current_user.rocket_token, active: false)
+            
+            Contact.create(
+                name: "Auto Generated Unsubscribe Request -- #{current_user.email}",
+                email: current_user.email,
+                message: "This is a request to cancel this users sub manual in PayPal."
+                )
+            flash[:warning] = "You have canceled your Pro Account! May take up to 24 hours to recieve notice from PayPal"
             redirect_to account_path
         else
             subs = customer.subscriptions.retrieve(current_user.stripe_subscription_id)
@@ -101,3 +118,38 @@ class SubscriptionsController < ApplicationController
         end
         
 end
+
+
+
+
+
+
+
+<img src="https:://dropbox.com" style="display: block; width: 50%; margin: 15px auto"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -92,15 +92,20 @@
                             <div>If you no longer need access to Fantasy Phenom Pro, you can cancel your subscription here. You can resubscribe at anytime if you wish to join again in the future. EMAIL: <a href="mailto:support@fantasy-phenom.com">support@fantasy-phenom.com</a></div>
                         </div><!-- col-sm-8 -->
                         <div class="col-sm-4 text-right col-xs-12">
-                            <% if !current_user.paypal %>
-                                <%= form_tag subscription_path(current_user.id), method: :put, data: { confirm: "Are you sure?"} do |form| %>
+                            <%= form_tag subscription_path(current_user.id), method: :put, data: { confirm: "Are you sure?"} do |form| %>
+                                <% if !current_user.paypal %>
                                     <input name="to_delete" value="true" type="hidden"/>
-                                    <button class="btn btn-primary btn-block" type="submit">UNSUBSCRIBE</button>
+                                <% else %>
+                                    <input name="to_delete" value="paypal" type="hidden"/>
                                 <% end %>
-                            <% else %>
-                                <div></div>
-                                <a href="<%= Rails.application.secrets.url_link + "#contact-us" %>" class="btn btn-primary btn-block">CONTACT US</a>
+                                <button class="btn btn-primary btn-block" type="submit">UNSUBSCRIBE</button>
                             <% end %>
+                            
+<!--
+                                <div></div>
+                                <a href="## Rails.application.secrets.url_link + "#contact-us" ##" class="btn btn-primary btn-block">CONTACT US</a>
+-->
+
                         </div><!-- Update Card Btn (col-sm-4) -->
                     </div><!-- row -->
                 <% end %>

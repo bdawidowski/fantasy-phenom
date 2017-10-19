@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users
   resources :admin do
     collection { post :import}
+    collection { post :rocket_users}
   end
   root 'pages#home'
   get 'about', to: 'pages#about'
