@@ -4,11 +4,25 @@ development:
     STRIPE_SECRET_KEY: sk_test_95aTVCg5aB1qOcU6gZNNdZlf
     ROCKET_EMAIL: admin
     ROCKET_PW: 123x
-    URL: https://fantasy-phenom-development-teamdawi.c9users.io
+    GMAIL_DOMAIN: gmail.com
+    GMAIL_USERNAME: support@fantasy-phenom.com
+    GMAIL_PASSWORD: F@ntasyPhenom
+    URL: localhost:3000
+    AWS_ACCESS_KEY: AKIAJBSV44BCKY52HXNA
+    AWS_SECRET_KEY: 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
+    AWS_REGION: us-east-1
+    AWS_BUCKET: fp365
 production:
     SECRET_KEY_BASE: 75b34d0e0e38be67cc038e5b2325b6c92206966fa85d7238aae1096750a11b2534a028a2e80d8eb751b3fb4d085b29ea4c8ed92623c517f1e6ad877419d5f04f
     STRIPE_PUBLIC_KEY: pk_live_Sw49kHQ7ZwLDX8nmOdgaGwTq
     STRIPE_SECRET_KEY: sk_live_AKctfwJb4kFgOsxLl4oDEQA3
     ROCKET_EMAIL: admin
     ROCKET_PW: 123x
-    URL: https://fantasy-phenom.com
+    GMAIL_DOMAIN: gmail.com
+    GMAIL_USERNAME: support@fantasy-phenom.com
+    GMAIL_PASSWORD: F@ntasyPhenom
+    URL: https://www.fantasy-phenom.com
+    AWS_ACCESS_KEY: AKIAJBSV44BCKY52HXNA
+    AWS_SECRET_KEY: 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
+    AWS_REGION: us-east-1
+    AWS_BUCKET: fp365

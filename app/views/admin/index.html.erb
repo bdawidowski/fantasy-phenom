@@ -112,6 +112,7 @@ end
                         <td>--/--/--</td>
                     <% end %>
                     <td><%= link_to "EDIT", edit_admin_path(user), class: "btn btn-default btn-xs btn-block" %></td>
+                    <td><%= link_to "DELETE", user, method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-primary btn-xs btn-block" %></td>
                 </tr>
         <% end %>
         </tbody>

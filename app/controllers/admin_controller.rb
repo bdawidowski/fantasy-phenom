@@ -3,7 +3,7 @@ class AdminController < ApplicationController
     before_action :is_admin?
     before_action :user_params, only: [:update, :import]
     def index
-        @users = User.all
+        @users = User.where(:removed => false)
         @subscriptions = Standing.all
     end
 
@@ -14,6 +14,7 @@ class AdminController < ApplicationController
     def update
         require 'date'
         @user = User.find(params[:id])
+        
         if @user.update(user_params)
             rocket_server = RocketChat::Server.new('https://fantasy-phenom.rocket.chat')
             rocket_session = rocket_server.login("admin", Rails.application.secrets.rocket_pw)
@@ -30,6 +31,7 @@ class AdminController < ApplicationController
                     rocket_session.users.update(@user.rocket_token, active: false)
                 end
             end
+            
             flash[:success] = "You updated #{@user.email} Successfully"
             redirect_to admin_index_path
         else
@@ -80,7 +82,7 @@ class AdminController < ApplicationController
     end
     private
         def user_params
-            params.permit(:subscribed, :contributor, :chatroom, :editor, :paypal, :file)
+            params.permit(:subscribed, :contributor, :chatroom, :editor, :paypal, :file, :removed)
         end
     
 end

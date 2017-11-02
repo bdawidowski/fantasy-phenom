@@ -44,6 +44,13 @@ class SubscriptionsController < ApplicationController
             rocket_pw: generated_rocket_pw,
             amount: "9.99"
         )
+        Contact.create(
+            name: current_user.first_name + " " + current_user.last_name,
+            email: current_user.email,
+            message: "User has subscribed to Pro through Stripe!",
+            type: "New Subscription"
+            )
+        
         if subs
             flash[:success] = "You have successfull subscribed!"
             redirect_to root_path
@@ -68,7 +75,12 @@ class SubscriptionsController < ApplicationController
             )
             subs.delete
             rocket_session.users.update(current_user.rocket_token, active: false)
-            
+            Contact.create(
+                name: current_user.first_name + " " + current_user.last_name,
+                email: current_user.email,
+                message: "User has CANCELLED their Pro Subscription through Stripe!",
+                type: "Cancelled Subscription"
+            )
             flash[:warning] = "You have canceled your Pro Account!"
             redirect_to account_path
         elsif params[:to_delete] === "paypal"
@@ -120,12 +132,6 @@ class SubscriptionsController < ApplicationController
 end
 
 
-
-
-
-
-
-<img src="https:://dropbox.com" style="display: block; width: 50%; margin: 15px auto"/>
 
 
 

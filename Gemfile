@@ -32,11 +32,15 @@ gem 'twitter-bootstrap-rails'
 gem 'friendly_id'
 gem 'stripe'
 gem 'stripe_event'
-gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'rocketchat'
 gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'puma'
 gem 'trix' 
+
+gem 'shrine'
+gem 'aws-sdk'
+gem 'roda'
+gem 'jquery-fileupload-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

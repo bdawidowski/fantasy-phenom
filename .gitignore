@@ -15,6 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
-
-config/environment_variables.yml
+/config/initializers/environment_variables.rb
+/config/environment_variables.yml
 

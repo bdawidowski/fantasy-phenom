@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-2 col-sm-offset-1">
+            <div class="col-sm-2">
               <label>Paypal:</label>
               <div class="form-group">
                 <label class="switch">
@@ -106,6 +106,16 @@
                 <label class="switch">
                   <%= hidden_field_tag :editor, '' %>
                   <%= check_box_tag :editor, 1, @user.editor, class: "form-control" %>
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <label>DELETE:</label>
+              <div class="form-group">
+                <label class="switch">
+                  <%= hidden_field_tag :removed, '' %>
+                  <%= check_box_tag :removed, 1, @user.removed, class: "form-control" %>
                   <span class="slider round"></span>
                 </label>
               </div>

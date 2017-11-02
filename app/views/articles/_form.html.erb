@@ -21,13 +21,15 @@
           <%= f.text_field :title, class: "form-control" %>
         </div>
       </div>
+    <% if @article.image_data %>
       <div class="col-xs-12">
-        <%= image_tag(@article.image.url(:medium), style: "border-bottom: 2px solid #C6B358; display: block; margin: 0 auto") %>
+        <%= image_tag(@article.image.url, style: "border-bottom: 2px solid #C6B358; display: block; margin: 0 auto") %>
       </div>
+    <% end %>
       <div class="col-xs-12">
         <div class="form-group">
           <%= f.label :image, "IMAGE:" %><br>
-          <%= f.file_field :image, class: "form-control" %>
+          <%= f.file_field :image, class: "form-control-file" %>
         </div>
       </div>
       <div class="col-xs-12">

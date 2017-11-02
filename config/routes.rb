@@ -1,32 +1,34 @@
 Rails.application.routes.draw do
-  resources :contacts
-  resources :googlesheets
-  resources :articles
-  resources :subscriptions
-  devise_for :users, :controllers => { 
+    
+  
+    resources :contacts
+    resources :googlesheets
+    resources :articles
+    resources :subscriptions
+    devise_for :users, :controllers => { 
     :registrations => "users/registrations",
     :sessions => "users/sessions",
     :password => "users/passwords" #, :confirmations => "users/confirmations" 
     }
-  devise_scope :user do 
-    get 'signup', to: 'users/registrations#new'
-    get 'login', to: 'users/sessions#new'
-    get 'logout', to: 'users/sessions#destroy'
-  end
-  resources :users
-  resources :admin do
-    collection { post :import}
-    collection { post :rocket_users}
-  end
-  root 'pages#home'
-  get 'about', to: 'pages#about'
-  get 'services', to: 'pages#services'
-  get 'news', to: 'pages#news'
-  get 'comingsoon', to: 'pages#comingsoon'
-  get 'account', to: 'subscriptions#account'
-  get 'pending', to: 'articles#pending'
-  mount StripeEvent::Engine, at: '/stripe/webhooks' # provide a custom path
-
+    devise_scope :user do 
+        get 'signup', to: 'users/registrations#new'
+        get 'login', to: 'users/sessions#new'
+        get 'logout', to: 'users/sessions#destroy'
+    end
+    resources :users
+    resources :admin do
+        collection { post :import}
+        collection { post :rocket_users}
+    end
+    root 'pages#home'
+    get 'about', to: 'pages#about'
+    get 'services', to: 'pages#services'
+    get 'news', to: 'pages#news'
+    get 'comingsoon', to: 'pages#comingsoon'
+    get 'account', to: 'subscriptions#account'
+    get 'pending', to: 'articles#pending'
+    mount StripeEvent::Engine, at: '/stripe/webhooks' # provide a custom path
+    mount ImageUploader::UploadEndpoint => 'articles/upload'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
