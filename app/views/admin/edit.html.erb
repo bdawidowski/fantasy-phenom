@@ -22,15 +22,6 @@
 
 
 <div class="row">
-  <div class="text-center">
-    <% if user_has_stripe %>
-      <i class="fa fa-cc-stripe" style="color: #F0AD4E" aria-hidden="true"></i>
-    <% elsif @user.paypal %>
-      <i class="fa fa-cc-paypal" style="color: #5BC0DE" aria-hidden="true"></i>
-    <% else %>
-      <i class="fa fa-credit-card-alt" aria-hidden="true" style="color: #D9534F"></i>
-    <% end %>
-  </div> <!-- gravatar -->
   <h1 align="center"></h1>
   <div class="col-sm-8 col-sm-offset-2">
     <div class="panel panel-default devise-bs">
@@ -71,7 +62,7 @@
               </div>
             </div>
             <div class="col-sm-2">
-              <label>Platform Access:</label>
+              <label>Platform:</label>
               <div class="form-group">
                 <label class="switch">
                   <%= hidden_field_tag :subscribed, '' %>
@@ -81,7 +72,7 @@
               </div>
             </div>
             <div class="col-sm-2">
-              <label>Google Access:</label>
+              <label>Google:</label>
               <div class="form-group">
                 <label class="switch">
                   <%= hidden_field_tag :chatroom, '' %>
