@@ -122,6 +122,7 @@ end
             <%= file_field_tag :file %>
             <%= submit_tag "Import CSV", class: "btn btn-success btn-block" %>
         <% end %>
+        <h3 align="center">------------</h3>
         <%= form_tag rocket_users_admin_index_path, multipart: true do %>
             <%= submit_tag "SYNC ROCKETCHAT", class: "btn btn-primary btn-block", style: "margin-top: 5px" %>
         <% end %>
