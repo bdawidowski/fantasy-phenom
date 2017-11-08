@@ -4,7 +4,7 @@
 <meta property="og:type" content="Website" />
 <meta property="og:url" content="<%= Rails.application.secrets.url_link.to_s + article_path(@article).to_s %>" />
 <meta property="og:description" content="<%= @article.content.gsub(/<.*?>/, "").slice(0..99) %>" />
-<meta property="og:image" content="<%= @article.image.url %>"/>
+<meta property="og:image" content="<%= @article.image.url(public: true) %>"/>
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
