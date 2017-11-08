@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get 'comingsoon', to: 'pages#comingsoon'
     get 'account', to: 'subscriptions#account'
     get 'pending', to: 'articles#pending'
+    get 'export', to: 'admin#export'
     mount StripeEvent::Engine, at: '/stripe/webhooks' # provide a custom path
     mount ImageUploader::UploadEndpoint => 'articles/upload'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -5,6 +5,7 @@ class AdminController < ApplicationController
     def index
         @users = User.where(:removed => false)
         @subscriptions = Standing.all
+        
     end
 
     def edit
@@ -42,6 +43,13 @@ class AdminController < ApplicationController
         User.import(params[:file])
         flash[:success] = "Import Successfully"
         redirect_to admin_index_path
+    end
+    def export
+        respond_to do |format|
+            format.html
+            format.csv {send_data User.export}
+        end
+        flash[:success] = "Export Successfully"
     end
     def rocket_users
         @users = User.all

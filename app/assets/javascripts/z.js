@@ -1,5 +1,9 @@
 $(document).ready(function(){
-    $('#user-management-table').DataTable();
+    $('#user-management-table').DataTable({
+        buttons: [
+            'copy', 'excel', 'pdf'
+        ]
+    });
     $('#data-table-other').DataTable();
     $('#canceled-management-table').DataTable();
     //$('div.alert').fadeOut(3000);

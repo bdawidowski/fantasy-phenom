@@ -16,6 +16,20 @@ class User < ActiveRecord::Base
         end
     end
   end
+    
+  def self.export
+      h = Array.new
+      User.first.attributes.each do |key, value|
+          h << key
+      end
+      
+      CSV.generate(headers: true) do |csv|
+          csv << h
+          all.each do |u|
+              csv << u.attributes.values_at(*h)
+          end
+      end  
+  end
   
   def subscribed?
     subscribed
