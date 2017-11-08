@@ -21,7 +21,7 @@
           <%= f.text_field :title, class: "form-control" %>
         </div>
       </div>
-    <% if @article.image_data %>
+    <% if @article.image_data !== '' %>
       <div class="col-xs-12">
         <%= image_tag(@article.image.url, style: "border-bottom: 2px solid #C6B358; display: block; margin: 0 auto") %>
       </div>
