@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108023139) do
+ActiveRecord::Schema.define(version: 20171108025926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20171108023139) do
     t.text     "message"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.string   "type",       default: "Unknown"
+    t.string   "contype",    default: "Unknown"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
