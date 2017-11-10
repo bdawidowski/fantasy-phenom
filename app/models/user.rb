@@ -10,8 +10,11 @@ class User < ActiveRecord::Base
   
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-        unless User.find_by_email(row['email'])
-            User.create! row.to_hash
+        user = User.find_by_email(row['email'])
+        if user == nil
+            User.create(row.to_hash)
+        else
+            User.update(row.to_hash)
         end
     end
   end
