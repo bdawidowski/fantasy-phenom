@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
         if user == nil
             User.create(row.to_hash)
         else
-            User.update(row.to_hash)
+            user.update(row.to_hash)
         end
     end
   end
