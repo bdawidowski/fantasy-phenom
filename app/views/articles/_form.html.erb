@@ -36,7 +36,7 @@
         <div class="form-group">
           <%= f.label :content, "CONTENT:" %><br>
           <%= f.hidden_field :content, id: :article_content %>
-          <trix-editor input="article_content"></trix-editor>
+          <trix-editor input="article_content" style="min-height: 300px"></trix-editor>
         </div>
       </div>
       <% if current_user_admin? || current_user_editor? %>
