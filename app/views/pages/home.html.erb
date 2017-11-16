@@ -118,5 +118,51 @@
     <% end %>
 </div>
 </div>
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+          <h4 class="industy-main wcolor text-center" style="color: white; font-size: 30px;">
+              FANTASY<strong>PHENOM</strong>
+              <span class="hidden-xs"> | <strong>NFL</strong> DFS 101</span>
+              <span class="hidden-sm hidden-md hidden-lg"><br/><strong>NFL</strong> DFS 101</span>
+          </h4>
+      </div>
+      <div class="modal-body">
+          <div class="row">
+              <div class="col-sm-6">
+                  <%= image_tag("nfldfs101.png", class: "modal-ebook") %>
+              </div>
+              <div class="col-sm-6">
+                  
+                  <p style="font-size: 16px;"><strong>LEARN HOW TO:</strong></p>
+                  <p><i class="fa fa-check-square"></i> INCORPORATED ANALYTICS</p>
+                  <p><i class="fa fa-check-square"></i> ACCESS SIMPLE TO USE DATA</p>
+                  <p><i class="fa fa-check-square"></i> UNLOCK WINNING STRATEGIES</p>
+                  <p><i class="fa fa-check-square"></i> BECOME A FANTASY PLAYER</p>
+                  <p><i class="fa fa-check-square"></i> DEVELOP CONSISTENCY</p>
+                  <br/>
+                  <%= form_tag("/admin/", :method => :put, :id => "update-usr-form") do |f| %>
+                    <div class="form-group">
+                        <%= email_field_tag :email, nil, class: "form-control", placeholder: "example@gmail.com" %>
+                    </div>
+                    <%= submit_tag "SEND DFS 101", class: 'btn btn-primary btn-block' %>
+                 <% end %>
+              </div>
+            
+          </div>
+        
+      </div>
+      <div class="modal-footer">
+    
+      </div>
+    </div>
+
+  </div>
+</div>
 
 

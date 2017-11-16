@@ -421,6 +421,31 @@ span #lg-letter {
     color: #fff;
     padding: 20px;
 }
+.modal-dialog{
+    max-width: 700px;
+}
+.modal-content {
+    margin-top: 75px;
+    border-radius: 0px;
+    border: 2px solid #BFAA4E;
+    background-color: #343434;
+    color: white;
+    max-width: 700px;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer{
+    border: none;
+}
+.modal-body i {
+    color: #BFAA4E;
+}
+.modal-ebook{
+    margin: 0px;
+    max-width: 340px;
+    display: block;
+}
 footer img {width: 100%;}
 footer a { 
     font-size: 5rem; 
