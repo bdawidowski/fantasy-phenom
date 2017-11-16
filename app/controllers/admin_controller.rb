@@ -59,7 +59,7 @@ class AdminController < ApplicationController
             query_result = rocket_session.users.list(query: {email: user.email})
             if user.subscribed && !query_result
                     rocket_user = rocket_session.users.create(user.email.sub(/@.*?$/, ""), user.email, user.first_name + " " + user.last_name,  "fantasyphenom365",
-                                         active: true, send_welcome_email: false)
+                                         active: true, send_welcome_email: true)
                     rocket_token = rocket_session.users.create_token(user_id: rocket_user.id)
                     rocket_token = rocket_token.user_id
                     user.update(
