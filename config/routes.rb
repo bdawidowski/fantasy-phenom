@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
     
   
-    resources :contacts
+    resources :contacts do 
+        collection {post :ebook}
+    end
     resources :googlesheets
     resources :articles
     resources :subscriptions

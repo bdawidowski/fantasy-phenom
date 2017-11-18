@@ -118,9 +118,10 @@
     <% end %>
 </div>
 </div>
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
+<% if not user_signed_in? %> 
+    <!-- Trigger the modal with a button -->
+    <button type="button" id="modal-btn" class="btn btn-info btn-lg" style="display: none" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<% end %>
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -146,9 +147,11 @@
                   <p><i class="fa fa-check-square"></i> BECOME A FANTASY PLAYER</p>
                   <p><i class="fa fa-check-square"></i> DEVELOP CONSISTENCY</p>
                   <br/>
-                  <%= form_tag("/admin/", :method => :put, :id => "update-usr-form") do |f| %>
+                  <%= form_tag("/contacts/ebook", :method => :post) do |f| %>
                     <div class="form-group">
                         <%= email_field_tag :email, nil, class: "form-control", placeholder: "example@gmail.com" %>
+                        <%= hidden_field :name, 'EBOOK Request' %>
+                        <%= hidden_field :message, "N/A" %>
                     </div>
                     <%= submit_tag "SEND DFS 101", class: 'btn btn-primary btn-block' %>
                  <% end %>

@@ -23,4 +23,8 @@ class NotifyAdminEmail < ApplicationMailer
 #        mail(to: "mike@fantasy-phenom.com", subject: "Question From: #{@contact.email}")
         mail(to: "support@fantasy-phenom.com", subject: "Question From: #{@contact.email}")
     end
+    def new_lead(contact)
+        @contact = contact
+        mail(to: "support@fantasy-phenom.com", subject: "New Lead From Ebook: #{@contact.email}")
+    end
 end

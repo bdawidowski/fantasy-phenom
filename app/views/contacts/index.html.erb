@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-  <h3 align="center" class="wcolor">CONTACTS MANAGMENT</h3>
+  <h3 align="center" class="wcolor">LEAD MANAGMENT</h3>
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
@@ -23,8 +23,8 @@
                             <%= time_ago_in_words(contact.created_at).upcase + " AGO" %>
                         </td>
                         <td>
-                          <%= link_to "SHOW", contact_path(contact),  class: "btn btn-default" %>
-                          <%= link_to "DELETE", contact, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger" %>
+                          <%= link_to "SHOW", contact_path(contact),  class: "btn btn-default btn-xs" %>
+                          <%= link_to "DELETE", contact, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger btn-xs" %>
                         </td>
                     </tr>
                 <% end %>

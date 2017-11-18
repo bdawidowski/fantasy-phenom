@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :is_admin?, except: [:show, :create]
+  before_action :is_admin?, except: [:show, :create, :ebook]
   # GET /contacts
   # GET /contacts.json
   def index
@@ -39,6 +39,18 @@ class ContactsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def ebook 
+      if not User.find_by_email(params[:email])
+          @contact = Contact.new(contact_params)
+          @contact.save
+          NotifyAdminEmail.new_lead(@contact).deliver
+      end
+      SendClientEmail.ebook(@contact).deliver
+      flash[:success] = 'Check your email for the link to the PDF!'
+      redirect_to root_path
+  end
+          
+      
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -48,6 +60,6 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:name, :email, :message)
+      params.permit(:name, :email, :message)
     end
 end
