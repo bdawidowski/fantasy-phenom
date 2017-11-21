@@ -19,20 +19,23 @@ class AdminController < ApplicationController
         if @user.update(user_params)
             rocket_server = RocketChat::Server.new('https://fantasy-phenom.rocket.chat')
             rocket_session = rocket_server.login("admin", Rails.application.secrets.rocket_pw)
-            query_result = rocket_session.users.list(query: {email: @user.email})
+            query_result = rocket_session.users.info(username: @user.email.sub(/@.*?$/, ""))
             if params[:subscribed]
-                if query_result && @user.rocket_token
+                if @user.rocket_token
                     rocket_session.users.update(@user.rocket_token, active: true)
+                elsif query_result 
+                    rtoken = rockey_sesson.users.create_token(user_id: query_result.id)
+                    @user.update(rocket_token: rtoken)
+                    rocket_session.users.update(rtoken, active: true)
                 else
                     rocket_user = rocket_session.users.create(@user.email.sub(/@.*?$/, ""), @user.email, @user.first_name + " " + @user.last_name,  "fantasyphenom365",
-                                         active: true, send_welcome_email: false)
+                                         active: true, send_welcome_email: true)
                 end
             else
-                if query_result && @user.rocket_token
+                if @user.rocket_token
                     rocket_session.users.update(@user.rocket_token, active: false)
                 end
             end
-            
             flash[:success] = "You updated #{@user.email} Successfully"
             redirect_to admin_index_path
         else
@@ -56,7 +59,7 @@ class AdminController < ApplicationController
         rocket_server = RocketChat::Server.new('https://fantasy-phenom.rocket.chat')
         rocket_session = rocket_server.login("admin", Rails.application.secrets.rocket_pw)
         @users.each do |user|
-            query_result = rocket_session.users.list(query: {email: user.email})
+            query_result = rocket_session.users.info(username: user.email.sub(/@.*?$/, ""))
             if user.subscribed && !query_result
                     rocket_user = rocket_session.users.create(user.email.sub(/@.*?$/, ""), user.email, user.first_name + " " + user.last_name,  "fantasyphenom365",
                                          active: true, send_welcome_email: true)
@@ -69,7 +72,7 @@ class AdminController < ApplicationController
                         rocket_pw: "fantasyphenom365"
                     )
             elsif user.subscribed && query_result && user.rocket_token == nil
-                rocket_token = rocket_session.users.create_token(user_id: query_result[0].id)
+                rocket_token = rocket_session.users.create_token(user_id: query_result.id)
                 rocket_token = rocket_token.user_id
                 user.update(
                     chatroom: true,
@@ -77,10 +80,10 @@ class AdminController < ApplicationController
                     rocket_token: rocket_token,
                     rocket_pw: "fantasyphenom365"
                 )
-            elsif query_result && !user.subscribed
+            elsif query_result && !user.subscribed && user.rocket_token
                 rocket_session.users.update(user.rocket_token, active: false)
                 user.update(chatroom: false)
-            elsif query_result && user.subscribed
+            elsif query_result && user.subscribed && user.rocket_token
                 rocket_session.users.update(user.rocket_token, active: true)
                 user.update(chatroom: true)
             end
