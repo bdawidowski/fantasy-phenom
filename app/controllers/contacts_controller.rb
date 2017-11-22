@@ -16,17 +16,18 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
-    
-    respond_to do |format|
-      if @contact.save
-        NotifyAdminEmail.new_contact(@contact).deliver
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
-        format.json { render :show, status: :created, location: @contact }
-      else
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+
+      respond_to do |format|
+        if @contact.save 
+            NotifyAdminEmail.new_contact(@contact).deliver
+            format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+            format.json { render :show, status: :created, location: @contact }
+        else
+          flash[:danger] = "Sorry Please Try Again!"
+           redirect_to root_path
+        end
       end
-    end
+
   end
 
 
@@ -40,9 +41,9 @@ class ContactsController < ApplicationController
     end
   end
   def ebook 
+      @contact = Contact.new(contact_params)
+      @contact.save
       if not User.find_by_email(params[:email])
-          @contact = Contact.new(contact_params)
-          @contact.save
           NotifyAdminEmail.new_lead(@contact).deliver
       end
       SendClientEmail.ebook(@contact).deliver

@@ -55,7 +55,7 @@
               <label>Paypal:</label>
               <div class="form-group">
                 <label class="switch">
-                  <%= hidden_field_tag :paypal, false %>
+                  <%= hidden_field_tag :paypal, '' %>
                   <%= check_box_tag :paypal, 1, @user.paypal, class: "form-control" %>
                   <span class="slider round"></span>
                 </label>
@@ -65,7 +65,7 @@
               <label>Platform:</label>
               <div class="form-group">
                 <label class="switch">
-                  <%= hidden_field_tag :subscribed, false %>
+                  <%= hidden_field_tag :subscribed, '' %>
                   <%= check_box_tag :subscribed, 1, @user.subscribed, class: "form-control" %>
                   <span class="slider round"></span>
                 </label>
@@ -75,7 +75,7 @@
               <label>Google:</label>
               <div class="form-group">
                 <label class="switch">
-                  <%= hidden_field_tag :chatroom, false %>
+                  <%= hidden_field_tag :chatroom, '' %>
                   <%= check_box_tag :chatroom, 1, @user.chatroom, class: "form-control" %>
                   <span class="slider round"></span>
                 </label>
@@ -85,7 +85,7 @@
               <label>Contributor:</label>
               <div class="form-group">
                 <label class="switch">
-                  <%= hidden_field_tag :contributor, false %>
+                  <%= hidden_field_tag :contributor, '' %>
                   <%= check_box_tag :contributor, 1, @user.contributor, class: "form-control" %>
                   <span class="slider round"></span>
                 </label>
@@ -95,7 +95,7 @@
               <label>Editor:</label>
               <div class="form-group">
                 <label class="switch">
-                  <%= hidden_field_tag :editor, false %>
+                  <%= hidden_field_tag :editor, '' %>
                   <%= check_box_tag :editor, 1, @user.editor, class: "form-control" %>
                   <span class="slider round"></span>
                 </label>
