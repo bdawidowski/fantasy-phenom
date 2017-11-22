@@ -93,26 +93,26 @@
 <div class="row" style="background-color: #000">
     <br/>
     <br/>
-    <%= form_for(@contact, id: "contact-form") do |f| %>
+    <%= form_tag("/contacts", :method => :post, id: "contact-form") do |f| %>
       <div class="col-sm-3">
         <%= image_tag("logos/fpbasic.png", class: "img-contact-logos") %>
       </div>
       <div class="col-sm-9">
         <div class="col-sm-6">
           <div class="form-group">
-            <%= f.text_field :name, class: "contact-input", placeholder: "NAME:", required: true %>
+            <%= text_field_tag :name, '', class: "contact-input", placeholder: "NAME:", required: true %>
             <!--<input type="text" class="contact-input" placeholder="Name:"/>-->
           </div>
           <div class="form-group">
-            <%= f.text_field :email, class: "contact-input", placeholder: "EMAIL:", required: true %>
+            <%= text_field_tag :email, '', class: "contact-input", placeholder: "EMAIL:", required: true %>
             <!--<input type="email" class="contact-input" placeholder="Email:"/>-->
           </div>
         </div>
         <div class="col-sm-6">
-          <%= f.text_area :message, rows: "4", class: "contact-input", placeholder: "Hey Guys, I want to be part of the community! I would love to start collaborating with other daily fantasy players!", required: true %>
+          <%= text_area_tag :message, '', rows: "4", class: "contact-input", placeholder: "Hey Guys, I want to be part of the community! I would love to start collaborating with other daily fantasy players!", required: true %>
           <!--<textarea rows="4" class="contact-input" placeholder="Hey Guys, I need to be part of the community! I would love to start colabrating with other daily fantasy player! "></textarea>-->
         </div>
-        <%= f.submit "CHAT WITH US!", class: "btn contact-btn industry-main" %>
+        <%= submit_tag "CHAT WITH US!", class: "btn contact-btn industry-main" %>
         <!--<button type="submit" class="btn contact-btn industry-main">CHAT WITH US!</button>-->
       </div>
     <% end %>
