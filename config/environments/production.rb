@@ -73,7 +73,7 @@ Rails.application.configure do
       user_name: Rails.application.secrets.gmail_username,
       password: Rails.application.secrets.gmail_password
       }
-  config.action_mailer.default_url_options = {host: Rails.application.secrets.url}
+  config.action_mailer.default_url_options = {host: Rails.application.secrets.url_link}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
