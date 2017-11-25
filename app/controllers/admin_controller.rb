@@ -18,7 +18,7 @@ class AdminController < ApplicationController
             rocket_server = RocketChat::Server.new('https://fantasy-phenom.rocket.chat')
             rocket_session = rocket_server.login("admin", Rails.application.secrets.rocket_pw)
             if @user.rocket_token
-                query_result = rocket_session.users.info(user_id: user.rocket_token) 
+                query_result = rocket_session.users.info(user_id: @user.rocket_token) 
             else
                 query_result = false
             end

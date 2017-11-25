@@ -26,7 +26,7 @@ Rails.application.configure do
       password: Rails.application.secrets.gmail_password
       }
   config.action_mailer.default_url_options = { :host => Rails.application.secrets.url }
-
+  
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
