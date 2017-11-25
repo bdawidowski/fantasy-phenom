@@ -9,14 +9,15 @@
         <div class="col-sm-8" style="margin-top: 20px">
           <a href="<%= article_path(article) %>">
           <div class="article-large">
-            <%= image_tag(article.image.url(public: true)) %>
+              <% if article.image %>
+                    <%= image_tag(article.image.url(public: true)) %>
+              <% end %>
             <h2><%= article.title.upcase %></h2>
             <div class="overlay"></div>
             <div class="author">
               <strong><%= article.user.first_name + " " + article.user.last_name %></strong>
               <small><%= time_ago_in_words(article.created_at).upcase + " AGO"%></small>
             </div> <!-- author -->
-            
           </div><!-- article-large -->
           </a>
         <% elsif i <= 4 %>
@@ -25,7 +26,9 @@
           <% end %>
             <a href="<%= article_path(article) %>">
               <div class="article-large">
-                <%= image_tag(article.image.url(public: true)) %>
+                  <% if article.image %>
+                        <%= image_tag(article.image.url(public: true)) %>
+                  <% end %>
                 <h2><%= article.title.upcase %></h2>
                 <div class="overlay"></div>
                 <div class="author">
