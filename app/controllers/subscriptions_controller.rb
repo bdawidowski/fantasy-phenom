@@ -14,7 +14,7 @@ class SubscriptionsController < ApplicationController
                     end
         subs = customer.subscriptions.create(
             source: params[:stripeToken],
-            plan: "101"
+            plan: '101'
         )
         if current_user.rocket_token.nil?
             generated_rocket_pw = (0...8).map { (65 + rand(26)).chr }.join
@@ -25,26 +25,31 @@ class SubscriptionsController < ApplicationController
                                  active: true, send_welcome_email: true)
             rocket_token = rocket_session.users.create_token(user_id: user.id)
             rocket_token = rocket_token.user_id
+            NotifyAdminEmail.new_subscriber(current_user).deliver
         else 
             generated_rocket_pw = current_user.rocket_pw
             rocket_token = current_user.rocket_token
         end
         
-        
-        current_user.update(
-            stripe_id: customer.id,
-            stripe_subscription_id: subs.id,
-            card_type: params[:card_brand],
-            card_last4: params[:card_last4],
-            card_exp_month: params[:card_exp_month],
-            card_exp_year: params[:card_exp_year],
-            subscribed: true,
-            was_subscribed: true,
-            rocket_token: rocket_token,
-            rocket_pw: generated_rocket_pw,
-            amount: "9.99"
-        )
-        NotifyAdminEmail.new_subscriber(current_user).deliver
+        if params[:card_last4]
+            current_user.update(
+                stripe_id: customer.id,
+                stripe_subscription_id: subs.id,
+                card_type: params[:card_brand],
+                card_last4: params[:card_last4],
+                card_exp_month: params[:card_exp_month],
+                card_exp_year: params[:card_exp_year],
+                subscribed: true,
+                was_subscribed: true,
+                rocket_token: rocket_token,
+                rocket_pw: generated_rocket_pw,
+                amount: "9.99"
+            )
+        else
+            render :new
+        end
+
+
         
         if subs
             flash[:success] = "You have successfull subscribed!"
