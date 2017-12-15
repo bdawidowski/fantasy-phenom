@@ -3,32 +3,41 @@
 </div>
 <div class="container">
   <div class="row">
-    
-      <% @articles.each_with_index do |article, i| %>
-        <% if i == 0 %>
-        <div class="col-sm-8" style="margin-top: 20px">
+    <div class="col-sm-8" style="margin-top: 20px">
+      <a href="<%= article_path(@article_newest) %>">
+        <div class="article-large">
+            <% if @article_newest.image %>
+                  <%= image_tag(@article_newest.image.url(public: true)) %>
+            <% end %>
+          <h2><%= @article_newest.title.upcase %></h2>
+          <div class="overlay"></div>
+          <div class="author">
+            <strong><%= @article_newest.user.first_name + " " + @article_newest.user.last_name %></strong>
+            <small><%= time_ago_in_words(@article_newest.created_at).upcase + " AGO"%></small>
+          </div> <!-- author -->
+        </div><!-- article-large -->
+      </a>
+
+      <div class="col-sm-6 article-panel">
+        <% @articles_odd.each do |article| %>
           <a href="<%= article_path(article) %>">
-          <div class="article-large">
-              <% if article.image %>
-                    <%= image_tag(article.image.url(public: true)) %>
-              <% end %>
-            <h2><%= article.title.upcase %></h2>
-            <div class="overlay"></div>
-            <div class="author">
-              <strong><%= article.user.first_name + " " + article.user.last_name %></strong>
-              <small><%= time_ago_in_words(article.created_at).upcase + " AGO"%></small>
-            </div> <!-- author -->
-          </div><!-- article-large -->
+            <div class="article-large">
+              <%= image_tag(article.image.url(public: true)) if article.image %>
+              <h2><%= article.title.upcase %></h2>
+              <div class="overlay"></div>
+              <div class="author">
+                <strong><%= article.user.first_name + " " + article.user.last_name %></strong>
+                <small><%= time_ago_in_words(article.created_at).upcase + " AGO"%></small>
+              </div> <!-- author -->
+            </div><!-- article-large -->
           </a>
-        <% elsif i <= 8 %>
-          <% if i == 1 || i == 3 || i == 5 || i == 7 %>
-            <div class="col-sm-6 article-panel">
-          <% end %>
+        <% end %>
+      </div> <!-- col-sm-6 -->
+      <div class="col-sm-6 article-panel">
+        <% @articles_even.each do |article| %>
             <a href="<%= article_path(article) %>">
               <div class="article-large">
-                  <% if article.image %>
-                        <%= image_tag(article.image.url(public: true)) %>
-                  <% end %>
+                <%= image_tag(article.image.url(public: true)) if article.image %>
                 <h2><%= article.title.upcase %></h2>
                 <div class="overlay"></div>
                 <div class="author">
@@ -37,43 +46,35 @@
                 </div> <!-- author -->
               </div><!-- article-large -->
             </a>
-          <% if i == 2 || i == 4 || i == 6 || i == 8 %>
-            </div> <!-- col-sm-6 --> 
-          <% end %>
-          <% if i == 8 %>
-            </div> <!-- col-sm-8 -->
-            <div class="col-sm-4">
-              <div class="article-header col-xs-12">
-                <h6 align="center">MOST RECENT</h6>
-              </div> <!-- article-header -->
-          <% end %>
-      
-        <% elsif i > 8 %>
-          <div class="article-most-recent col-xs-12" style="padding: 0">
-            <a href="<%= article_path(article) %>">
-              <div class="col-sm-10">
-                <h4><%= article.title %></h4>
-                <p><%= time_ago_in_words(article.created_at).upcase + " AGO" %></p>
-              </div> <!-- col-sm-10 -->
-              <div class="col-sm-2 hidden-xs">
-                <div style="padding-top: 7.5px">
-                <%= gravatar_for(article.user, size: 25) %>
-                </div>
-              </div> <!-- col-sm-2 hidden-xs -->
-            </a>
-          </div> <!-- article-most-recent -->
-          <% if i + 1 == @articles.length %>
-          <a href="#">
-            <div class="article-view-more text-center col-xs-12">
-                <span>VIEW MORE</span>
-            </div>
-          </a>
-          </div> <!-- col-sm-4 -->
-          <% end %>
         <% end %>
-      
+      </div> <!-- col-sm-6 -->
+    </div> <!-- col-sm-8 -->
+    <div class="col-sm-4">
+      <div class="article-header col-xs-12">
+        <h6 align="center">MOST RECENT</h6>
+      </div> <!-- article-header -->
+
+      <% @articles_all.each do |article| %>
+        <div class="article-most-recent col-xs-12" style="padding: 0">
+          <a href="<%= article_path(article) %>">
+            <div class="col-sm-10">
+              <h4><%= article.title %></h4>
+              <p><%= time_ago_in_words(article.created_at).upcase + " AGO" %></p>
+            </div> <!-- col-sm-10 -->
+            <div class="col-sm-2 hidden-xs">
+              <div style="padding-top: 7.5px">
+              <%= gravatar_for(article.user, size: 25) %>
+              </div>
+            </div> <!-- col-sm-2 hidden-xs -->
+          </a>
+        </div> <!-- article-most-recent -->
       <% end %>
-    
+      <a href="#">
+        <div class="article-view-more text-center col-xs-12">
+            <span>VIEW MORE</span>
+        </div>
+      </a>
+    </div> <!-- col-sm-4 -->
     <% if !current_user_subscribed? %>
     <div class="col-xs-12 article-trial text-center">
       <h2 class="industry-main" style="margin-top:0">START 7-DAY FREE TRIAL TODAY</h2>
