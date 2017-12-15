@@ -13,6 +13,6 @@ class PagesController < ApplicationController
   end
 
   def news
-    @articles = Article.where(:approved => true).order(created_at: :desc).limit(11)
+    @articles = Article.where(:approved => true).order(created_at: :desc).limit(30)
   end
 end
