@@ -75,7 +75,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :content, :image, :approved)
+      params.require(:article).permit(:title, :content, :image, :approved, :free)
     end
     def is_thiers?
       if current_user.contributor? && !current_user.admin? && !current_user.editor?

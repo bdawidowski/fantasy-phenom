@@ -37,11 +37,11 @@
       </div>
       <div class="article-single-body col-xs-12" id="<%= "non-sub" if !current_user_subscribed? %>">
         <%= sanitize @article.content %>
-        <% if !current_user_subscribed? %>
+        <% if !current_user_subscribed? and !@article.free %>
           <div class="shadow"></div>
         <% end %>
       </div>
-      <% if !current_user_subscribed? %>
+      <% if !current_user_subscribed? and !@article.free %>
         <div class="article-sub col-xs-12 text-center">
           <h1 class="industry-main">YOU'RE MISSING OUT!</h1>
           <div class="col-sm-8 col-sm-offset-2">

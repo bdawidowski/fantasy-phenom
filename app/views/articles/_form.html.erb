@@ -48,9 +48,17 @@
                 <span class="slider round"></span>
             </label>
           </div>
+          <div class="form-group">
+            <label>FREE:</label>
+            <br/>
+            <label class="switch">
+              <%= f.check_box :free, class: "form-control" %>
+              <span class="slider round"></span>
+            </label>
+          </div>
         <!--<input type="hidden" name="article[approved]" id="article_approved" value="true" />-->
       <% else %> 
-        <input type="hidden" name="article[approved]" id="article_approved" value="false" />
+        <input type="hidden" name="article[approved]" id="article_approved" value="false" /><input type="hidden" name="article[free]" id="article_free" value="false" />
       <% end %>
       
       
