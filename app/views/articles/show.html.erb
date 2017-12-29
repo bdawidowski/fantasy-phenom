@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="article-single-body col-xs-12" id="<%= "non-sub" if !current_user_subscribed? %>">
+      <div class="article-single-body col-xs-12" id="<%= "non-sub" if !current_user_subscribed? and !@article.free %>">
         <%= sanitize @article.content %>
         <% if !current_user_subscribed? and !@article.free %>
           <div class="shadow"></div>
