@@ -43,16 +43,20 @@ function initStrip(){
         var extraDetails = {
             name: form.querySelector('input[name=cardholder-name]').value
         };
-        stripe.createToken(card, extraDetails).then(function (result) {
-            if (result.error) {
-                // Inform the user if there was an error
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
-            } else {
-                // Send the token to your server
-                stripeTokenHandler(result.token);
-            }
-        });
+        if(document.getElementById('card-errors').textContent == '') {
+            stripe.createToken(card, extraDetails).then(function (result) {
+                if (result.error) {
+                    // Inform the user if there was an error
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server
+                    stripeTokenHandler(result.token);
+                }
+            });
+        } else {
+            document.getElementById('sub-btn').textContent = 'Try Again Please!'
+        }
     });
 
 }
