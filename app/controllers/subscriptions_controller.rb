@@ -5,33 +5,33 @@ class SubscriptionsController < ApplicationController
     def new
     end
     def create
-        customer =  if current_user.stripe_id?
-                        Stripe::Customer.retrieve(current_user.stripe_id)
-                    else
-                        Stripe::Customer.create(
-                            email: current_user.email
-                            )
-                    end
-        subs = customer.subscriptions.create(
-            source: params[:stripeToken],
-            plan: '101'
-        )
-        if current_user.rocket_token.nil?
-            generated_rocket_pw = (0...8).map { (65 + rand(26)).chr }.join
-            rocket_server = RocketChat::Server.new('https://fantasy-phenom.rocket.chat')
-            rocket_session = rocket_server.login("admin", Rails.application.secrets.rocket_pw)
-        
-            user = rocket_session.users.create(current_user.email.sub(/@.*?$/, ""), current_user.email, current_user.first_name + " " + current_user.last_name,  generated_rocket_pw,
-                                 active: true, send_welcome_email: true)
-            rocket_token = rocket_session.users.create_token(user_id: user.id)
-            rocket_token = rocket_token.user_id
-            NotifyAdminEmail.new_subscriber(current_user).deliver
-        else 
-            generated_rocket_pw = current_user.rocket_pw
-            rocket_token = current_user.rocket_token
-        end
-        
-        if params[:card_last4]
+        if params[:stripeToken] and params[:card_last4]
+            customer =  if current_user.stripe_id?
+                            Stripe::Customer.retrieve(current_user.stripe_id)
+                        else
+                            Stripe::Customer.create(
+                                email: current_user.email
+                                )
+                        end
+            subs = customer.subscriptions.create(
+                source: params[:stripeToken],
+                plan: '101'
+            )
+            if current_user.rocket_token.nil?
+                generated_rocket_pw = (0...8).map { (65 + rand(26)).chr }.join
+                rocket_server = RocketChat::Server.new('https://fantasy-phenom.rocket.chat')
+                rocket_session = rocket_server.login("admin", Rails.application.secrets.rocket_pw)
+
+                user = rocket_session.users.create((0...8).map { (65 + rand(26)).chr }.join, current_user.email, current_user.first_name + " " + current_user.last_name,  generated_rocket_pw,
+                                     active: true, send_welcome_email: true)
+                rocket_token = rocket_session.users.create_token(user_id: user.id)
+                rocket_token = rocket_token.user_id
+                NotifyAdminEmail.new_subscriber(current_user).deliver
+            else
+                generated_rocket_pw = current_user.rocket_pw
+                rocket_token = current_user.rocket_token
+            end
+
             current_user.update(
                 stripe_id: customer.id,
                 stripe_subscription_id: subs.id,
@@ -45,19 +45,12 @@ class SubscriptionsController < ApplicationController
                 rocket_pw: generated_rocket_pw,
                 amount: "9.99"
             )
-        else
-            render :new
-        end
-
-
-        
-        if subs
             flash[:success] = "You have successfull subscribed!"
             redirect_to root_path
         else
-            render :new
+            flash[:danger] = "Something went wrong subscribed!"
+            redirect_to new_subscription_path
         end
-        
     end
     def edit
     end
