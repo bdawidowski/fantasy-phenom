@@ -9,6 +9,7 @@ class GooglesheetsController < ApplicationController
     @nba = Googlesheet.find_by_sport('NBA')
     @nfl = Googlesheet.find_by_sport('NFL')
     @mlb = Googlesheet.find_by_sport('MLB')
+    @pga = Googlesheet.find_by_sport('PGA')
   end
 
   # GET /googlesheets/1
