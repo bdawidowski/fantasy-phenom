@@ -208,10 +208,16 @@ h1 {
     color: white;
 }
 
-.img-home-logos {
+.img-home-logos,
+.img-ref-logos {
     margin: 20px auto;
     display: block;
-    width: 100px;
+}
+.img-home-logos {
+  width: 100px;
+}
+.img-ref-logos {
+  width: 200px;
 }
 .img-container { 
     position: relative; 

@@ -18,6 +18,8 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application", :media => "all" %>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
+    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
+
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
     <%= favicon_link_tag asset_path('favicon/apple-icon-144x144.png'), :rel => 'apple-touch-icon', :type => 'image/png', :sizes => '144x144' %>

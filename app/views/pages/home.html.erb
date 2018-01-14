@@ -22,9 +22,10 @@
       <%= link_to "JOIN THE TEAM", new_user_registration_path, :class => "btn btn-primary btn-dark-line industry-main" %>
     <% end %>
   </div>
+
 </div>
 <div class="row">
-  <div class="container" style="background-color: #3B3B3C; margin-top: 100px; margin-bottom: 100px">
+  <div class="container" style="background-color: #3B3B3C; margin-top: 100px; margin-bottom: 10px">
     <div class="col-md-8">
       <div class="join-text-container hidden-xs" style="margin-top: 10px">
         <p>Fantasy Phenom is a fantasy sports community centered around its members. Each individual "Phenom" is a player on this team offering a unique contributions. We operate this team under a common goal:</p>
@@ -42,6 +43,19 @@
       <br/><br/>
       <a href="<%= new_user_registration_path %>">JOIN</a>
       </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-sm-offset-3">
+    <h1 class="text-center industry-main wcolor" style="margin-top: 50px">OUR PARTNERS</h1>
+    <div class="col-xs-6">
+      <a href="https://drftbd.co/2CD8vwZ" target="_blank">
+        <%= image_tag("logos/DRAFTBOARD.png", class: "img-ref-logos") %>
+      </a>
+    </div>
+    <div class="col-xs-6">
+      <a href="https://beta.drafters.com/signup" target="_blank">
+        <%= image_tag("logos/DRAFTERS.png", class: "img-ref-logos") %>
+      </a>
     </div>
   </div>
 </div>

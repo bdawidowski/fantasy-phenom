@@ -73,6 +73,8 @@ Rails.application.configure do
       user_name: Rails.application.secrets.gmail_username,
       password: Rails.application.secrets.gmail_password
       }
+
+  GA.tracker = 'UA-112396595-1'
   config.action_mailer.default_url_options = {host: Rails.application.secrets.url_link}
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
