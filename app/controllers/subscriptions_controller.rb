@@ -15,7 +15,7 @@ class SubscriptionsController < ApplicationController
                         end
             subs = customer.subscriptions.create(
                 source: params[:stripeToken],
-                plan: '101'
+                plan: '102'
             )
             if current_user.rocket_token.nil?
                 generated_rocket_pw = (0...8).map { (65 + rand(26)).chr }.join
