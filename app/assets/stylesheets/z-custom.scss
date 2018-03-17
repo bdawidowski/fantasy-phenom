@@ -381,6 +381,21 @@ span #lg-letter {
     -moz-transition: background-color .55s ease-in-out, border 1s ease-in-out;
     -webkit-transition: background-color .55s ease-in-out, border 1s ease-in-out;
 }
+.envi-badge {
+  border-radius: 3px;
+  padding: 5px 5px;
+  display: inline-block;
+  font-weight: 900;
+}
+.badge-dev {
+  background-color: #85f683;
+}
+.badge-alpha {
+  background-color: #F04F67;
+}
+.badge-beta {
+  background-color: #97b6ee;
+}
 .float-social{
     position: fixed;
     z-index: 1;

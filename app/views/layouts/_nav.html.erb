@@ -7,7 +7,15 @@
             <span class="icon-bar"></span>
         </button>
             <a class="navbar-brand wcolor" href="<%= root_path %>" style="color: white; font-size: 30px;">
-            FANTASY<strong>PHENOM</strong><% if current_user_subscribed? %> <i class="fa fa-check-circle" style="color: #C6B358; font-size: 25px; vertical-align: middle; "></i> <% end %>
+            FANTASY<strong>PHENOM</strong>
+              <% if Rails.application.secrets.deployment == 'DEV' %>
+                  <span class="envi-badge badge-dev">DEV</span>
+              <% elsif Rails.application.secrets.deployment == 'ALPHA' %>
+                  <span class="envi-badge badge-alpa">ALPHA</span>
+            <% elsif Rails.application.secrets.deployment == 'BETA' %>
+                  <span class="envi-badge badge-beta">BETA</span>
+              <% end %>
+              <% if current_user_subscribed? %> <i class="fa fa-check-circle" style="color: #C6B358; font-size: 25px; vertical-align: middle; "></i> <% end %>
         </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
