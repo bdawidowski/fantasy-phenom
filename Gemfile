@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '~>2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.5'
@@ -40,6 +40,7 @@ gem 'shrine'
 gem 'aws-sdk'
 gem 'roda'
 gem 'jquery-fileupload-rails'
+gem 'google-api-client'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

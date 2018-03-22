@@ -1,0 +1,18 @@
+<% @games.each do |game| %>
+  <div class="row">
+    <%= render 'mlb_base', game: game %>
+  </div>
+  <div class="row">
+    <%= render 'mlb_team', game: game %>
+  </div>
+  <div class="row">
+    <%= render 'mlb_pitcher', game: game %>
+  </div>
+  <div class="row">
+    <%= render 'mlb_away_batters', game: game %>
+  </div>
+  <div class="row">
+    <%= render 'mlb_home_batters', game: game %>
+  </div>
+<% end %>
+

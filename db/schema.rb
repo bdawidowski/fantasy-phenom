@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171223171528) do
+ActiveRecord::Schema.define(version: 20180320031114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,33 @@ ActiveRecord::Schema.define(version: 20171223171528) do
     t.datetime "updated_at", null: false
     t.string   "date_for"
     t.boolean  "status"
+  end
+
+  create_table "mlb_games", force: :cascade do |t|
+    t.string   "away_team",       default: ""
+    t.string   "home_team",       default: ""
+    t.text     "away_batters",    default: [],              array: true
+    t.text     "home_batters",    default: [],              array: true
+    t.text     "team_batting_r",  default: [],              array: true
+    t.text     "team_batting_l",  default: [],              array: true
+    t.text     "team_batting_h",  default: [],              array: true
+    t.text     "team_batting_a",  default: [],              array: true
+    t.string   "away_bet",        default: ""
+    t.string   "away_money_line", default: ""
+    t.string   "home_bet",        default: ""
+    t.string   "home_money_line", default: ""
+    t.string   "degree",          default: ""
+    t.string   "weather",         default: ""
+    t.string   "wind",            default: ""
+    t.text     "pitcher_home",    default: [],              array: true
+    t.text     "pitcher_away",    default: [],              array: true
+    t.text     "pitcher_left",    default: [],              array: true
+    t.text     "pitcher_right",   default: [],              array: true
+    t.text     "pitcher_road",    default: [],              array: true
+    t.text     "pitcher_30days",  default: [],              array: true
+    t.text     "pitcher_2017",    default: [],              array: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "standings", force: :cascade do |t|

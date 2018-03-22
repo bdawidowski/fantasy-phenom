@@ -1,0 +1,95 @@
+<% pitcher_home = game.pitcher_home %>
+<% pitcher_away = game.pitcher_away %>
+<% pitcher_left = game.pitcher_left %>
+<% pitcher_right = game.pitcher_right %>
+<% pitcher_road = game.pitcher_road %>
+<% pitcher_30days = game.pitcher_30days %>
+<% pitcher_2017 = game.pitcher_2017 %>
+<div class="col-sm-6">
+  <table class="table table-data text-center">
+    <tr>
+      <td colspan="3"><%= pitcher_away[0] %></td>
+      <td><%= pitcher_away[1] %></td>
+      <td colspan="2"><%= pitcher_away[2] %></td>
+      <td colspan="2"><%= pitcher_away[3] %></td>
+    </tr>
+  </table>
+</div>
+<div class="col-sm-6">
+  <table class="table table-data text-center">
+    <tr>
+      <td colspan="3"><%= pitcher_home[0] %></td>
+      <td><%= pitcher_home[1] %></td>
+      <td colspan="2"><%= pitcher_home[2] %></td>
+      <td colspan="2"><%= pitcher_home[3] %></td>
+    </tr>
+  </table>
+</div>
+<div class="col-sm-6">
+  <table class="table table-data text-center">
+    <tbody>
+      <tr>
+        <td>OBP</td>
+        <td>wOBA</td>
+        <td>K%</td>
+        <td>HC%</td>
+        <td>FB%</td>
+        <td>HR/9</td>
+        <td>xFIP</td>
+        <td colspan="2"></td>
+        <td>OBP</td>
+        <td>wOBA</td>
+        <td>K%</td>
+        <td>HC%</td>
+        <td>FB%</td>
+        <td>HR/9</td>
+        <td>xFIP</td>
+      </tr>
+      <tr>
+        <% pitcher_left[0..6].each do |pl| %>
+            <td> <%= pl %></td>
+        <% end %>
+        <td colspan="2">v. LEFT HANDED HITTING</td>
+        <% pitcher_left[7..14].each do |pl| %>
+            <td> <%= pl %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <% pitcher_right[0..6].each do |pr| %>
+            <td> <%= pr %></td>
+        <% end %>
+        <td colspan="2">v. RIGHT HANDED HITTING</td>
+        <% pitcher_right[7..14].each do |pr| %>
+            <td> <%= pr %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <% pitcher_road[0..6].each do |pro| %>
+            <td> <%= pro %></td>
+        <% end %>
+        <td colspan="2">ON THE ROAD</td>
+        <% pitcher_road[7..14].each do |pro| %>
+            <td> <%= pro %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <% pitcher_30days[0..6].each do |p30| %>
+            <td> <%= p30 %></td>
+        <% end %>
+        <td colspan="2">LAST 30 DAYS</td>
+        <% pitcher_30days[7..14].each do |p30| %>
+            <td> <%= p30 %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <% pitcher_2017[0..6].each do |p2017| %>
+            <td> <%= p2017 %></td>
+        <% end %>
+        <td colspan="2">2017</td>
+        <% pitcher_2017[7..14].each do |p2017| %>
+            <td> <%= p2017 %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
