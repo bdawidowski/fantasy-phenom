@@ -1,9 +1,11 @@
 development:
-    host: 127.0.0.1
-    username: favre421421
+    host: localhost
+    username: fp365-dev-user
+    password: 123123
     adapter: postgresql
-    database: fp365
+    database: fp365-dev
     encode: unicode
+    pool: 5
 production:
   url: <%= ENV["DATABASE_URL"] %>
   pool: <%= ENV["DB_POOL"] || ENV["MAX_THREADS"] || 5 %>

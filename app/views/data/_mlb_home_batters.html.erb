@@ -1,5 +1,6 @@
 <% home_batters = game.home_batters %>
-<div class="col-sm-6">
+<div class="container">
+<div class="col-sm-6 col-sm-offset-3">
   <table class="table table-data text-center">
     <tbody>
     <tr>
@@ -9,7 +10,7 @@
     </tbody>
   </table>
 </div>
-<div class="col-sm-6">
+<div class="col-sm-12">
   <table class="table table-data text-center">
     <tbody>
     <tr>
@@ -25,9 +26,10 @@
       <td>HARD%</td>
       <td>FB%</td>
       <td>K%</td>
-      <td>HR%</td>
-      <td>StCast%</td>
-      <td>MwOBA</td>
+      <td>HC%</td>
+      <td>FB%</td>
+      <td>AB/HR</td>
+      <td>PA</td>
     </tr>
     <% home_batters.each do |batter| %>
         <tr>
@@ -38,4 +40,5 @@
     <% end %>
     </tbody>
   </table>
+</div>
 </div>

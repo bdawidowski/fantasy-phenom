@@ -8,7 +8,7 @@ require 'fileutils'
 class GetMlbData
   def initialize(spreadsheet_id)
     oob_url = 'urn:ietf:wg:oauth:2.0:oob'
-    application_name = 'Google Sheets API Ruby Quickstart'
+    application_name = 'FP365'
     credentials_path = File.join(Dir.home, '.credentials', "sheets.googleapis.com-ruby-quickstart.yaml")
     scope = Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY
     FileUtils.mkdir_p(File.dirname(credentials_path))
@@ -17,6 +17,7 @@ class GetMlbData
     token_store = Google::Auth::Stores::FileTokenStore.new(file: credentials_path)
     authorizer = Google::Auth::UserAuthorizer.new(
         client_id, scope, token_store)
+
     user_id = 'default'
     credentials = authorizer.get_credentials(user_id)
     # Initialize the API
