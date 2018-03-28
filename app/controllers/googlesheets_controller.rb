@@ -29,17 +29,14 @@ class GooglesheetsController < ApplicationController
   # POST /googlesheets
   # POST /googlesheets.json
   def create
-    @googlesheet = Googlesheet.new(googlesheet_params)
-
-    respond_to do |format|
-      if @googlesheet.save
-        format.html { redirect_to @googlesheet, notice: 'Googlesheet was successfully created.' }
-        format.json { render :index, status: :created, location: @googlesheet }
-      else
-        format.html { render :new }
-        format.json { render json: @googlesheet.errors, status: :unprocessable_entity }
+      begin
+        GetMlbData.new(Rails.application.secrets.google_sheets_id)
+        flash[:success] = "Updated Sucessfully!"
+      rescue
+        flash[:warning] = "Something went wrong"
+      ensure
+        redirect_to data_mlb_path
       end
-    end
   end
 
   # PATCH/PUT /googlesheets/1
@@ -71,6 +68,6 @@ class GooglesheetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def googlesheet_params
-      params.require(:googlesheet).permit(:sport.upcase, :link, :date_for, :status)
+      params.require(:googlesheet).permit(:sport.upcase, :link, :date_for, :status, :sync)
     end
 end

@@ -520,18 +520,70 @@ footer a:hover {
 table {color: #ccc;}
 table thead {color: #fff;}
 .dropdown-menu li a {
-
    width: 400px;
 }
 
 .table-data {
   width: 100%;
+  background-color: #222222;
+  color: #fff;
 }
-
+.data-table-dark {
+  background-color: #000;
+}
+.data-confirmed {
+  color: #49A359;
+}
+.data-unconfirmed {
+  color: #C23430;
+}
+.data-container {
+  padding: 25px;
+}
 .table-data > tbody,
 .table-data > tbody > tr > td,
 .table-data > tbody > tr {
   border: 2px solid #C6B264;
+}
+.table-data-head {
+  font-weight: bolder;
+}
+.data-logo-img {
+  display: inline-block;
+  width: 80%;
+  margin: 0px auto;
+  padding: 25px;
+}
+
+.td-color-0 {
+  background-color: #C23430;
+}
+.td-color-1 {
+  background-color: #964B4B;
+}
+.td-color-2 {
+  background-color: #C0635F;
+}
+.td-color-3 {
+  background-color: #E08682;
+}
+.td-color-5 {
+  background-color: #AED193;
+}
+.td-color-6 {
+  background-color: #82BF71;
+}
+.td-color-7 {
+  background-color: #49A359;
+}
+
+.batter-data-0,
+.batter-data-1 {
+  color: #4DABE9;
+}
+.batter-data-2,
+.batter-data-3 {
+  color: #C2B364;
 }
 
 

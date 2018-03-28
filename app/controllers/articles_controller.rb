@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
       @articles = Article.order(created_at: :desc)
     elsif current_user.contributor
       @articles = Article.where(:user_id => current_user.id)
+    else
+      @article = Article.where(:approved => true).order(created_at: :desc)
     end
   end
 

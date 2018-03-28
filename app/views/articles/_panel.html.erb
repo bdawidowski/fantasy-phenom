@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-  <h3 align="center" class="wcolor">ARTICLE MANAGMENT</h3>
+  <h3 align="center" class="wcolor">ARTICLES</h3>
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
@@ -29,14 +29,13 @@
                             <%= time_ago_in_words(article.created_at).upcase + " AGO" %>
                         </td>
                         <td>
-                          <%= link_to "EDIT", edit_article_path(article),  class: "btn btn-default" %> 
+                          <%= link_to "EDIT", edit_article_path(article),  class: "btn btn-default" if current_user_admin? or current_user_contribor? or current_user_editor? %>
                           <%= link_to "SHOW", article_path(article),  class: "btn btn-default" %>
-                          <% if current_user_admin? %>
+                          <% if current_user_admin? or current_user_editor? %>
                             <%= link_to "DELETE", article, method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger" %>
                           <% end %>
                         </td>
                     </tr>
-                
                 <% end %>
             </tbody>
           </table>

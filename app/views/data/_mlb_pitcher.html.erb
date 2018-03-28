@@ -7,30 +7,30 @@
 <% pitcher_2017 = game.pitcher_2017 %>
 <div class="container">
 <div class="col-sm-6">
-  <table class="table table-data text-center">
+  <table class="table table-data text-center" id="pitcher-table">
     <tr>
-      <td colspan="5"><%= pitcher_away[0] %></td>
+      <td colspan="5" class="table-data-head"><%= pitcher_away[0] %></td>
       <td width="10%"><%= pitcher_away[1] %></td>
-      <td width="25%"><%= pitcher_away[2] %></td>
-      <td width="25%"><%= pitcher_away[3] %></td>
+      <td width="25%" class="dollar-data batter-data-0 data-table-dark"><%= pitcher_away[2] %></td>
+      <td width="25%" class="dollar-data batter-data-2 data-table-dark"><%= pitcher_away[3] %></td>
     </tr>
   </table>
 </div>
 <div class="col-sm-6">
   <table class="table table-data text-center">
     <tr>
-      <td><%= pitcher_home[0] %></td>
+      <td colspan="5" class="table-data-head"><%= pitcher_home[0] %></td>
       <td width="10%"><%= pitcher_home[1] %></td>
-      <td width="25%"><%= pitcher_home[2] %></td>
-      <td width="25%"><%= pitcher_home[3] %></td>
+      <td width="25%" class="dollar-data batter-data-0"><%= pitcher_home[2] %></td>
+      <td width="25%" class="dollar-data batter-data-2"><%= pitcher_home[3] %></td>
     </tr>
   </table>
 </div>
-
+</div>
 <div class="col-sm-12">
   <table class="table table-data text-center">
     <tbody>
-      <tr>
+      <tr class="table-data-head">
         <td>OBP</td>
         <td>wOBA</td>
         <td>K%</td>
@@ -48,51 +48,50 @@
         <td>xFIP</td>
       </tr>
       <tr>
-        <% pitcher_left[0..6].each do |pl| %>
-            <td class="goodbad"> <%= pl %></td>
+        <% pitcher_left[0..6].each_with_index do |pl, i| %>
+            <td class="pitcher-data-<%= i %>"> <%= pl %></td>
         <% end %>
-        <td colspan="2">v. LEFT HANDED HITTING</td>
-        <% pitcher_left[7..14].each do |pl| %>
-            <td class="goodbad"> <%= pl %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <% pitcher_right[0..6].each do |pr| %>
-            <td class="goodbad"> <%= pr %></td>
-        <% end %>
-        <td colspan="2">v. RIGHT HANDED HITTING</td>
-        <% pitcher_right[7..14].each do |pr| %>
-            <td class="goodbad"> <%= pr %></td>
+        <td colspan="2" class="table-data-head">v. LEFT HANDED HITTING</td>
+        <% pitcher_left[7..14].each_with_index do |pl, i| %>
+            <td class="pitcher-data-<%= i %>"> <%= pl %></td>
         <% end %>
       </tr>
       <tr>
-        <% pitcher_road[0..6].each do |pro| %>
-            <td class="goodbad"> <%= pro %></td>
+        <% pitcher_right[0..6].each_with_index do |pr, i| %>
+            <td class="pitcher-data-<%= i %>"> <%= pr %></td>
         <% end %>
-        <td colspan="2">ON THE ROAD</td>
-        <% pitcher_road[7..14].each do |pro| %>
-            <td class="goodbad"> <%= pro %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <% pitcher_30days[0..6].each do |p30| %>
-            <td class="goodbad"> <%= p30 %></td>
-        <% end %>
-        <td colspan="2">LAST 30 DAYS</td>
-        <% pitcher_30days[7..14].each do |p30| %>
-            <td class="goodbad"> <%= p30 %></td>
+        <td colspan="2" class="table-data-head">v. RIGHT HANDED HITTING</td>
+        <% pitcher_right[7..14].each_with_index do |pr, i| %>
+            <td class="pitcher-data-<%= i %>"> <%= pr %></td>
         <% end %>
       </tr>
       <tr>
-        <% pitcher_2017[0..6].each do |p2017| %>
-            <td class="goodbad"> <%= p2017 %></td>
+        <% pitcher_road[0..6].each_with_index do |pro, i| %>
+            <td class="pitcher-data-<%= i %>"> <%= pro %></td>
         <% end %>
-        <td colspan="2">2017</td>
-        <% pitcher_2017[7..14].each do |p2017| %>
-            <td class="goodbad"> <%= p2017 %></td>
+        <td colspan="2" class="table-data-head">ON THE ROAD</td>
+        <% pitcher_road[7..14].each_with_index do |pro, i| %>
+            <td class="pitcher-data-<%= i %>"> <%= pro %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <% pitcher_30days[0..6].each_with_index do |p30, i| %>
+            <td class="pitcher-data-<%= i %>"> <%= p30 %></td>
+        <% end %>
+        <td colspan="2" class="table-data-head">LAST 30 DAYS</td>
+        <% pitcher_30days[7..14].each_with_index do |p30, i| %>
+            <td class="pitcher-data-<%= i %>"> <%= p30 %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <% pitcher_2017[0..6].each_with_index do |p2017, i| %>
+            <td class="pitcher-data-<%= i %>"> <%= p2017 %></td>
+        <% end %>
+        <td colspan="2" class="table-data-head">2017</td>
+        <% pitcher_2017[7..14].each_with_index do |p2017, i| %>
+            <td class="pitcher-data-<%= i %>"> <%= p2017 %></td>
         <% end %>
       </tr>
     </tbody>
   </table>
-</div>
 </div>

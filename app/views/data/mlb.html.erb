@@ -1,18 +1,29 @@
-<% @games.each do |game| %>
-  <div class="row">
-    <%= render 'mlb_base', game: game %>
-  </div>
-  <div class="row">
-    <%= render 'mlb_team', game: game %>
-  </div>
-  <div class="row">
-    <%= render 'mlb_pitcher', game: game %>
-  </div>
-  <div class="row">
-    <%= render 'mlb_away_batters', game: game %>
-  </div>
-  <div class="row">
-    <%= render 'mlb_home_batters', game: game %>
-  </div>
+<div class="data-container">
+<% @games.each_with_index do |game, i| %>
+    <div class="row">
+      <%= render 'mlb_base', game: game %>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#<%= "game#{i}" %>" aria-expanded="false" aria-controls="<%= "game#{i}" %>">
+          VIEW DATA
+        </button>
+      </div>
+    </div>
+    <div class="collapse" id="<%= "game#{i}" %>">
+      <div class="row " style="margin-top: 25px">
+        <%= render 'mlb_team', game: game %>
+      </div>
+      <div class="row">
+        <%= render 'mlb_pitcher', game: game %>
+      </div>
+      <div class="row">
+        <%= render 'mlb_away_batters', game: game %>
+      </div>
+      <div class="row">
+        <%= render 'mlb_home_batters', game: game %>
+      </div>
+    </div>
 <% end %>
+</div>
 

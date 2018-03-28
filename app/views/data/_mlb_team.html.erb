@@ -3,9 +3,9 @@
 <% team_batting_h = game.team_batting_h %>
 <% team_batting_a = game.team_batting_a %>
 <div class="col-sm-12">
-  <table class="table table-data text-center">
+  <table class="table table-data text-center" id="team-batting-table">
     <tbody>
-    <tr>
+    <tr class="table-data-head">
       <td colspan="2"></td>
       <td>OBP</td>
       <td>wOBA</td>
@@ -23,64 +23,63 @@
       <td colspan="2"></td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="2" class="table-data-head">
         TEAM BATTING v. RIGHT
       </td>
-      <% team_batting_r[0..5].each do |tbr| %>
-          <td><%= tbr %></td>
+      <% team_batting_r[0..5].each_with_index do |tbr, i| %>
+          <td class="team-batting-data-<%= i %>"><%= tbr %></td>
       <% end %>
       <td></td>
-      <% team_batting_r[6..11].each do |tbr| %>
-          <td><%= tbr %></td>
+      <% team_batting_r[6..11].each_with_index do |tbr, i| %>
+          <td class="team-batting-data-<%= i %>"><%= tbr %></td>
       <% end %>
-      <td colspan="2">
+      <td colspan="2" class="table-data-head">
         TEAM BATTING v. RIGHT
       </td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="2" class="table-data-head">
         TEAM BATTING v. LEFT
       </td>
-      <% team_batting_l[0..5].each do |tbl| %>
-          <td><%= tbl %></td>
+      <% team_batting_l[0..5].each_with_index do |tbl, i| %>
+          <td class="team-batting-data-<%= i %>"><%= tbl %></td>
       <% end %>
       <td></td>
-      <% team_batting_l[6..11].each do |tbl| %>
-          <td><%= tbl %></td>
+      <% team_batting_l[6..11].each_with_index do |tbl, i| %>
+          <td class="team-batting-data-<%= i %>"><%= tbl %></td>
       <% end %>
-      <td colspan="2">
+      <td colspan="2" class="table-data-head">
         TEAM BATTING v. LEFT
       </td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="2" class="table-data-head">
         TEAM BATTING HOME
       </td>
-      <% team_batting_h[0..5].each do |tbh| %>
-          <td><%= tbh %></td>
+      <% team_batting_h[0..5].each_with_index do |tbh, i| %>
+          <td class="team-batting-data-<%= i %>"><%= tbh %></td>
       <% end %>
       <td></td>
 
-      <% team_batting_h[6..11].each do |tbh| %>
-          <td><%= tbh %></td>
+      <% team_batting_h[6..11].each_with_index do |tbh, i| %>
+          <td class="team-batting-data-<%= i %>"><%= tbh %></td>
       <% end %>
-      <td colspan="2">
+      <td colspan="2" class="table-data-head">
         TEAM BATTING HOME
       </td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td colspan="2" class="table-data-head">
         TEAM BATTING AWAY
       </td>
-      <% team_batting_a[0..5].each do |tba| %>
-          <td><%= tba %></td>
+      <% team_batting_a[0..5].each_with_index do |tba, i| %>
+          <td class="team-batting-data-<%= i %>"><%= tba %></td>
       <% end %>
       <td></td>
-
-      <% team_batting_a[6..11].each do |tba| %>
-          <td><%= tba %></td>
+      <% team_batting_a[6..11].each_with_index do |tba, i| %>
+          <td class="team-batting-data-<%= i %>"><%= tba %></td>
       <% end %>
-      <td colspan="2">
+      <td colspan="2" class="table-data-head">
         TEAM BATTING AWAY
       </td>
     </tr>

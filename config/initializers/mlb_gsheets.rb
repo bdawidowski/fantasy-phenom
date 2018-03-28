@@ -20,6 +20,18 @@ class GetMlbData
 
     user_id = 'default'
     credentials = authorizer.get_credentials(user_id)
+
+    if credentials.nil?
+      url = authorizer.get_authorization_url(
+          base_url: oob_url)
+      puts "Open the following URL in the browser and enter the " +
+               "resulting code after authorization"
+      puts url
+      code = gets
+      credentials = authorizer.get_and_store_credentials_from_code(
+          user_id: user_id, code: code, base_url: oob_url)
+    end
+    credentials
     # Initialize the API
     service = Google::Apis::SheetsV4::SheetsService.new
     service.client_options.application_name = application_name
@@ -29,13 +41,18 @@ class GetMlbData
   end
   def fetchMlb(spreadsheet_id)
     MlbGame.delete_all
-    base = 1
+
+    range = "API!A1:Q30"
+    result = @service.get_spreadsheet_values(spreadsheet_id, range)
+    MlbGame.create(parseMlbResults(result.values)) if result.values
+
+    base = 60
     while base > 0
-      range = "API!A#{base}:Q#{base + 29}"
+      range = "API!A#{base}:Q#{base + 48}"
       result = @service.get_spreadsheet_values(spreadsheet_id, range)
       if result.values
         MlbGame.create(parseMlbResults(result.values))
-        base += 29
+        base += 40
       else
         base = 0
       end

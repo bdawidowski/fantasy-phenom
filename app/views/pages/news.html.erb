@@ -1,6 +1,7 @@
 <div class="container article-header" style="border-bottom: 2px solid #C6B358; color: #fff">
  <h4 align="center"><%= Date.today.strftime("%^B %e, %Y") %></h4>
 </div>
+<% if  @article_newest %>
 <div class="container">
   <div class="row">
     <div class="col-sm-8" style="margin-top: 20px">
@@ -69,7 +70,7 @@
           </a>
         </div> <!-- article-most-recent -->
       <% end %>
-      <a href="#">
+      <a href="<%= articles_path %>">
         <div class="article-view-more text-center col-xs-12">
             <span>VIEW MORE</span>
         </div>
@@ -77,12 +78,12 @@
     </div> <!-- col-sm-4 -->
     <% if !current_user_subscribed? %>
     <div class="col-xs-12 article-trial text-center">
-      <h2 class="industry-main" style="margin-top:0">START 30-DAY FREE TRIAL TODAY</h2>
+      <h2 class="industry-main" style="margin-top:0">START 7-DAY FREE TRIAL TODAY</h2>
       <h4>Get full access our content, communtity, and data!</h4>
       <a href="<%= new_subscription_path %>" class="btn btn-primary">SUBSCRIBE NOW</a>
     </div>
     <% end %>
   </div>
 </div>
-
+<% end %>
 
