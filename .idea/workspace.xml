@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b54d79fa-1d0c-4372-8179-08d04ff12893" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/googlesheets_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/googlesheets_controller.rb" />
-      <change beforePath="$PROJECT_DIR$/app/views/googlesheets/index.html.erb" afterPath="$PROJECT_DIR$/app/views/googlesheets/index.html.erb" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/views/data/mlb.html.erb" afterPath="$PROJECT_DIR$/app/views/data/mlb.html.erb" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,11 +24,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mlb.html.erb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/data/mlb.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/googlesheets/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="122" lean-forward="false" selection-start-line="7" selection-start-column="122" selection-end-line="7" selection-end-column="122" />
+            <state relative-caret-position="115">
+              <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="9" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -88,7 +98,6 @@
         <option value="$PROJECT_DIR$/app/views/data/_mlb_pitcher.html.erb" />
         <option value="$PROJECT_DIR$/app/views/data/_mlb_away_batters.html.erb" />
         <option value="$PROJECT_DIR$/app/views/data/_mlb_home_batters.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/data/mlb.html.erb" />
         <option value="$PROJECT_DIR$/app/views/pages/home.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/articles_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/articles/_panel.html.erb" />
@@ -100,6 +109,7 @@
         <option value="$PROJECT_DIR$/config/initializers/mlb_gsheets.rb" />
         <option value="$PROJECT_DIR$/app/controllers/googlesheets_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/googlesheets/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/data/mlb.html.erb" />
       </list>
     </option>
   </component>
@@ -159,7 +169,7 @@
               <item name="FP365" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="googlesheets" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -253,12 +263,12 @@
       <updated>1522103093198</updated>
       <workItem from="1522103095762" duration="1349000" />
       <workItem from="1522105356183" duration="3876000" />
-      <workItem from="1522111469213" duration="21990000" />
+      <workItem from="1522111469213" duration="22253000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27242000" />
+    <option name="totallyTimeSpent" value="27505000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -556,16 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/data/mlb.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/data-coloring.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -714,8 +714,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/googlesheets/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="122" lean-forward="false" selection-start-line="7" selection-start-column="122" selection-end-line="7" selection-end-column="122" />
+        <state relative-caret-position="115">
+          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/data/mlb.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="31" lean-forward="true" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
           <folding />
         </state>
       </provider>
