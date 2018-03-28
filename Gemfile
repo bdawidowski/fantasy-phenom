@@ -40,7 +40,7 @@ gem 'shrine'
 gem 'aws-sdk'
 gem 'roda'
 gem 'jquery-fileupload-rails'
-gem 'google-api-client'
+gem 'httparty'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

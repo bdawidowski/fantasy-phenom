@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b54d79fa-1d0c-4372-8179-08d04ff12893" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/data-coloring.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/FP365.iml" afterPath="$PROJECT_DIR$/.idea/FP365.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/z-custom.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/z-custom.scss" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/articles_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/articles_controller.rb" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/googlesheets_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/googlesheets_controller.rb" />
-      <change beforePath="$PROJECT_DIR$/app/views/articles/_panel.html.erb" afterPath="$PROJECT_DIR$/app/views/articles/_panel.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/data/_mlb_away_batters.html.erb" afterPath="$PROJECT_DIR$/app/views/data/_mlb_away_batters.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/data/_mlb_base.html.erb" afterPath="$PROJECT_DIR$/app/views/data/_mlb_base.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/data/_mlb_home_batters.html.erb" afterPath="$PROJECT_DIR$/app/views/data/_mlb_home_batters.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/data/_mlb_pitcher.html.erb" afterPath="$PROJECT_DIR$/app/views/data/_mlb_pitcher.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/data/_mlb_team.html.erb" afterPath="$PROJECT_DIR$/app/views/data/_mlb_team.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/data/mlb.html.erb" afterPath="$PROJECT_DIR$/app/views/data/mlb.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/googlesheets/index.html.erb" afterPath="$PROJECT_DIR$/app/views/googlesheets/index.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/googlesheets/new.html.erb" afterPath="$PROJECT_DIR$/app/views/googlesheets/new.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/pages/home.html.erb" afterPath="$PROJECT_DIR$/app/views/pages/home.html.erb" />
-      <change beforePath="$PROJECT_DIR$/app/views/pages/news.html.erb" afterPath="$PROJECT_DIR$/app/views/pages/news.html.erb" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
       <change beforePath="$PROJECT_DIR$/config/initializers/mlb_gsheets.rb" afterPath="$PROJECT_DIR$/config/initializers/mlb_gsheets.rb" />
       <change beforePath="$PROJECT_DIR$/config/secrets.yml" afterPath="$PROJECT_DIR$/config/secrets.yml" />
     </list>
@@ -31,21 +16,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mlb_gsheets.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mlb_gsheets.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/initializers/mlb_gsheets.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="49" column="18" lean-forward="false" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+            <state relative-caret-position="332">
+              <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="z-custom.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="966">
+              <caret line="42" column="14" lean-forward="false" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="z-custom.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/z-custom.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1606">
+            <state relative-caret-position="1745">
               <caret line="552" column="11" lean-forward="false" selection-start-line="552" selection-start-column="11" selection-end-line="552" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="secrets.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/secrets.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="27" column="65" lean-forward="false" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -81,11 +86,12 @@
         <option value="$PROJECT_DIR$/app/views/articles/_panel.html.erb" />
         <option value="$PROJECT_DIR$/app/views/pages/news.html.erb" />
         <option value="$PROJECT_DIR$/app/views/googlesheets/new.html.erb" />
-        <option value="$PROJECT_DIR$/config/secrets.yml" />
         <option value="$PROJECT_DIR$/app/controllers/googlesheets_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/googlesheets/index.html.erb" />
-        <option value="$PROJECT_DIR$/config/initializers/mlb_gsheets.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/z-custom.scss" />
+        <option value="$PROJECT_DIR$/config/secrets.yml" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/config/initializers/mlb_gsheets.rb" />
       </list>
     </option>
   </component>
@@ -238,12 +244,12 @@
       <updated>1522103093198</updated>
       <workItem from="1522103095762" duration="1349000" />
       <workItem from="1522105356183" duration="3876000" />
-      <workItem from="1522111469213" duration="18228000" />
+      <workItem from="1522111469213" duration="21148000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23480000" />
+    <option name="totallyTimeSpent" value="26400000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -299,14 +305,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/googlesheet.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/data/mlb.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -683,24 +681,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/secrets.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="65" />
+        <state relative-caret-position="247">
+          <caret line="27" column="65" lean-forward="false" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/mlb_gsheets.rb">
+    <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="49" column="18" lean-forward="false" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+        <state relative-caret-position="966">
+          <caret line="42" column="14" lean-forward="false" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/z-custom.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1606">
+        <state relative-caret-position="1745">
           <caret line="552" column="11" lean-forward="false" selection-start-line="552" selection-start-column="11" selection-end-line="552" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/mlb_gsheets.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
           <folding />
         </state>
       </provider>

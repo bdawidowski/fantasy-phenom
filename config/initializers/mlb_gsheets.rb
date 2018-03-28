@@ -1,57 +1,24 @@
-require 'google/apis/sheets_v4'
-require 'googleauth'
-require 'googleauth/stores/file_token_store'
-
-require 'fileutils'
-
+require 'httparty'
 
 class GetMlbData
-  def initialize(spreadsheet_id)
-    oob_url = 'urn:ietf:wg:oauth:2.0:oob'
-    application_name = 'FP365'
-    credentials_path = File.join(Dir.home, '.credentials', "sheets.googleapis.com-ruby-quickstart.yaml")
-    scope = Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY
-    FileUtils.mkdir_p(File.dirname(credentials_path))
-
-    client_id = Google::Auth::ClientId.from_hash(JSON.parse(Rails.application.secrets.google_sheets_secret))
-    token_store = Google::Auth::Stores::FileTokenStore.new(file: credentials_path)
-    authorizer = Google::Auth::UserAuthorizer.new(
-        client_id, scope, token_store)
-
-    user_id = 'default'
-    credentials = authorizer.get_credentials(user_id)
-
-    if credentials.nil?
-      url = authorizer.get_authorization_url(
-          base_url: oob_url)
-      puts "Open the following URL in the browser and enter the " +
-               "resulting code after authorization"
-      puts url
-      code = gets
-      credentials = authorizer.get_and_store_credentials_from_code(
-          user_id: user_id, code: code, base_url: oob_url)
-    end
-    credentials
-    # Initialize the API
-    service = Google::Apis::SheetsV4::SheetsService.new
-    service.client_options.application_name = application_name
-    service.authorization = credentials
-    @service = service
-    fetchMlb(spreadsheet_id)
+  def initialize
+    @base_url = "https://sheets.googleapis.com/v4/spreadsheets/#{Rails.application.secrets.google_sheets_id}/values/"
+    @secret_key = Rails.application.secrets.google_sheets_secret
+    fetchMlb
   end
-  def fetchMlb(spreadsheet_id)
+  def fetchMlb
     MlbGame.delete_all
 
     range = "API!A1:Q30"
-    result = @service.get_spreadsheet_values(spreadsheet_id, range)
-    MlbGame.create(parseMlbResults(result.values)) if result.values
+    result = HTTParty.get(@base_url + range + "?key=#{@secret_key}")
+    MlbGame.create(parseMlbResults(result["values"])) if result["values"]
 
     base = 60
     while base > 0
       range = "API!A#{base}:Q#{base + 48}"
-      result = @service.get_spreadsheet_values(spreadsheet_id, range)
-      if result.values
-        MlbGame.create(parseMlbResults(result.values))
+      result = HTTParty.get(@base_url + range + "?key=#{@secret_key}")
+      if result["values"]
+        MlbGame.create(parseMlbResults(result["values"]))
         base += 40
       else
         base = 0
@@ -91,8 +58,36 @@ class GetMlbData
     end
     return game
   end
-
-
-
-
 end
+
+
+# oob_url = 'urn:ietf:wg:oauth:2.0:oob'
+# application_name = 'FP365'
+# credentials_path = File.join(Dir.home, '.credentials', "sheets.googleapis.com-ruby-quickstart.yaml")
+# scope = Google::Apis::SheetsV4::AUTH_SPREADSHEETS_READONLY
+# FileUtils.mkdir_p(File.dirname(credentials_path))
+#
+# client_id = Google::Auth::ClientId.from_hash(JSON.parse(Rails.application.secrets.google_sheets_secret))
+# token_store = Google::Auth::Stores::FileTokenStore.new(file: credentials_path)
+# authorizer = Google::Auth::UserAuthorizer.new(
+#     client_id, scope, token_store)
+#
+# user_id = 'default'
+# credentials = authorizer.get_credentials(user_id)
+#
+# if credentials.nil?
+#   url = authorizer.get_authorization_url(
+#       base_url: oob_url)
+#   puts "Open the following URL in the browser and enter the " +
+#            "resulting code after authorization"
+#   puts url
+#   code = gets
+#   credentials = authorizer.get_and_store_credentials_from_code(
+#       user_id: user_id, code: code, base_url: oob_url)
+# end
+# credentials
+# # Initialize the API
+# service = Google::Apis::SheetsV4::SheetsService.new
+# service.client_options.application_name = application_name
+# service.authorization = credentials
+# @service = service
