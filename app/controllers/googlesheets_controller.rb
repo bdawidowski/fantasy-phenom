@@ -30,7 +30,7 @@ class GooglesheetsController < ApplicationController
   # POST /googlesheets.json
   def create
       begin
-        GetMlbData.new(Rails.application.secrets.google_sheets_id)
+        GetMlbData.new
         flash[:success] = "Updated Sucessfully!"
       rescue
         flash[:warning] = "Something went wrong"
