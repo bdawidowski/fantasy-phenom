@@ -22,9 +22,9 @@ document.onreadystatechange = function () {
         var pitcher_index_3 = document.querySelectorAll('.pitcher-data-3');
         setColors(pitcher_index_3, [40, 38, 35, 30, 28, 23, 20], true);
         var pitcher_index_4 = document.querySelectorAll('.pitcher-data-4');
-        setColors(pitcher_index_4, [35], false);
+        setColors(pitcher_index_4, [35], '');
         var pitcher_index_5 = document.querySelectorAll('.pitcher-data-5');
-        setColors(pitcher_index_5, [1], false);
+        setColors(pitcher_index_5, [1], true);
         var pitcher_index_6 = document.querySelectorAll('.pitcher-data-6');
         setColors(pitcher_index_6, [4.7, 4.4, 4.1, 3.8, 3.5, 3.2, 2.9], true);
 
@@ -74,7 +74,14 @@ function setColors(nodes, limits, is_greater) {
 }
 function evalLimits(value, limits, is_greater){
     if(limits.length === 1){
-        if (is_greater){
+        if (is_greater === ''){
+            if (value < limits[0]) {
+                return 'td-color-7';
+            } else if (value === limits[0]) {
+                return 'td-color-4';
+            }
+            return 'td-color-1';
+        } else if (is_greater) {
             if (value > limits[0]) {
                 return 'td-color-7';
             }
