@@ -37,8 +37,8 @@
       <file leaf-file-name="data-coloring.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/data-coloring.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="76" column="31" lean-forward="true" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
+            <state relative-caret-position="241">
+              <caret line="82" column="30" lean-forward="false" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -287,12 +287,12 @@
       <updated>1522103093198</updated>
       <workItem from="1522103095762" duration="1349000" />
       <workItem from="1522105356183" duration="3876000" />
-      <workItem from="1522111469213" duration="24831000" />
+      <workItem from="1522111469213" duration="25324000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30083000" />
+    <option name="totallyTimeSpent" value="30576000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -746,8 +746,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/data-coloring.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="76" column="31" lean-forward="true" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
+        <state relative-caret-position="241">
+          <caret line="82" column="30" lean-forward="false" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
           <folding />
         </state>
       </provider>
