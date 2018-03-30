@@ -1,5 +1,5 @@
 function initStrip(){
-    var stripe_public_key = document.querySelector("meta[name='stripe-public-key']").content;
+    var stripe_public_key = document.querySelector("#stripe-public-key").getAttribute('content');
     var stripe = Stripe(stripe_public_key);
     var elements = stripe.elements();
     // Custom styling can be passed to options when creating an Element.

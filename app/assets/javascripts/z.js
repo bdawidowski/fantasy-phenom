@@ -1,6 +1,7 @@
 $(document).ready(function(){
-    if(document.querySelector("meta[name='stripe-public-key']").content){
+    if(document.querySelectorAll("#stripe-public-key").length > 0){
         initStrip()
+        console.log('t')
     }
     $('#user-management-table').DataTable();
     $('#data-table-other').DataTable();
