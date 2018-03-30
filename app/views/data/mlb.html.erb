@@ -1,4 +1,7 @@
 <div class="data-container">
+  <div class="container article-header" style="border-bottom: 2px solid #C6B358; color: #fff">
+    <h4 align="center"><%= Date.today.strftime("%^B %e, %Y") %></h4>
+  </div>
   <%  if current_user_admin? %>
     <div class="text-center col-xs-12">
       <%= link_to 'SYNC MLB DATA', new_googlesheet_path, class:"btn btn-primary btn-dark-line industry-main text-center"  %>

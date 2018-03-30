@@ -588,6 +588,12 @@ table thead {color: #fff;}
 .batter-data-3 {
   color: #C2B364;
 }
+#data-blur {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+}
 
 
 

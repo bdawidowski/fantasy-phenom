@@ -31,10 +31,16 @@
       <td>StCast%</td>
       <td>MwOBA</td>
     </tr>
-    <% away_batters.each do |batter| %>
+    <% away_batters.each_with_index do |batter, bi| %>
       <tr>
-        <% batter.each_with_index do |b, i| %>
-          <td class="batter-data-<%= i %> <%= "dollar-data" if i == 1 or i == 3%>"><%= b %></td>
+        <% if current_user_subscribed? %>
+          <% batter.each_with_index do |b, i| %>
+            <td class="batter-data-<%= i %> <%= "dollar-data" if i == 1 or i == 3%>"><%= b %></td>
+          <% end %>
+        <% else %>
+          <% batter.each_with_index do |b, i| %>
+              <td class="batter-data-<%= i %> <%= "dollar-data" if i == 1 or i == 3%>" id="<%= "data-blur" if i >= 13%>"><%= b %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

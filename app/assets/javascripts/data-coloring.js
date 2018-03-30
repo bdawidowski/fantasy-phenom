@@ -28,7 +28,7 @@ document.onreadystatechange = function () {
             if(/\d+\sMPH/.test(wind_value)){
                 var wind_mph = parseInt(wind_value.match(/(\d+)\sMPH/)[1]);
                 if(wind_mph > 20){
-                    if(/\sin\s/.test(wind_value)){
+                    if(/\sIn\s/.test(wind_value)){
                         wind.setAttribute('class', 'td-color-1')
                     } else {
                         wind.setAttribute('class', 'td-color-7')

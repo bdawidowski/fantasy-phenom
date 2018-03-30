@@ -32,11 +32,17 @@
       <td>MwOBA</td>
     </tr>
     <% home_batters.each do |batter| %>
-        <tr>
+      <tr>
+        <% if current_user_subscribed? %>
           <% batter.each_with_index do |b, i| %>
-              <td class="batter-data-<%= i %> <%= "dollar-data" if i == 1 or i == 3%>"><%= b %></td>
+            <td class="batter-data-<%= i %> <%= "dollar-data" if i == 1 or i == 3%>"><%= b %></td>
           <% end %>
-        </tr>
+        <% else %>
+          <% batter.each_with_index do |b, i| %>
+            <td class="batter-data-<%= i %> <%= "dollar-data" if i == 1 or i == 3%>" id="<%= "data-blur" if i >= 13%>"><%= b %></td>
+          <% end %>
+        <% end %>
+      </tr>
     <% end %>
     </tbody>
   </table>
