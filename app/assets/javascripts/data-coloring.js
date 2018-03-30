@@ -1,5 +1,47 @@
 document.onreadystatechange = function () {
     if (document.readyState === 'complete') {
+        var runs_projections = document.querySelectorAll('.data-runs');
+        setColors(runs_projections, [3, 3.3, 3.7, 4, 4.3, 4.5, 4.7], false);
+
+        var rain_projections = document.querySelectorAll('.data-rain');
+        for(var i = 0; i < rain_projections.length; i++){
+            var rain = rain_projections[i];
+            var rain_percentage = rain.textContent.replace('%', '');
+            if(!/No Rain/.test(rain_percentage)){
+                rain_percentage = parseInt(rain_percentage);
+                if(rain_percentage < 30){
+                    rain.setAttribute('class', 'td-color-7');
+                } else if (rain_percentage < 75){
+                    rain.setAttribute('class', 'td-color-3');
+                } else {
+                    rain.setAttribute('class', 'td-color-1');
+                }
+            } else {
+                rain.setAttribute('class', 'td-color-7');
+            }
+        }
+
+        var wind_projections = document.querySelectorAll('.data-wind');
+        for(var i = 0; i < wind_projections.length; i++){
+            var wind = wind_projections[i];
+            var wind_value = wind.textContent;
+            if(/\d+\sMPH/.test(wind_value)){
+                var wind_mph = parseInt(wind_value.match(/(\d+)\sMPH/)[1]);
+                if(wind_mph > 20){
+                    if(/\sin\s/.test(wind_value)){
+                        wind.setAttribute('class', 'td-color-1')
+                    } else {
+                        wind.setAttribute('class', 'td-color-7')
+                    }
+                } else if (wind_mph > 9){
+                    if(/\sin\s/.test(wind_value)){
+                        wind.setAttribute('class', 'td-color-2')
+                    } else {
+                        wind.setAttribute('class', 'td-color-6')
+                    }
+                }
+            }
+        }
         var team_batting_index_0 = document.querySelectorAll('.team-batting-data-0');
         setColors(team_batting_index_0, [.29, .3, .31, .32, .34, .37, .39], false);
         var team_batting_index_1 = document.querySelectorAll('.team-batting-data-1');
@@ -46,9 +88,6 @@ document.onreadystatechange = function () {
         setColors(batters_index_14,  [10], true);
         var batters_index_15 = document.querySelectorAll('.batter-data-15');
         setColors(batters_index_15,  [.29, .3, .31, .32, .34, .37, .4], false);
-
-
-
 
         var dollar_amounts = document.getElementsByClassName('dollar-data');
         for(var i = 0; i < dollar_amounts.length; i++){
