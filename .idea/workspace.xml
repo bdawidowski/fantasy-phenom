@@ -3,19 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b54d79fa-1d0c-4372-8179-08d04ff12893" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOATL.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOATL.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOBAL.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOBAL.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOCHW.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOCHW.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOCIN.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOCIN.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOCLE.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOCLE.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOCOL.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOCOL.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGODET.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGODET.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOKCR.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOKCR.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOLAA.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOLAA.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOLAD.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOLAD.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOPIT.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOPIT.png" />
-      <change beforePath="$PROJECT_DIR$/app/assets/images/mlb/LOGOSDP.png" afterPath="$PROJECT_DIR$/app/assets/images/mlb/LOGOSDP.png" />
-      <change beforePath="$PROJECT_DIR$/app/views/data/_mlb_pitcher.html.erb" afterPath="$PROJECT_DIR$/app/views/data/_mlb_pitcher.html.erb" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -109,6 +96,21 @@
               <item name="FP365" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FP365" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FP365" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FP365" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FP365" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="mlb" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FP365" type="b2602c69:ProjectViewProjectNode" />
@@ -220,12 +222,12 @@
       <updated>1522103093198</updated>
       <workItem from="1522103095762" duration="1349000" />
       <workItem from="1522105356183" duration="3876000" />
-      <workItem from="1522111469213" duration="26565000" />
+      <workItem from="1522111469213" duration="26811000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31817000" />
+    <option name="totallyTimeSpent" value="32063000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
