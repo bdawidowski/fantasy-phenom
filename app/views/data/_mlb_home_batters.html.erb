@@ -31,7 +31,7 @@
       <td>StCast%</td>
       <td>MwOBA</td>
     </tr>
-    <% home_batters.each do |batter| %>
+    <% home_batters.each_with_index do |batter, bi| %>
       <tr>
         <% if current_user_subscribed? %>
           <% batter.each_with_index do |b, i| %>
@@ -39,7 +39,21 @@
           <% end %>
         <% else %>
           <% batter.each_with_index do |b, i| %>
-            <td class="batter-data-<%= i %> <%= "dollar-data" if i == 1 or i == 3%>" id="<%= "data-blur" if i >= 13%>"><%= b %></td>
+            <% if i < 13 %>
+              <td class="batter-data-<%= i %> <%= "dollar-data" if i == 1 or i == 3%>"><%= b %></td>
+            <% elsif i == 13 and bi === 0 %>
+              <td class="data-prem" colspan="3" rowspan="9">
+                <div style="margin-top: 60px">
+                  <h3>FANTASY<strong>PHENOM</strong></h3>
+                  <h4>PREMIUM DATA</h4>
+                  <a href="<%= new_subscription_path %>" class="btn btn-primary">JOIN THE TEAM</a>
+                  <h5>
+                    Statistics Developed &<br/>
+                    Organized for <strong>DFS</strong>
+                  </h5>
+                </div>
+              </td>
+            <% end %>
           <% end %>
         <% end %>
       </tr>

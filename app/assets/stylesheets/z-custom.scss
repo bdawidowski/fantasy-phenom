@@ -542,6 +542,7 @@ table thead {color: #fff;}
   width: 100%;
   background-color: #222222;
   color: #fff;
+  font-family: industry, sans-serif;
 }
 .data-table-dark {
   background-color: #000;
@@ -594,7 +595,12 @@ table thead {color: #fff;}
 .td-color-7 {
   background-color: #49A359;
 }
-
+.td-color-cold {
+ background-color: #1959BD;
+}
+.td-color-chill {
+  background-color: #618CBD;
+}
 .batter-data-0,
 .batter-data-1 {
   color: #4DABE9;
@@ -608,6 +614,9 @@ table thead {color: #fff;}
   -moz-filter: blur(5px);
   -o-filter: blur(5px);
   -ms-filter: blur(5px);
+}
+.data-prem {
+  font-family: industry, sans-serif;
 }
 
 

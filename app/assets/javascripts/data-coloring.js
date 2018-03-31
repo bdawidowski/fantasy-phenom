@@ -42,6 +42,20 @@ document.onreadystatechange = function () {
                 }
             }
         }
+        var temp_projections = document.querySelectorAll('.data-temp');
+        for(var i = 0; i < temp_projections.length; i++){
+            var temp = temp_projections[i];
+            var temp_value = parseInt(temp.textContent.replace('°', ''))
+            if(temp_value < 45){
+                temp.setAttribute('class', 'td-color-cold');
+            } else if (temp_value < 60 ){
+                temp.setAttribute('class', 'td-color-chill');
+            } else if(temp_value < 90){
+                temp.setAttribute('class', 'td-color-2');
+            } else {
+                temp.setAttribute('class', 'td-color-1');
+            }
+        }
         var team_batting_index_0 = document.querySelectorAll('.team-batting-data-0');
         setColors(team_batting_index_0, [.29, .3, .31, .32, .34, .37, .39], false);
         var team_batting_index_1 = document.querySelectorAll('.team-batting-data-1');
