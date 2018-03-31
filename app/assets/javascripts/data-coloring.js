@@ -1,8 +1,6 @@
-document.onreadystatechange = function () {
-    if (document.readyState === 'complete') {
+function applyDataColors () {
         var runs_projections = document.querySelectorAll('.data-runs');
         setColors(runs_projections, [3, 3.3, 3.7, 4, 4.3, 4.5, 4.7], false);
-
         var rain_projections = document.querySelectorAll('.data-rain');
         for(var i = 0; i < rain_projections.length; i++){
             var rain = rain_projections[i];
@@ -108,10 +106,6 @@ document.onreadystatechange = function () {
             var dollar = dollar_amounts[i];
             dollar.textContent = '$' + dollar.textContent;
         }
-
-
-
-    }
 };
 function setColors(nodes, limits, is_greater) {
     for(var i = 0; i < nodes.length; i++){
