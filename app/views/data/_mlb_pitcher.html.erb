@@ -66,9 +66,10 @@
         <% end %>
       </tr>
       <tr>
-        <% pitcher_road[0..6].each_with_index do |pro, i| %>
+        <% pitcher_road[0..pitcher_road.length].each_with_index do |pro, i| %>
             <td class="pitcher-data-<%= i %>"> <%= pro %></td>
         <% end %>
+
         <td colspan="2" class="table-data-head">HOME/AWAY</td>
         <% pitcher_road[7..14].each_with_index do |pro, i| %>
             <td class="pitcher-data-<%= i %>"> <%= pro %></td>

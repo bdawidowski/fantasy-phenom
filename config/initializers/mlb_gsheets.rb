@@ -18,7 +18,7 @@ class GetMlbData
       range = "API!A#{base}:Q#{base + 48}"
       result = HTTParty.get(@base_url + range + "?key=#{@secret_key}")
       if result["values"]
-        MlbGame.create(parseMlbResults(result["values"]))
+        MlbGame.create(parseMlbResults(result["values"])) if parseMlbResults(result["values"])
         base += 40
       else
         base = 0
@@ -56,7 +56,29 @@ class GetMlbData
     (20..28).each do |i|
       game[:home_batters] << response[i][1..16]
     end
-    return game
+    counter = 0
+    game.each do |key, value|
+      if value.kind_of?(Array)
+        value.each_with_index do |item, i|
+          if item.kind_of?(Array)
+            item.each_with_index do |inner, ii|
+              if inner === '-'
+                game[key][i][ii] = ''
+                counter += 1
+              end
+            end
+          elsif item === '-'
+            game[key][i] = ''
+            counter += 1
+          end
+        end
+      end
+    end
+    if counter < 35
+      return game
+    else
+      return false
+    end
   end
 end
 
