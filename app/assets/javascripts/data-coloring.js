@@ -106,6 +106,13 @@ function applyDataColors () {
             var dollar = dollar_amounts[i];
             dollar.textContent = '$' + dollar.textContent;
         }
+        var lineup_confirmed = document.getElementsByClassName('data-confirmed');
+        for(var i = 0; i < lineup_confirmed.length; i++){
+            var lineup = lineup_confirmed[i];
+            if(/NOT CONFIRMED/.test(lineup.textContent)){
+                lineup.setAttribute('class', 'data-unconfirmed data-table-dark');
+            }
+        }
 };
 function setColors(nodes, limits, is_greater) {
     for(var i = 0; i < nodes.length; i++){

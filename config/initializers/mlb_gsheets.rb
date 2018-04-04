@@ -47,7 +47,9 @@ class GetMlbData
         :pitcher_road => response[8][1..14],
         :pitcher_30days => response[9][1..14],
         :pitcher_2017 => response[10][1..14],
+        :away_batters_confirmed => response[0][10],
         :away_batters => [],
+        :home_batters_confirmed => response[0][11],
         :home_batters => []
     }
     (11..19).each do |i|
@@ -74,7 +76,7 @@ class GetMlbData
         end
       end
     end
-    if counter < 35
+    if counter < 75
       return game
     else
       return false
