@@ -29,14 +29,9 @@ class GooglesheetsController < ApplicationController
   # POST /googlesheets
   # POST /googlesheets.json
   def create
-      begin
         GetMlbData.new
         flash[:success] = "Updated Sucessfully!"
-      rescue
-        flash[:warning] = "Something went wrong"
-      ensure
         redirect_to data_mlb_path
-      end
   end
 
   # PATCH/PUT /googlesheets/1
