@@ -7,22 +7,29 @@ class GetMlbData
     fetchMlb
   end
   def fetchMlb
-    MlbGame.delete_all
+    new_games = []
 
     range = "API!A1:Q30"
     result = HTTParty.get(@base_url + range + "?key=#{@secret_key}")
-    MlbGame.create(parseMlbResults(result["values"])) if result["values"]
-
+    if result['values']
+      game_obj = parseMlbResults(result["values"])
+      new_games.push(game_obj) if game_obj
+    end
     base = 60
     while base > 0
       range = "API!A#{base}:Q#{base + 48}"
       result = HTTParty.get(@base_url + range + "?key=#{@secret_key}")
       if result["values"]
-        MlbGame.create(parseMlbResults(result["values"])) if parseMlbResults(result["values"])
+        game_obj = parseMlbResults(result["values"])
+        new_games.push(game_obj) if game_obj
         base += 40
       else
         base = 0
       end
+    end
+    MlbGame.delete_all
+    new_games.each do |game|
+      MlbGame.create(game)
     end
   end
   def parseMlbResults(response)
