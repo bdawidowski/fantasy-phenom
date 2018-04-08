@@ -20,7 +20,7 @@ function applyDataColors () {
         }
 
         var wind_projections = document.querySelectorAll('.data-wind');
-        for(var i = 0; i < wind_projections.length; i++){
+        for(i = 0; i < wind_projections.length; i++){
             var wind = wind_projections[i];
             var wind_value = wind.textContent;
             if(/\d+\sMPH/.test(wind_value)){
@@ -41,7 +41,7 @@ function applyDataColors () {
             }
         }
         var temp_projections = document.querySelectorAll('.data-temp');
-        for(var i = 0; i < temp_projections.length; i++){
+        for(i = 0; i < temp_projections.length; i++){
             var temp = temp_projections[i];
             var temp_value = parseInt(temp.textContent.replace('°', ''))
             if(temp_value < 45){
@@ -101,15 +101,15 @@ function applyDataColors () {
         var batters_index_15 = document.querySelectorAll('.batter-data-15');
         setColors(batters_index_15,  [.29, .3, .31, .32, .34, .37, .4], false);
 
-        var dollar_amounts = document.getElementsByClassName('dollar-data');
-        for(var i = 0; i < dollar_amounts.length; i++){
+        var dollar_amounts = document.querySelectorAll('.dollar-data');
+        for(i = 0; i < dollar_amounts.length; i++){
             var dollar = dollar_amounts[i];
             dollar.textContent = '$' + dollar.textContent;
         }
-        var lineup_confirmed = document.getElementsByClassName('data-confirmed');
-        for(var i = 0; i < lineup_confirmed.length; i++){
+        var lineup_confirmed = document.querySelectorAll('.data-confirmed');
+        for(i = 0; i < lineup_confirmed.length; i++){
             var lineup = lineup_confirmed[i];
-            if(/NOT CONFIRMED/.test(lineup.textContent)){
+            if(/NOT CONFIRMED/i.test(lineup.textContent)){
                 lineup.setAttribute('class', 'data-unconfirmed data-table-dark');
             }
         }
