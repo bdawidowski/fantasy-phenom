@@ -1,24 +1,21 @@
+# [FANTASY PHENOM](https://www.fantasy-phenom.com/)
+####GET STARTED PLAYING DAILY FANTASY SPORTS
+FANTASY PHENOM IS A FANTASY SPORTS COMMUNITY CENTERED AROUND ITS MEMBERS. EACH INDIVIDUAL "PHENOM" IS A PLAYER ON THIS TEAM OFFERING A UNIQUE CONTRIBUTIONS. WE OPERATE THIS TEAM UNDER A COMMON GOAL:
+####DISCOVERING DEPENDABLE AND SUPERIOR FANTASY SPORTS KNOWLEDGE
+FANTASY PHENOM AIMS TO PROVIDE A FRIENDLY AND TRUSTWORTHY COMMUNITY FOR PEOPLE WHO ENJOY PLAYING FANTASY SPORTS. WE ARE FOCUSED ON PROGRESSION THROUGH THE DEVELOPMENT OF USER FRIENDLY RESEARCH TOOLS AND ENTERTAINING DISCUSSIONS AS A SUPPLEMENT TO YOUR DAILY FANTASY SPORTS PROCESS.
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+####CHANGE THE WAY YOU PLAY
+* LEARN HOW TO BE SUCCESSFUL
+* 24/7 COLLABORATIVE DISCUSSION
+* CONNECT WITH OTHER PLAYERS
+* UNLOCK WINNING STRATEGIES
+* DEVELOP CONSISTENCY
+* INCORPORATED ANALYTICS
+* ACCESS SIMPLE TO USE DATA
+* BECOME A FANTASY PLAYER
 
-
-Welcome to your Rails project on Cloud9 IDE!
-
-To get started, just do the following:
-
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://beta-beta-app-teamdawi.c9users.io/).
-
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+####SOCIAL
+* [Youtube](https://www.youtube.com/channel/UCJ98Nb7_Fk_bEDB25Vzzyhw)
+* [Facebook](https://www.facebook.com/fantasyphenom365/)
+* [Twitter](https://twitter.com/fantasy__phenom?lang=en)
+* [Instagram](https://www.instagram.com/fantasy_phenom/)
