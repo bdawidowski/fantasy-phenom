@@ -41,6 +41,7 @@ gem 'aws-sdk'
 gem 'roda'
 gem 'jquery-fileupload-rails'
 gem 'httparty'
+gem 'whenever'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
