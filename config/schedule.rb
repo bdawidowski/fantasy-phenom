@@ -18,6 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 15.minutes do
+every 15.minute do
   rake "data:mlb"
 end
