@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-            <a class="navbar-brand wcolor" href="<%= root_path %>" style="color: white; font-size: 27px;">
+            <a class="navbar-brand wcolor" href="<%= root_path %>" style="color: white; font-size: 27px; padding-top: 10px">
             FANTASY<strong>PHENOM</strong>
               <% if Rails.application.secrets.deployment == 'DEV' %>
                   <span class="envi-badge badge-dev">DEV</span>
@@ -103,12 +103,12 @@
                             </li>
                             <% else %>
                                 <li>
-                                    <%= link_to "BECOME A PRO", new_user_registration_path, class: "btn btn-nav btn-nav-primary", style: "color: #fff;", id: "btn-nav-signup" %>
+                                    <%= link_to "BECOME A PRO", new_user_registration_path, class: "btn btn-nav btn-nav-primary", style: "color: #fff; padding-top: 7px;", id: "btn-nav-signup" %>
                                 </li>
                                 <li>
-                                    <%= link_to "SIGN IN", new_user_session_path, class: "btn btn-nav btn-nav-default", id: "btn-nav-signin" %>
+                                    <%= link_to "SIGN IN", new_user_session_path, class: "btn btn-nav btn-nav-default", id: "btn-nav-signin", style: "padding-top: 7px;" %>
                                 </li>
-                                <% end %>
+                            <% end %>
             </ul>
         </div>
     </div>
