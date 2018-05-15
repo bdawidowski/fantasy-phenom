@@ -17,4 +17,3 @@
 /tmp
 /config/initializers/environment_variables.rb
 /config/environment_variables.yml
-/config/secrets.yml
