@@ -7,6 +7,9 @@
     <div class="text-center col-xs-12">
       <%= link_to 'SYNC MLB DATA', new_googlesheet_path, class:"btn btn-primary btn-dark-line industry-main text-center"  %>
     </div>
+    <div class="text-center col-xs-12">
+      <h3 class="industry-main"><%= @updated_at %></h3>
+    </div>
   <% end %>
 <% @games.each_with_index do |game, i| %>
     <div class="row">
