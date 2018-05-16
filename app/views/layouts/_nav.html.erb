@@ -15,7 +15,7 @@
             <% elsif Rails.application.secrets.deployment == 'BETA' %>
                   <span class="envi-badge badge-beta">BETA</span>
               <% end %>
-              <% if current_user_subscribed? %> <i class="fa fa-check-circle" style="color: #C6B358; font-size: 25px; vertical-align: middle; "></i> <% end %>
+              <% if current_user_subscribed? %> <span class="envi-badge badge-pro">PRO</span> <% end %>
         </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
