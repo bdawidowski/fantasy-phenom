@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-            <a class="navbar-brand wcolor" href="<%= root_path %>" style="color: white; font-size: 27px; padding-top: 10px">
+            <a class="navbar-brand wcolor" href="<%= root_path %>" style="color: white; font-size: 27px; padding-top: <%= if current_user_subscribed? then "10px" else "16px" end %>">
             FANTASY<strong>PHENOM</strong>
               <% if Rails.application.secrets.deployment == 'DEV' %>
                   <span class="envi-badge badge-dev">DEV</span>
@@ -21,8 +21,6 @@
                 <% else %>
                   <span class="envi-badge badge-pro">PRO</span>
                 <% end %>
-              <% else %>
-                <span class="envi-badge"></span>
               <% end %>
 
 
